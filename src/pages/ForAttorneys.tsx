@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Container, Eyebrow, SectionHeading, Button } from '../components/ui';
 import { Reveal } from '../components/Reveal';
 import { TopographicPattern } from '../components/brand/TopographicPattern';
@@ -213,22 +212,7 @@ export default function ForAttorneys() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ padding: '64px 0', background: '#f5ede3' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 28px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
-          <div>
-            <div style={{ fontFamily: "'Fraunces', serif", fontSize: 24, color: '#07355e', marginBottom: 8 }}>Referring a patient of your own?</div>
-            <p style={{ fontSize: 14, color: 'rgba(7,53,94,0.7)', margin: 0 }}>Patients can also request an evaluation directly.</p>
-          </div>
-          <Link
-            to="/contact"
-            className="tni-btn-navy"
-            style={{ background: '#07355e', color: '#f5ede3', padding: '16px 30px', borderRadius: 8, textDecoration: 'none', fontSize: 15, fontWeight: 600, whiteSpace: 'nowrap' }}
-          >
-            Request Evaluation →
-          </Link>
-        </div>
-      </section>
+
     </>
   );
 }
