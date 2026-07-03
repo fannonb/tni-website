@@ -12,8 +12,8 @@ export const site = {
   footerLine: 'Advancing the standard of neurotrauma care in Texas.',
 
   // --- Contact (placeholders — swap for real values) ---
-  phoneDisplay: '(000) 000-0000',
-  phoneHref: 'tel:+10000000000',
+  phoneDisplay: '(713) 568-7322',
+  phoneHref: 'tel:+17135687322',
   email: 'info@texasneurotrauma.com',
   emailHref: 'mailto:info@texasneurotrauma.com',
   locations: ['Houston', 'San Antonio'],
@@ -22,7 +22,7 @@ export const site = {
 
 /** True once a real clinic phone replaces the placeholder zeros. */
 export function hasRealPhone(): boolean {
-  return !site.phoneDisplay.includes('000') && site.phoneHref !== 'tel:+10000000000';
+  return !(site.phoneDisplay as string).includes('000') && (site.phoneHref as string) !== 'tel:+10000000000';
 }
 
 export interface NavItem {
