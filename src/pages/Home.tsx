@@ -266,7 +266,7 @@ export default function Home() {
                 </p>
 
                 <div className="tni-hero-actions">
-                  <Button to="/contact" variant="primary" size="lg" full style={{ padding: '16px 36px', borderRadius: 99 }}>
+                  <Button to="/contact" variant="primary" size="lg" style={{ padding: '16px 36px', borderRadius: 99 }}>
                     Request an Evaluation
                   </Button>
                 </div>
