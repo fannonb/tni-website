@@ -1009,16 +1009,16 @@ img {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: var(--tni-navy);
-  color: rgba(245, 237, 227, 0.92);
+  background: rgba(7, 53, 94, 0.1);
+  color: rgba(7, 53, 94, 0.62);
   transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .tni-svc-card:hover .tni-svc-icon,
 .tni-service-index-card:hover .tni-svc-icon {
   transform: scale(1.05);
-  background: #052a4a;
-  color: #fcfaf7;
+  background: rgba(7, 53, 94, 0.16);
+  color: rgba(7, 53, 94, 0.78);
 }
 
 .tni-svc-category {
