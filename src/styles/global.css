@@ -303,6 +303,12 @@ img {
     align-items: stretch;
   }
 
+  .tni-hero-grid > .tni-hero-grid__visual,
+  .tni-hero-grid > :has(.tni-hero-photo),
+  .tni-hero-grid > :has(.tni-service-placeholder) {
+    order: -1;
+  }
+
   .tni-hero-grid__copy,
   .tni-hero-grid__visual {
     grid-column: auto;
@@ -1389,6 +1395,17 @@ img {
 
 .tni-wave-divider--hero-exit {
   margin-top: clamp(40px, 6vw, 72px);
+}
+
+@media (max-width: 860px) {
+  .tni-wave-divider {
+    display: none;
+  }
+
+  .tni-concussion-hero {
+    padding-top: clamp(24px, 4vw, 40px);
+    padding-bottom: clamp(24px, 4vw, 36px);
+  }
 }
 
 /* Flow sections — wave sits flush at the section edge */

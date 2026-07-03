@@ -37,8 +37,20 @@ export function ServicePageLayout({ service }: ServicePageLayoutProps) {
 
         <div className="tni-hero-light__content" style={{ position: 'relative', zIndex: 2 }}>
           <Container>
-            <div className="tni-hero-grid" style={{ alignItems: 'center', gap: 80 }}>
-              <Reveal>
+            <div className="tni-hero-grid">
+              <Reveal className="tni-hero-grid__visual" delay={120}>
+                {service.heroImageSrc ? (
+                  <HeroPhoto
+                    src={service.heroImageSrc}
+                    alt={service.heroImageAlt ?? service.heroImageLabel}
+                    tone="light"
+                  />
+                ) : (
+                  <ServiceImagePlaceholder label={service.heroImageLabel} />
+                )}
+              </Reveal>
+
+              <Reveal className="tni-hero-grid__copy">
                 <div style={{ maxWidth: 560 }}>
                   <h1
                     className="tni-fluid-h1-hero"
@@ -76,18 +88,6 @@ export function ServicePageLayout({ service }: ServicePageLayoutProps) {
                     </Button>
                   </div>
                 </div>
-              </Reveal>
-
-              <Reveal delay={120}>
-                {service.heroImageSrc ? (
-                  <HeroPhoto
-                    src={service.heroImageSrc}
-                    alt={service.heroImageAlt ?? service.heroImageLabel}
-                    tone="light"
-                  />
-                ) : (
-                  <ServiceImagePlaceholder label={service.heroImageLabel} />
-                )}
               </Reveal>
             </div>
           </Container>
