@@ -4,6 +4,7 @@ import { Container, Eyebrow, SectionHeading, SectionIntro, Button } from '../com
 import { Reveal } from '../components/Reveal';
 import { QeegWaveform } from '../components/brand/QeegWaveform';
 import { TopographicPattern } from '../components/brand/TopographicPattern';
+import { ServiceCardIcon } from '../components/ServiceCardIcon';
 import { services, conditions, journey, authorityConditions, type JourneyStep } from '../data/home';
 
 // Import custom generated premium images
@@ -14,6 +15,7 @@ import patientConsult from '../assets/images/patient_consultation.png';
 import legalDoc from '../assets/images/legal_documentation.png';
 import neuralDark from '../assets/images/neural_pathways_dark.png';
 import doctorScan from '../assets/images/doctor_explaining_scan.png';
+import getStartedCta from '../assets/images/get_started_cta.png';
 
 const NAVY = '#07355e';
 const SAND = '#f5ede3';
@@ -148,11 +150,8 @@ function JourneyStepIcon({ type }: { type: JourneyStep['icon'] }) {
   }
 }
 
-type ServiceCategory = 'All' | 'Diagnostics' | 'Assessment' | 'Rehabilitation';
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<ServiceCategory>('All');
-
   // Hero Carousel State
   const [activeSlide, setActiveSlide] = useState(0);
   const slides = [
@@ -184,12 +183,6 @@ export default function Home() {
   const handleNextSlide = () => {
     setActiveSlide((prev) => (prev + 1) % slides.length);
   };
-
-  // Filter services based on category matching their 'domain' field
-  const filteredServices = services.filter((s) => {
-    if (activeTab === 'All') return true;
-    return s.domain === activeTab;
-  });
 
   return (
     <>
@@ -461,7 +454,7 @@ export default function Home() {
           <SectionIntro
             eyebrow="Our Capabilities"
             heading="Advanced medical diagnostics and clinical rehabilitation."
-            lead="Choose a category below to explore our ten specialized services across neurological diagnosis, cognitive assessment, and recovery."
+            lead="Explore our ten specialized services for neurological evaluation, objective diagnostics, and evidence-based recovery."
           />
 
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
@@ -474,42 +467,18 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Interactive Tabs */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-              gap: 12,
-              marginBottom: 48,
-            }}
-          >
-            {(['All', 'Diagnostics', 'Assessment', 'Rehabilitation'] as ServiceCategory[]).map((tab) => (
-              <button
-                key={tab}
-                className={`tni-tab-btn ${activeTab === tab ? 'is-active' : ''}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab === 'All' ? 'All Services' : tab}
-              </button>
-            ))}
-          </div>
-
           {/* Services Grid */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
-            {filteredServices.map((service) => (
+            {services.map((service) => (
               <article
-                key={service.num}
+                key={service.path ?? service.title}
                 className="tni-svc-card"
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
-                  <div className="tni-svc-number">
-                    {service.num}
+                {service.path && (
+                  <div style={{ marginBottom: 20 }}>
+                    <ServiceCardIcon path={service.path} />
                   </div>
-                  <span className={`tni-svc-category tni-svc-category--${service.domain.toLowerCase()}`}>
-                    {service.domain}
-                  </span>
-                </div>
+                )}
                 <SectionHeading as="h3" size={20} style={{ marginBottom: 12, lineHeight: 1.3 }}>
                   {service.title}
                 </SectionHeading>
@@ -613,7 +582,7 @@ export default function Home() {
       </section>
 
       {/* ===================== FINAL CTA ===================== */}
-      <section className="tni-section tni-final-cta" style={{ padding: '100px 0' }}>
+      <section className="tni-section tni-final-cta">
         <div className="tni-final-cta__glow" />
         <TopographicPattern tone="dark" style={{ opacity: 0.04, pointerEvents: 'none' }} />
         <Container>
@@ -672,27 +641,12 @@ export default function Home() {
                     Attorney Portal
                   </Button>
                 </div>
-                
-                <div className="tni-final-cta__reassurance">
-                  <div className="tni-final-cta__reassurance-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={COPPER} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    <span>Response within 1 business day</span>
-                  </div>
-                  <div className="tni-final-cta__reassurance-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={COPPER} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    <span>Houston &amp; San Antonio</span>
-                  </div>
-                </div>
               </div>
 
               {/* Right Column: Visual */}
               <div className="tni-final-cta__visual">
                 <div className="tni-final-cta__image-wrap">
-                  <img src={patientConsult} alt="A clinician showing brain mapping results to a patient" />
+                  <img src={getStartedCta} alt="Neurologists analyzing brain mapping data on a clinical screen" />
                   <div className="tni-final-cta__image-overlay" />
                 </div>
               </div>
