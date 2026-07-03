@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/images/logo-full.png';
-import { NAV_ITEMS, site, hasRealPhone } from '../data/site';
+import { NAV_ITEMS, site } from '../data/site';
 
 import { ALL_SERVICES } from '../data/allServices';
 import { getServicesGroupedByDomain } from '../data/servicesIndex';
@@ -14,11 +14,6 @@ function isActive(to: string, pathname: string): boolean {
   return pathname === to;
 }
 
-const PhoneIcon = ({ size = 17 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" />
-  </svg>
-);
 
 function NavItemLink({
   item,
@@ -313,7 +308,6 @@ function MobileServicesAccordion({
 export function Nav() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-  const showPhone = hasRealPhone();
 
   useEffect(() => {
     setOpen(false);
@@ -364,15 +358,6 @@ export function Nav() {
               return <NavItemLink key={item.label} item={item} pathname={pathname} variant="desktop" />;
             })}
           </div>
-          {showPhone && (
-            <a
-              href={site.phoneHref}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 7, textDecoration: 'none', color: '#07355e', fontSize: 14, fontWeight: 600 }}
-            >
-              <PhoneIcon />
-              {site.phoneDisplay}
-            </a>
-          )}
           <Link
             to="/contact"
             className="tni-btn-primary"
@@ -393,16 +378,6 @@ export function Nav() {
 
         {/* Mobile controls */}
         <div className="tni-nav-mobile-controls">
-          {showPhone && (
-            <a
-              href={site.phoneHref}
-              aria-label="Call the institute"
-              className="tni-nav-toggle"
-              style={{ color: 'var(--tni-accent)' }}
-            >
-              <PhoneIcon size={19} />
-            </a>
-          )}
           <button
             type="button"
             className="tni-nav-toggle"
@@ -440,14 +415,6 @@ export function Nav() {
             >
               Request Evaluation
             </Link>
-            {showPhone && (
-              <a
-                href={site.phoneHref}
-                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '13px 20px', border: '1.5px solid rgba(7,53,94,0.2)', borderRadius: 10, textDecoration: 'none', color: '#07355e', fontSize: 15, fontWeight: 600 }}
-              >
-                <PhoneIcon /> Call {site.phoneDisplay}
-              </a>
-            )}
           </div>
         </div>
       </div>

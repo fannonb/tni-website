@@ -4,7 +4,6 @@ import { Container, Eyebrow, SectionHeading, SectionIntro, Button } from '../com
 import { Reveal } from '../components/Reveal';
 import { QeegWaveform } from '../components/brand/QeegWaveform';
 import { TopographicPattern } from '../components/brand/TopographicPattern';
-import { site, hasRealPhone } from '../data/site';
 import { services, conditions, journey, authorityConditions, type JourneyStep } from '../data/home';
 
 // Import custom generated premium images
@@ -153,7 +152,6 @@ type ServiceCategory = 'All' | 'Diagnostics' | 'Assessment' | 'Rehabilitation';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<ServiceCategory>('All');
-  const showPhone = hasRealPhone();
 
   // Hero Carousel State
   const [activeSlide, setActiveSlide] = useState(0);
@@ -278,12 +276,6 @@ export default function Home() {
                   <Button to="/contact" variant="primary" size="lg" full style={{ padding: '16px 36px', borderRadius: 99 }}>
                     Request an Evaluation
                   </Button>
-                  {showPhone && (
-                    <a href={site.phoneHref} className="tni-hero-phone">
-                      <span className="tni-hero-phone__label">or call</span>
-                      <span className="tni-hero-phone__number">{site.phoneDisplay}</span>
-                    </a>
-                  )}
                 </div>
               </Reveal>
             </div>

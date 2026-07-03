@@ -290,31 +290,6 @@ img {
   box-shadow: 0 12px 30px rgba(225, 109, 34, 0.22);
 }
 
-.tni-hero-phone {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--tni-navy);
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.tni-hero-phone:hover {
-  color: var(--tni-accent);
-}
-
-.tni-hero-phone__label {
-  color: rgba(7, 53, 94, 0.5);
-  font-weight: 500;
-}
-
-.tni-hero-phone__number {
-  border-bottom: 2px solid var(--tni-accent);
-  padding-bottom: 2px;
-}
-
 .tni-hero-visual {
   position: relative;
   display: flex;
@@ -525,11 +500,6 @@ img {
   .tni-hero-actions .tni-btn-primary {
     width: 100%;
     box-shadow: 0 8px 22px rgba(225, 109, 34, 0.2);
-  }
-
-  .tni-hero-phone {
-    justify-content: center;
-    font-size: 15px;
   }
 
   .tni-hero-carousel {
