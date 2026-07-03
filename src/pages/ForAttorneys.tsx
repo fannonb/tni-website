@@ -156,7 +156,7 @@ export default function ForAttorneys() {
                 {reportSections.filter((_, index) => index % 2 === 0).map((section, index) => (
                   <li key={section} className="tni-attorneys-report__row">
                     <span className="tni-attorneys-report__index" aria-hidden>
-                      {String(index * 2 + 1).padStart(2, '0')}
+                      {index * 2 + 1}
                     </span>
                     <span className="tni-attorneys-report__label">{section}</span>
                   </li>
@@ -166,7 +166,7 @@ export default function ForAttorneys() {
                 {reportSections.filter((_, index) => index % 2 === 1).map((section, index) => (
                   <li key={section} className="tni-attorneys-report__row">
                     <span className="tni-attorneys-report__index" aria-hidden>
-                      {String(index * 2 + 2).padStart(2, '0')}
+                      {index * 2 + 2}
                     </span>
                     <span className="tni-attorneys-report__label">{section}</span>
                   </li>

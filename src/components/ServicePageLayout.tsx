@@ -145,7 +145,7 @@ export function ServicePageLayout({ service }: ServicePageLayoutProps) {
                       <ServiceOfferingMarkers index={index} />
                     ) : (
                       <span className="tni-service-offering-card__num" aria-hidden>
-                        {String(index + 1).padStart(2, '0')}
+                        {index + 1}
                       </span>
                     )}
                     <div className="tni-service-offering-card__content">
@@ -203,7 +203,7 @@ export function ServicePageLayout({ service }: ServicePageLayoutProps) {
                   <div className="tni-why-choose-list">
                     {service.whyChoose.map((item, index) => (
                       <div key={item.title} className="tni-why-choose-card">
-                        <div className="tni-why-choose-card__num">{String(index + 1).padStart(2, '0')}</div>
+                        <div className="tni-why-choose-card__num">{index + 1}</div>
                         <div>
                           <h4 className="tni-why-choose-card__title">{item.title}</h4>
                           <p className="tni-why-choose-card__body">{item.body}</p>

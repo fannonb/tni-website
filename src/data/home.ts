@@ -1,6 +1,4 @@
 export interface Service {
-  num: string;
-  domain: string;
   title: string;
   body: string;
   hasLink: boolean;
@@ -29,16 +27,16 @@ const SERVICE_PATH_MAP: Record<string, string> = {
 };
 
 export const services: Service[] = [
-  { num: '01', domain: 'Diagnostics', title: 'qEEG Brain Mapping', body: 'Non-invasive measurement of brainwave activity to reveal functional patterns behind persistent symptoms.', hasLink: true, path: SERVICE_PATH_MAP['qEEG Brain Mapping'] },
-  { num: '02', domain: 'Diagnostics', title: 'Electroencephalography (EEG)', body: "Safe, painless recording of the brain's electrical activity to evaluate seizures, altered consciousness, and more.", hasLink: true, path: SERVICE_PATH_MAP['Electroencephalography (EEG)'] },
-  { num: '03', domain: 'Diagnostics', title: 'Brain Mapping', body: 'Comprehensive analysis of brain function, integrating qEEG with clinical evaluation for precise planning.', hasLink: true, path: SERVICE_PATH_MAP['Brain Mapping'] },
-  { num: '04', domain: 'Diagnostics', title: 'Nerve Conduction & EMG', body: 'Testing of peripheral nerve and muscle function to identify nerve damage or neuromuscular disorders.', hasLink: true, path: SERVICE_PATH_MAP['Nerve Conduction & EMG'] },
-  { num: '05', domain: 'Assessment', title: 'Neurocognitive Testing', body: 'Objective evaluation of memory, attention, processing speed, and executive function.', hasLink: true, path: SERVICE_PATH_MAP['Neurocognitive Testing'] },
-  { num: '06', domain: 'Assessment', title: 'Neuropsychology', body: 'Assessment of the cognitive, emotional, and behavioral effects of neurological injury.', hasLink: true, path: SERVICE_PATH_MAP['Neuropsychology'] },
-  { num: '07', domain: 'Rehabilitation', title: 'Concussion Management', body: 'Structured, evidence-based care for concussion and mild TBI, from diagnosis to safe return to activity.', hasLink: true, path: SERVICE_PATH_MAP['Concussion Management'] },
-  { num: '08', domain: 'Rehabilitation', title: 'Memory & Cognitive Rehab', body: 'Rehabilitation that strengthens memory, attention, and executive function to rebuild independence.', hasLink: true, path: SERVICE_PATH_MAP['Memory & Cognitive Rehab'] },
-  { num: '09', domain: 'Rehabilitation', title: 'Headache Treatment', body: 'Targeted, minimally invasive therapies for chronic headache and migraine after injury.', hasLink: true, path: SERVICE_PATH_MAP['Headache Treatment'] },
-  { num: '10', domain: 'Rehabilitation', title: 'Counseling', body: 'Compassionate emotional support for patients and families navigating recovery and adjustment.', hasLink: true, path: SERVICE_PATH_MAP['Counseling'] },
+  { title: 'qEEG Brain Mapping', body: 'Non-invasive measurement of brainwave activity to reveal functional patterns behind persistent symptoms.', hasLink: true, path: SERVICE_PATH_MAP['qEEG Brain Mapping'] },
+  { title: 'Electroencephalography (EEG)', body: "Safe, painless recording of the brain's electrical activity to evaluate seizures, altered consciousness, and more.", hasLink: true, path: SERVICE_PATH_MAP['Electroencephalography (EEG)'] },
+  { title: 'Brain Mapping', body: 'Comprehensive analysis of brain function, integrating qEEG with clinical evaluation for precise planning.', hasLink: true, path: SERVICE_PATH_MAP['Brain Mapping'] },
+  { title: 'Nerve Conduction & EMG', body: 'Testing of peripheral nerve and muscle function to identify nerve damage or neuromuscular disorders.', hasLink: true, path: SERVICE_PATH_MAP['Nerve Conduction & EMG'] },
+  { title: 'Neurocognitive Testing', body: 'Objective evaluation of memory, attention, processing speed, and executive function.', hasLink: true, path: SERVICE_PATH_MAP['Neurocognitive Testing'] },
+  { title: 'Neuropsychology', body: 'Assessment of the cognitive, emotional, and behavioral effects of neurological injury.', hasLink: true, path: SERVICE_PATH_MAP['Neuropsychology'] },
+  { title: 'Concussion Management', body: 'Structured, evidence-based care for concussion and mild TBI, from diagnosis to safe return to activity.', hasLink: true, path: SERVICE_PATH_MAP['Concussion Management'] },
+  { title: 'Memory & Cognitive Rehab', body: 'Rehabilitation that strengthens memory, attention, and executive function to rebuild independence.', hasLink: true, path: SERVICE_PATH_MAP['Memory & Cognitive Rehab'] },
+  { title: 'Headache Treatment', body: 'Targeted, minimally invasive therapies for chronic headache and migraine after injury.', hasLink: true, path: SERVICE_PATH_MAP['Headache Treatment'] },
+  { title: 'Counseling', body: 'Compassionate emotional support for patients and families navigating recovery and adjustment.', hasLink: true, path: SERVICE_PATH_MAP['Counseling'] },
 ];
 
 // Authority statement — the medically-defensible focus list (spec: Homepage).

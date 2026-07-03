@@ -52,7 +52,6 @@ export interface ServiceIndexItem {
   title: string;
   summary: string;
   tagline: string;
-  num: string;
 }
 
 function buildTitle(service: ServicePageContent): string {
@@ -68,7 +67,6 @@ export function getServiceIndexItems(): ServiceIndexItem[] {
   return GLOBAL_ORDER.map((path) => {
     const service = ALL_SERVICES.find((s) => s.path === path);
     if (!service) return null;
-    const index = getServiceGlobalIndex(path);
     return {
       slug: service.slug,
       path: service.path,
@@ -76,7 +74,6 @@ export function getServiceIndexItems(): ServiceIndexItem[] {
       title: buildTitle(service),
       summary: service.tagline,
       tagline: service.tagline,
-      num: String(index).padStart(2, '0'),
     };
   }).filter((item): item is ServiceIndexItem => Boolean(item));
 }

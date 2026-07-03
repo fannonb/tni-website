@@ -5,6 +5,7 @@ import { Reveal } from '../components/Reveal';
 import { TopographicPattern } from '../components/brand/TopographicPattern';
 import { QeegWaveform } from '../components/brand/QeegWaveform';
 import { HeroPhoto } from '../components/HeroPhoto';
+import { ServiceCardIcon } from '../components/ServiceCardIcon';
 import servicesHeroImage from '../assets/images/services_index_hero.png';
 import { getServiceIndexItems } from '../data/servicesIndex';
 
@@ -108,11 +109,11 @@ export default function Services() {
 function ServiceCard({
   service,
 }: {
-  service: { path: string; title: string; summary: string; num: string };
+  service: { path: string; title: string; summary: string };
 }) {
   return (
     <Link to={service.path} className="tni-service-index-card">
-      <span className="tni-svc-number">{service.num}</span>
+      <ServiceCardIcon path={service.path} className="tni-service-index-card__icon" />
       <SectionHeading as="h3" size={20} style={{ marginBottom: 10, lineHeight: 1.35 }}>
         {service.title}
       </SectionHeading>
