@@ -6,17 +6,19 @@
 
 export const site = {
   brand: 'Texas NeuroTrauma Institute',
-  tagline: 'Advanced Neurotrauma Diagnostics & Functional Restoration',
-  subTagline: 'Objective Brain Mapping. Evidence-Based Care. Forensic-Grade Documentation.',
+  tagline: 'Comprehensive Neurotrauma Evaluation, Advanced Neurodiagnostics & Physician-Led Recovery',
+  subTagline: 'Objective, evidence-informed neurotrauma care for patients and legal partners across Texas.',
   disclosure: 'Texas NeuroTrauma Institute — A Division of StarMED Clinic — Randdolf Physicians PLLC',
-  footerLine: 'Advancing the standard of neurotrauma care in Texas.',
+  footerLine:
+    'Advancing neurotrauma diagnosis, recovery, and neurological health through physician-led, evidence-informed care.',
 
   // --- Contact (placeholders — swap for real values) ---
-  phoneDisplay: '(713) 568-7322',
-  phoneHref: 'tel:+17135687322',
+  phoneDisplay: '(726) 242-3011',
+  phoneHref: 'tel:+17262423011',
   email: 'info@texasneurotrauma.com',
   emailHref: 'mailto:info@texasneurotrauma.com',
   locations: ['Houston', 'San Antonio'],
+  serviceArea: 'Statewide Texas Referrals',
   responsePromise: 'We respond to every inquiry within one business day.',
 } as const;
 
@@ -34,7 +36,7 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Home', to: '/' },
-  { label: 'About', to: '/about', disabled: true },
+  // About stays out of the nav until the page and physician bio are ready.
   { label: 'Services', to: '/services' },
   { label: 'Conditions', to: '/conditions' },
   { label: 'For Attorneys', to: '/for-attorneys' },

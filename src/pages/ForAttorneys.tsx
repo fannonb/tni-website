@@ -5,7 +5,17 @@ import { TopographicPattern } from '../components/brand/TopographicPattern';
 import { HeroPhoto } from '../components/HeroPhoto';
 import legalDocImage from '../assets/images/attorneys_hero.png';
 import doctorScanImage from '../assets/images/attorneys_provision.png';
-import { provisions, provisionsLead, workingSections, workingLead, reportSections, reportLead } from '../data/forAttorneys';
+import {
+  engagementStandards,
+  provisionGroups,
+  provisionsLead,
+  referralIndicators,
+  reportLead,
+  reportSections,
+  workingLead,
+  workingSections,
+} from '../data/forAttorneys';
+import { site } from '../data/site';
 
 export default function ForAttorneys() {
   useEffect(() => {
@@ -23,30 +33,30 @@ export default function ForAttorneys() {
         <Container style={{ position: 'relative', zIndex: 2 }}>
           <div className="tni-attorneys-hero__grid">
             <div className="tni-attorneys-hero__content">
-              <p className="tni-attorneys-hero__eyebrow">For Attorneys</p>
+              <p className="tni-attorneys-hero__eyebrow">For Attorneys &amp; Law Firms</p>
               <h1 className="tni-attorneys-hero__title">
-                Objective medical documentation for{' '}
-                <span className="tni-attorneys-hero__accent">neurotrauma cases.</span>
+                Physician-led neurotrauma evaluation and{' '}
+                <span className="tni-attorneys-hero__accent">clear medical documentation.</span>
               </h1>
               <p className="tni-attorneys-hero__body">
-                Texas NeuroTrauma Institute provides objective clinical evaluation and medical documentation for patients
-                suffering neurological symptoms following motor vehicle accidents and other traumatic events.
+                Texas NeuroTrauma Institute evaluates patients with suspected neurological injury following motor vehicle
+                collisions, workplace incidents, falls, and other traumatic events.
               </p>
               <p className="tni-attorneys-hero__body">
-                Our reports focus on mechanism of injury analysis, clinical findings, symptom progression, and functional
-                impairment documentation. We prioritize clinical integrity and objective medical analysis.
+                Our work integrates physician examination, medical-record review, objective neurodiagnostic testing when
+                clinically indicated, functional assessment, and structured reporting.
               </p>
               <div className="tni-attorneys-hero__actions">
-                <Button to="#referral-packet" variant="primary" size="lg" style={{ padding: '16px 28px', borderRadius: 8 }}>
-                  Download Referral Packet
+                <Button to="/contact?for=attorney" variant="primary" size="lg" style={{ padding: '16px 28px', borderRadius: 8 }}>
+                  Request a Case Consultation
                 </Button>
                 <Button
-                  to="#case-portal"
+                  to="#referral-process"
                   variant="ghostDark"
                   size="lg"
                   style={{ padding: '16px 24px', borderRadius: 8 }}
                 >
-                  Secure Case Review Portal →
+                  Review Referral Process →
                 </Button>
               </div>
             </div>
@@ -64,29 +74,68 @@ export default function ForAttorneys() {
         </Container>
       </section>
 
+      <section className="tni-attorneys-fit" aria-label="When to refer a case">
+        <Container>
+          <Reveal>
+            <div className="tni-attorneys-fit__header">
+              <div>
+                <Eyebrow style={{ marginBottom: 12 }}>When to Refer</Eyebrow>
+                <SectionHeading as="h2" size={34} style={{ marginBottom: 12 }}>
+                  Is this case appropriate for evaluation?
+                </SectionHeading>
+              </div>
+              <p className="tni-attorneys-fit__lead">
+                A referral may be appropriate when symptoms, clinical questions, or future-care needs require a
+                physician-directed neurological assessment.
+              </p>
+            </div>
+
+            <ul className="tni-attorneys-fit__grid">
+              {referralIndicators.map((indicator) => (
+                <li key={indicator} className="tni-attorneys-fit__item">
+                  <span className="tni-attorneys-fit__mark" aria-hidden>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  <span>{indicator}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </Container>
+      </section>
+
       <section className="tni-attorneys-provide" aria-label="What We Provide">
         <Container>
           <div className="tni-attorneys-provide__grid">
             <Reveal>
               <div className="tni-attorneys-provide__content">
-                <Eyebrow style={{ marginBottom: 14 }}>What We Provide</Eyebrow>
+                <Eyebrow style={{ marginBottom: 14 }}>Evaluation &amp; Legal Support</Eyebrow>
                 <SectionHeading as="h2" size={34} style={{ marginBottom: 16, maxWidth: '22ch' }}>
-                  Texas NeuroTrauma Institute provides:
+                  Clinical services aligned to the needs of complex cases.
                 </SectionHeading>
                 <p className="tni-attorneys-provide__lead">{provisionsLead}</p>
 
-                <ul className="tni-attorneys-provide__list">
-                  {provisions.map((item) => (
-                    <li key={item} className="tni-attorneys-provide__row">
-                      <span className="tni-attorneys-provide__check" aria-hidden>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M20 6L9 17l-5-5" />
-                        </svg>
-                      </span>
-                      <span className="tni-attorneys-provide__label">{item}</span>
-                    </li>
+                <div className="tni-provide-groups">
+                  {provisionGroups.map((group) => (
+                    <div key={group.title} className="tni-provide-group">
+                      <h3 className="tni-provide-group__title">{group.title}</h3>
+                      <ul className="tni-provide-group__list">
+                        {group.items.map((item) => (
+                          <li key={item} className="tni-provide-group__row">
+                            <span className="tni-provide-group__check" aria-hidden>
+                              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M20 6L9 17l-5-5" />
+                              </svg>
+                            </span>
+                            <span className="tni-provide-group__label">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </Reveal>
 
@@ -104,14 +153,14 @@ export default function ForAttorneys() {
         </Container>
       </section>
 
-      <section className="tni-attorneys-working" aria-label="Working With Us">
+      <section id="referral-process" className="tni-attorneys-working" aria-label="Referral process">
         <TopographicPattern tone="light" className="tni-attorneys-working__topo" style={{ opacity: 0.06 }} />
         <Container style={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <div className="tni-attorneys-working__intro">
               <Eyebrow style={{ marginBottom: 14 }}>Working With Us</Eyebrow>
               <SectionHeading as="h2" size={34} style={{ marginBottom: 16 }}>
-                How referral and retention work.
+                A clear path from inquiry to reporting.
               </SectionHeading>
               <p className="tni-attorneys-working__lead">{workingLead}</p>
             </div>
@@ -138,13 +187,13 @@ export default function ForAttorneys() {
         </Container>
       </section>
 
-      <section className="tni-attorneys-report" aria-label="Reporting">
+      <section id="reporting" className="tni-attorneys-report" aria-label="Structured reporting">
         <Container>
           <Reveal>
             <div className="tni-attorneys-report__intro">
               <Eyebrow style={{ marginBottom: 14 }}>Reporting</Eyebrow>
               <SectionHeading as="h2" size={34} style={{ marginBottom: 16, maxWidth: '28ch' }}>
-                Forensic Neurotrauma Report — available upon retention.
+                Structured neurotrauma reporting.
               </SectionHeading>
               <p className="tni-attorneys-report__lead">{reportLead}</p>
             </div>
@@ -177,42 +226,64 @@ export default function ForAttorneys() {
         </Container>
       </section>
 
-      {/* DOWNLOAD / PORTAL */}
-      <section style={{ padding: '88px 0', background: '#07355e', color: '#f5ede3' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 28px' }}>
-          <div id="referral-packet" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 20 }}>
-            <div className="tni-dark-card" style={{ background: 'rgba(245,237,227,0.06)', borderRadius: 16, padding: 34 }}>
-              <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--tni-accent)', marginBottom: 14 }}>
-                Download
-              </div>
-              <div style={{ fontFamily: "'Fraunces', serif", fontSize: 23, marginBottom: 14 }}>Attorney Referral Packet</div>
-              <p style={{ fontSize: 14, color: 'rgba(245,237,227,0.75)', lineHeight: 1.65, margin: '0 0 22px' }}>
-                Dear Counselor — Texas NeuroTrauma Institute provides physician-directed evaluation and treatment for
-                patients experiencing neurological symptoms following traumatic injury, particularly motor vehicle
-                accidents and concussive events.
+      <section className="tni-attorneys-standards" aria-label="Engagement standards">
+        <Container>
+          <Reveal>
+            <div className="tni-attorneys-standards__intro">
+              <Eyebrow style={{ marginBottom: 12 }}>Engagement Standards</Eyebrow>
+              <SectionHeading as="h2" size={34} style={{ marginBottom: 14 }}>
+                Clear scope. Independent clinical judgment.
+              </SectionHeading>
+              <p>
+                Our engagement structure is designed to protect clinical integrity while giving counsel a transparent
+                understanding of services, deliverables, and professional boundaries.
               </p>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 600, color: 'rgba(245,237,227,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                PDF — coming soon
-              </span>
             </div>
-            <div id="case-portal" className="tni-dark-card" style={{ background: 'rgba(245,237,227,0.06)', borderRadius: 16, padding: 34 }}>
-              <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--tni-accent)', marginBottom: 14 }}>
-                Portal
-              </div>
-              <div style={{ fontFamily: "'Fraunces', serif", fontSize: 23, marginBottom: 14 }}>Secure Case Review Portal</div>
-              <p style={{ fontSize: 14, color: 'rgba(245,237,227,0.75)', lineHeight: 1.65, margin: '0 0 22px' }}>
-                Submit case materials for review through our secure attorney portal. Portal access is provisioned upon
-                retention.
-              </p>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 600, color: 'rgba(245,237,227,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                URL — coming soon
-              </span>
+
+            <div className="tni-attorneys-standards__grid">
+              {engagementStandards.map((standard, index) => (
+                <article key={standard.title} className="tni-attorneys-standards__card">
+                  <span className="tni-attorneys-standards__index" aria-hidden>
+                    {index + 1}
+                  </span>
+                  <h3>{standard.title}</h3>
+                  <p>{standard.body}</p>
+                </article>
+              ))}
             </div>
-          </div>
-        </div>
+          </Reveal>
+        </Container>
       </section>
 
-
+      <section className="tni-attorneys-cta" aria-label="Request an attorney case consultation">
+        <TopographicPattern tone="dark" className="tni-attorneys-cta__topo" style={{ opacity: 0.18 }} />
+        <Container style={{ position: 'relative', zIndex: 1 }}>
+          <Reveal>
+            <div className="tni-attorneys-cta__inner">
+              <Eyebrow color="var(--tni-accent)" style={{ marginBottom: 14 }}>Attorney Referrals</Eyebrow>
+              <SectionHeading as="h2" size={38} color="var(--tni-sand)" style={{ marginBottom: 16 }}>
+                Discuss whether your case fits our clinical scope.
+              </SectionHeading>
+              <p className="tni-attorneys-cta__copy">
+                Share a brief case overview and the clinical question you need addressed. Our team will review the
+                inquiry and explain appropriate next steps before records or protected health information are requested.
+              </p>
+              <div className="tni-attorneys-cta__actions">
+                <Button to="/contact?for=attorney" variant="primary" size="lg" style={{ borderRadius: 8 }}>
+                  Request a Case Consultation
+                </Button>
+                <Button href={site.emailHref} variant="ghostDark" size="lg" style={{ borderRadius: 8 }}>
+                  Email Our Team
+                </Button>
+              </div>
+              <p className="tni-attorneys-cta__notice">
+                Please do not email medical records or confidential case materials. Secure transfer instructions are
+                provided after scope and engagement are confirmed.
+              </p>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
     </>
   );
 }

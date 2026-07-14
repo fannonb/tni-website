@@ -1,4 +1,4 @@
-type ServiceIconType = 'qeeg' | 'eeg' | 'mapping' | 'ncv' | 'cognitive' | 'neuropsych' | 'concussion' | 'memory' | 'headache' | 'counseling';
+export type ServiceIconType = 'qeeg' | 'eeg' | 'mapping' | 'ncv' | 'cognitive' | 'neuropsych' | 'concussion' | 'memory' | 'headache' | 'counseling' | 'evaluation' | 'vestibular' | 'neurofeedback' | 'multidisciplinary';
 
 const ICON_PATHS: Record<string, ServiceIconType> = {
   '/qeeg-service': 'qeeg',
@@ -11,6 +11,10 @@ const ICON_PATHS: Record<string, ServiceIconType> = {
   '/memory-cognitive-rehab': 'memory',
   '/headache-treatment': 'headache',
   '/counseling': 'counseling',
+  '/physician-neurotrauma-evaluation': 'evaluation',
+  '/vestibular-balance': 'vestibular',
+  '/neurofeedback': 'neurofeedback',
+  '/multidisciplinary-rehab': 'multidisciplinary',
 };
 
 function ServiceIconGlyph({ type }: { type: ServiceIconType }) {
@@ -100,25 +104,61 @@ function ServiceIconGlyph({ type }: { type: ServiceIconType }) {
           <path d="M8 10h8M8 14h5" />
         </svg>
       );
+    case 'evaluation':
+      return (
+        <svg {...props}>
+          <rect x="5" y="3" width="14" height="18" rx="2" />
+          <path d="M9 3V2h6v1" />
+          <path d="M8 12h2l1-2 2 4 1-2h2" />
+        </svg>
+      );
+    case 'vestibular':
+      return (
+        <svg {...props}>
+          <circle cx="12" cy="12" r="2.5" />
+          <ellipse cx="12" cy="12" rx="9" ry="4" />
+          <ellipse cx="12" cy="12" rx="4" ry="9" />
+        </svg>
+      );
+    case 'neurofeedback':
+      return (
+        <svg {...props}>
+          <path d="M20 12a8 8 0 1 1-2.34-5.66" />
+          <path d="M20 4v3.5h-3.5" />
+          <path d="M7.5 12h2l1.3-2.6 1.8 5 1.3-2.4h2.1" />
+        </svg>
+      );
+    case 'multidisciplinary':
+      return (
+        <svg {...props}>
+          <circle cx="12" cy="5" r="2" />
+          <circle cx="5" cy="18" r="2" />
+          <circle cx="19" cy="18" r="2" />
+          <path d="M12 7v3M11 10.5 6.2 16M13 10.5 17.8 16" />
+        </svg>
+      );
   }
 }
 
-function resolveIcon(path: string) {
-  return ICON_PATHS[path] ?? 'mapping';
+function resolveIcon(path?: string) {
+  if (path && ICON_PATHS[path]) return ICON_PATHS[path];
+  return 'mapping';
 }
 
 export function ServiceCardIcon({
   path,
+  icon,
   className = '',
 }: {
-  path: string;
+  path?: string;
+  icon?: ServiceIconType;
   className?: string;
 }) {
-  const icon = resolveIcon(path);
+  const resolved = icon ?? resolveIcon(path);
 
   return (
     <span className={`tni-svc-icon ${className}`.trim()} aria-hidden>
-      <ServiceIconGlyph type={icon} />
+      <ServiceIconGlyph type={resolved} />
     </span>
   );
 }

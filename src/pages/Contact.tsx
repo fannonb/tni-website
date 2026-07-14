@@ -1,5 +1,5 @@
 import { cloneElement, isValidElement, useState, type FormEvent, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Container, Eyebrow, Button } from '../components/ui';
 import { Reveal } from '../components/Reveal';
 import { TopographicPattern } from '../components/brand/TopographicPattern';
@@ -94,6 +94,8 @@ function ContactField({ id, label, required, optional, hint, error, children }: 
 }
 
 export default function Contact() {
+  const [searchParams] = useSearchParams();
+  const isAttorneyInquiry = searchParams.get('for') === 'attorney';
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<FormField, string>>>({});
@@ -118,7 +120,11 @@ export default function Contact() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
       errors.email = 'Enter a valid email address.';
     }
-    if (!form.reason.trim()) errors.reason = 'Please describe your reason for evaluation.';
+    if (!form.reason.trim()) {
+      errors.reason = isAttorneyInquiry
+        ? 'Please provide a brief case overview and clinical question.'
+        : 'Please describe your reason for evaluation.';
+    }
     return errors;
   };
 
@@ -163,9 +169,17 @@ export default function Contact() {
               <div className="tni-contact-hero__content">
                 <Eyebrow style={{ marginBottom: 14 }}>Contact</Eyebrow>
                 <h1 id="contact-heading" className="tni-contact-hero__title">
-                  Request an <span className="tni-contact__accent">evaluation.</span>
+                  {isAttorneyInquiry ? (
+                    <>Request a <span className="tni-contact__accent">case consultation.</span></>
+                  ) : (
+                    <>Request an <span className="tni-contact__accent">evaluation.</span></>
+                  )}
                 </h1>
-                <p className="tni-contact-hero__intro">{contactPageCopy.intro}</p>
+                <p className="tni-contact-hero__intro">
+                  {isAttorneyInquiry
+                    ? 'Share a brief, non-confidential case overview so our team can determine whether the requested neurotrauma services fit our clinical scope.'
+                    : contactPageCopy.intro}
+                </p>
               </div>
             </div>
           </Reveal>
@@ -177,10 +191,18 @@ export default function Contact() {
           <div className="tni-contact__grid">
             <Reveal className="tni-contact__info-wrap">
               <div className="tni-contact-info">
-                <Eyebrow style={{ marginBottom: 12 }}>{contactPageCopy.infoEyebrow}</Eyebrow>
-                <h2 className="tni-contact-info__title">{contactPageCopy.infoHeading}</h2>
+                <Eyebrow style={{ marginBottom: 12 }}>
+                  {isAttorneyInquiry ? 'Attorney Referrals' : contactPageCopy.infoEyebrow}
+                </Eyebrow>
+                <h2 className="tni-contact-info__title">
+                  {isAttorneyInquiry ? 'Begin with a focused case inquiry.' : contactPageCopy.infoHeading}
+                </h2>
                 <div className="tni-contact-info__body">
-                  <p>{contactPageCopy.infoBody}</p>
+                  <p>
+                    {isAttorneyInquiry
+                      ? 'Provide the general case type, injury mechanism, requested service, and clinical question. Please do not include patient names, medical records, or protected health information in this form.'
+                      : contactPageCopy.infoBody}
+                  </p>
                 </div>
 
                 <div className="tni-contact-details">
@@ -213,24 +235,29 @@ export default function Contact() {
                   </ul>
                 </div>
 
-                <div className="tni-contact-attorney">
-                  <p className="tni-contact-attorney__label">Referring a patient?</p>
-                  <Link to="/for-attorneys" className="tni-contact-attorney__link">
-                    Visit the Attorney Referral Portal →
-                  </Link>
-                </div>
+                {!isAttorneyInquiry && (
+                  <div className="tni-contact-attorney">
+                    <p className="tni-contact-attorney__label">Referring a patient?</p>
+                    <Link to="/for-attorneys" className="tni-contact-attorney__link">
+                      Explore Services for Attorneys →
+                    </Link>
+                  </div>
+                )}
               </div>
             </Reveal>
 
             <Reveal className="tni-contact__form-wrap" delay={80}>
               <form className="tni-contact-form" onSubmit={handleSubmit} noValidate>
-                <Eyebrow style={{ marginBottom: 20 }}>Evaluation Request</Eyebrow>
+                <Eyebrow style={{ marginBottom: 20 }}>
+                  {isAttorneyInquiry ? 'Attorney Case Inquiry' : 'Evaluation Request'}
+                </Eyebrow>
 
                 {submitted ? (
                   <div className="tni-contact-success" role="status">
                     <p className="tni-contact-success__title">Thank you, {form.firstName}.</p>
                     <p className="tni-contact-success__body">
-                      Your evaluation request has been received. {site.responsePromise}
+                      {isAttorneyInquiry ? 'Your case inquiry' : 'Your evaluation request'} has been received.{' '}
+                      {site.responsePromise}
                     </p>
                   </div>
                 ) : (
@@ -285,9 +312,13 @@ export default function Contact() {
 
                     <ContactField
                       id="referredBy"
-                      label="Referral source"
+                      label={isAttorneyInquiry ? 'Law firm or organization' : 'Referral source'}
                       optional
-                      hint="Physician, attorney, or other referring provider — if applicable."
+                      hint={
+                        isAttorneyInquiry
+                          ? 'Firm or organization name, if applicable.'
+                          : 'Physician, attorney, or other referring provider — if applicable.'
+                      }
                     >
                       <input
                         id="referredBy"
@@ -298,7 +329,17 @@ export default function Contact() {
                       />
                     </ContactField>
 
-                    <ContactField id="reason" label="Reason for evaluation" required error={fieldErrors.reason}>
+                    <ContactField
+                      id="reason"
+                      label={isAttorneyInquiry ? 'Case overview and clinical question' : 'Reason for evaluation'}
+                      required
+                      error={fieldErrors.reason}
+                      hint={
+                        isAttorneyInquiry
+                          ? 'Do not include names, medical records, or protected health information.'
+                          : undefined
+                      }
+                    >
                       <textarea
                         id="reason"
                         rows={4}
@@ -309,11 +350,13 @@ export default function Contact() {
                     </ContactField>
 
                     <Button type="submit" variant="primary" size="lg" full>
-                      Submit Evaluation Request
+                      {isAttorneyInquiry ? 'Submit Case Inquiry' : 'Submit Evaluation Request'}
                     </Button>
 
                     <p className="tni-contact-form__disclaimer">
-                      {contactPageCopy.privacyNote} Not for medical emergencies — call 911 if urgent.
+                      {isAttorneyInquiry
+                        ? 'This form is for preliminary, non-confidential inquiries only. Do not submit medical records or protected health information.'
+                        : `${contactPageCopy.privacyNote} Not for medical emergencies — call 911 if urgent.`}
                     </p>
                   </>
                 )}

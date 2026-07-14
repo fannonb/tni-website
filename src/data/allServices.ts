@@ -448,6 +448,167 @@ export const ALL_SERVICES: ServicePageContent[] = [
     heroImageSrc: concussionManagementHero,
     heroImageAlt: 'Clinician conducting a post-concussion balance and coordination examination',
   },
+  {
+    slug: 'physician-neurotrauma-evaluation',
+    path: '/physician-neurotrauma-evaluation',
+    pageTitle: 'Physician Neurotrauma Evaluation — Texas NeuroTrauma Institute',
+    domain: 'Assessment',
+    heroTitle: 'Physician Neurotrauma',
+    heroTitleAccent: 'Evaluation',
+    tagline: 'Comprehensive physician-led evaluation for traumatic brain injury and complex neurological symptoms.',
+    heroIntro:
+      'A physician neurotrauma evaluation is the foundation of effective care after concussion, traumatic brain injury, or other neurological trauma. At Texas NeuroTrauma Institute, every evaluation integrates clinical history, neurological examination, symptom analysis, mechanism of injury review, imaging interpretation, and individualized treatment recommendations — so patients and referring partners receive a clear, medically grounded assessment.',
+    expertTitle: 'Accurate clinical framing guides every decision that follows.',
+    expertBody:
+      'Our physician-led evaluations are designed for patients with persistent symptoms after motor vehicle collisions, workplace injuries, falls, sports impacts, and other traumatic events. Findings are correlated with diagnostic testing when indicated and translated into practical recommendations for recovery, rehabilitation, and documentation.',
+    offeringsEyebrow: 'Clinical Evaluation',
+    offeringsTitle: 'What This Evaluation Includes',
+    offeringsIntro:
+      'A structured, physician-directed workup that establishes diagnosis, severity, and next steps for care.',
+    offerings: [
+      { title: 'Comprehensive Clinical History', body: 'Detailed review of injury mechanism, symptom onset and progression, prior medical history, and functional impact on work, school, and daily life.' },
+      { title: 'Neurological Examination', body: 'Physician examination assessing neurological function, cognitive presentation, balance, coordination, and related clinical findings.' },
+      { title: 'Mechanism of Injury Analysis', body: 'Careful analysis of how the injury occurred and how biomechanical forces may relate to the patient\'s clinical presentation.' },
+      { title: 'Imaging & Records Review', body: 'Review of available CT, MRI, and prior clinical records to place functional findings in the broader diagnostic context.' },
+      { title: 'Individualized Recommendations', body: 'Clear treatment, testing, and rehabilitation recommendations tailored to the patient\'s symptoms, goals, and clinical priorities.' },
+    ],
+    whyChooseIntro:
+      'Physician-directed evaluation ensures that advanced testing and rehabilitation are guided by clinical judgment — not isolated test results.',
+    whyChoose: [
+      { title: 'Physician-Led Care', body: 'Evaluations directed by clinicians experienced in neurotrauma, concussion, and complex post-injury presentations.' },
+      { title: 'Integrated Clinical Reasoning', body: 'History, examination, imaging, and diagnostic findings are interpreted together for a coherent clinical picture.' },
+      { title: 'Actionable Next Steps', body: 'Patients leave with a clear plan for testing, treatment, rehabilitation, and follow-up.' },
+      { title: 'Documentation Ready for Care Partners', body: 'Findings support coordinated care with referring providers and, when appropriate, structured medical documentation.' },
+    ],
+    approachTitle: 'Every neurotrauma case begins with',
+    approachTitleAccent: 'a complete clinical foundation.',
+    approachBody:
+      'At Texas NeuroTrauma Institute, the physician evaluation is not a formality — it is the organizing step that determines which diagnostics are indicated, which rehabilitation pathways are appropriate, and how findings should be communicated. Our goal is to replace uncertainty with a structured, evidence-informed plan focused on recovery, function, and quality of life.',
+    heroImageLabel: 'Physician Neurotrauma Evaluation',
+    heroImageSrc: concussionManagementHero,
+    heroImageAlt: 'Physician conducting a comprehensive neurotrauma clinical evaluation with a patient',
+  },
+  {
+    slug: 'vestibular-balance',
+    path: '/vestibular-balance',
+    pageTitle: 'Vestibular & Balance Evaluation — Texas NeuroTrauma Institute',
+    domain: 'Diagnostics',
+    heroTitle: 'Vestibular & Balance',
+    heroTitleAccent: 'Evaluation',
+    tagline: 'Assessment of dizziness, imbalance, and vestibular dysfunction following head injury.',
+    heroIntro:
+      'Dizziness, imbalance, visual motion sensitivity, and vestibular dysfunction are common after concussion and traumatic brain injury. These symptoms can disrupt work, driving, school, and everyday confidence. Texas NeuroTrauma Institute provides structured vestibular and balance evaluation to identify contributing factors and guide targeted rehabilitation.',
+    expertTitle: 'Balance problems after trauma deserve a precise clinical explanation.',
+    expertBody:
+      'Our evaluations help distinguish vestibular, visual, and neurological contributors to post-traumatic dizziness and imbalance. Findings inform individualized therapy recommendations and help patients understand why symptoms persist — and what can be done next.',
+    offeringsEyebrow: 'Balance Assessment',
+    offeringsTitle: 'Our Vestibular & Balance Services',
+    offeringsIntro:
+      'Focused evaluation for patients experiencing dizziness, imbalance, and motion sensitivity after neurological trauma.',
+    offerings: [
+      { title: 'Post-Traumatic Dizziness Assessment', body: 'Clinical evaluation of dizziness and lightheadedness following concussion, TBI, or related neurological injury.' },
+      { title: 'Balance & Gait Evaluation', body: 'Assessment of postural stability, gait changes, and fall risk associated with vestibular or neurological dysfunction.' },
+      { title: 'Visual Motion Sensitivity Screening', body: 'Evaluation of visual-vestibular interaction problems that can worsen symptoms in busy environments or during screen use.' },
+      { title: 'Vestibular Dysfunction Assessment', body: 'Clinical assessment of vestibular contributions to imbalance, spatial disorientation, and activity intolerance.' },
+      { title: 'Rehabilitation Planning', body: 'Recommendations for vestibular therapy and related multidisciplinary care based on evaluation findings.' },
+    ],
+    whyChooseIntro:
+      'Post-traumatic dizziness is often multifactorial. Our approach focuses on clarity, clinical correlation, and practical next steps.',
+    whyChoose: [
+      { title: 'Trauma-Focused Expertise', body: 'Evaluation framed around concussion and neurotrauma presentations rather than isolated ear or sinus assumptions.' },
+      { title: 'Integrated Interpretation', body: 'Findings are considered alongside physician evaluation, cognitive symptoms, and other diagnostic data when available.' },
+      { title: 'Clear Functional Impact', body: 'Assessments address how dizziness and imbalance affect work, driving, school, and daily activity.' },
+      { title: 'Pathway to Recovery', body: 'Results guide vestibular therapy and coordinated rehabilitation rather than leaving patients without a plan.' },
+    ],
+    approachTitle: 'When the world feels unstable after injury,',
+    approachTitleAccent: 'evaluation should bring clarity.',
+    approachBody:
+      'We approach vestibular and balance symptoms as clinically meaningful — not as secondary complaints. By identifying contributing factors early and connecting findings to rehabilitation, we help patients move from persistent dizziness toward safer, more confident function.',
+    heroImageLabel: 'Vestibular & Balance Evaluation',
+    heroImageSrc: concussionManagementHero,
+    heroImageAlt: 'Clinician assessing patient balance and vestibular function after head injury',
+  },
+  {
+    slug: 'neurofeedback',
+    path: '/neurofeedback',
+    pageTitle: 'Neurofeedback Therapy — Texas NeuroTrauma Institute',
+    domain: 'Rehabilitation',
+    heroTitle: 'Neurofeedback',
+    heroTitleAccent: 'Therapy',
+    tagline: 'Evidence-informed neurofeedback individualized with clinical findings and qEEG when appropriate.',
+    heroIntro:
+      'Neurofeedback is a non-invasive training approach that uses real-time brain activity feedback to support regulation of attention, arousal, and related neurological patterns. At Texas NeuroTrauma Institute, neurofeedback protocols are individualized using clinical findings and quantitative EEG (qEEG) when appropriate — never as a one-size-fits-all program.',
+    expertTitle: 'Neurofeedback should be guided by clinical context.',
+    expertBody:
+      'We integrate neurofeedback into a broader physician-led care plan when it may support recovery goals after concussion, TBI, or related neurological symptoms. Training decisions are informed by evaluation findings, symptom profile, and diagnostic data.',
+    offeringsEyebrow: 'Neurofeedback Care',
+    offeringsTitle: 'Our Neurofeedback Services',
+    offeringsIntro:
+      'Individualized protocols designed to complement objective diagnostics and physician-directed recovery planning.',
+    offerings: [
+      { title: 'Clinically Guided Protocol Selection', body: 'Neurofeedback plans informed by physician evaluation, symptom presentation, and available neurodiagnostic findings.' },
+      { title: 'qEEG-Informed Training When Appropriate', body: 'Use of quantitative EEG findings to help individualize training targets for selected patients.' },
+      { title: 'Attention & Regulation Support', body: 'Protocols that may support attention, cognitive efficiency, and self-regulation as part of a broader recovery plan.' },
+      { title: 'Progress Monitoring', body: 'Ongoing review of response to training with adjustments based on clinical progress and patient goals.' },
+      { title: 'Integrated Care Coordination', body: 'Neurofeedback coordinated with cognitive rehabilitation, headache management, and other indicated therapies.' },
+    ],
+    whyChooseIntro:
+      'Our neurofeedback program is embedded in a specialty neurotrauma institute — guided by evaluation, not marketed as a standalone cure.',
+    whyChoose: [
+      { title: 'Evidence-Informed Approach', body: 'Protocols selected and adjusted based on clinical findings and current best-practice considerations.' },
+      { title: 'Diagnostic Context', body: 'Training informed by physician assessment and, when indicated, qEEG and related neurodiagnostic data.' },
+      { title: 'Individualized Care', body: 'No generic templates — protocols are tailored to the patient\'s presentation and recovery priorities.' },
+      { title: 'Part of a Larger Plan', body: 'Neurofeedback is one component of coordinated rehabilitation when clinically appropriate.' },
+    ],
+    approachTitle: 'Neurofeedback works best when',
+    approachTitleAccent: 'it is clinically grounded.',
+    approachBody:
+      'At Texas NeuroTrauma Institute, neurofeedback is offered as an individualized rehabilitation option within a physician-directed model of care. We prioritize careful patient selection, transparent expectations, and integration with diagnostics and therapy so training supports meaningful recovery goals.',
+    heroImageLabel: 'Neurofeedback Therapy',
+    heroImageSrc: qeegHero,
+    heroImageAlt: 'Patient participating in clinician-guided neurofeedback training session',
+  },
+  {
+    slug: 'multidisciplinary-rehab',
+    path: '/multidisciplinary-rehab',
+    pageTitle: 'Multidisciplinary Rehabilitation — Texas NeuroTrauma Institute',
+    domain: 'Rehabilitation',
+    heroTitle: 'Multidisciplinary',
+    heroTitleAccent: 'Rehabilitation',
+    tagline: 'Coordinated rehabilitation across therapy disciplines for neurotrauma recovery.',
+    heroIntro:
+      'Recovery after traumatic brain injury and concussion often requires more than one form of care. Multidisciplinary rehabilitation coordinates physical therapy, vestibular therapy, speech therapy, occupational therapy, behavioral health, pain management, and specialty providers around a shared clinical plan — so patients are not left navigating fragmented care alone.',
+    expertTitle: 'Complex recovery needs coordinated expertise.',
+    expertBody:
+      'Texas NeuroTrauma Institute helps organize rehabilitation around physician findings and functional goals. Whether symptoms involve cognition, balance, headache, communication, mood, or daily living skills, we work to align the right specialists at the right stage of recovery.',
+    offeringsEyebrow: 'Coordinated Rehab',
+    offeringsTitle: 'Our Multidisciplinary Rehabilitation Support',
+    offeringsIntro:
+      'Care coordination across disciplines to support function, independence, and quality of life after neurological trauma.',
+    offerings: [
+      { title: 'Physical & Vestibular Therapy Coordination', body: 'Support for mobility, balance, dizziness, and physical recovery needs following head injury.' },
+      { title: 'Speech & Cognitive Communication Therapy', body: 'Coordination of therapy for language, communication, and cognitive-communication challenges when indicated.' },
+      { title: 'Occupational Therapy Collaboration', body: 'Support for return to daily activities, work tasks, and functional independence.' },
+      { title: 'Behavioral Health Integration', body: 'Coordination with counseling and behavioral health resources for mood, adjustment, and resilience after injury.' },
+      { title: 'Pain Management & Specialty Referral', body: 'Collaboration with pain management and other specialty providers when headache, musculoskeletal, or related symptoms require focused care.' },
+      { title: 'Unified Progress Review', body: 'Ongoing alignment of rehabilitation goals with physician recommendations and diagnostic findings.' },
+    ],
+    whyChooseIntro:
+      'Multidisciplinary care works when someone is responsible for connecting the pieces. That is the role of our institute model.',
+    whyChoose: [
+      { title: 'Physician-Directed Coordination', body: 'Rehabilitation priorities are guided by clinical evaluation rather than disconnected referrals.' },
+      { title: 'Whole-Person Focus', body: 'Physical, cognitive, vestibular, emotional, and functional needs are considered together.' },
+      { title: 'Clear Care Pathways', body: 'Patients understand which therapies are recommended and why.' },
+      { title: 'Continuity Across Recovery Stages', body: 'Plans evolve as symptoms improve and goals shift toward work, school, and daily life.' },
+    ],
+    approachTitle: 'Neurotrauma recovery is rarely',
+    approachTitleAccent: 'a single-discipline problem.',
+    approachBody:
+      'We treat multidisciplinary rehabilitation as an organized pathway, not a list of disconnected appointments. By coordinating therapy disciplines around objective findings and physician guidance, Texas NeuroTrauma Institute helps patients pursue recovery with clarity, continuity, and clinical accountability.',
+    heroImageLabel: 'Multidisciplinary Rehabilitation',
+    heroImageSrc: memoryRehabHero,
+    heroImageAlt: 'Rehabilitation specialists coordinating multidisciplinary care for a neurotrauma patient',
+  },
 ];
 
 export function getServiceBySlug(slug: string): ServicePageContent | undefined {

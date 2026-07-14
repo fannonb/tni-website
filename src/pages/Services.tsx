@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Eyebrow, SectionHeading, Button } from '../components/ui';
 import { Reveal } from '../components/Reveal';
@@ -7,13 +7,31 @@ import { QeegWaveform } from '../components/brand/QeegWaveform';
 import { HeroPhoto } from '../components/HeroPhoto';
 import { ServiceCardIcon } from '../components/ServiceCardIcon';
 import servicesHeroImage from '../assets/images/services_index_hero.png';
-import { getServiceIndexItems } from '../data/servicesIndex';
+import {
+  getFeaturedServiceIndexItem,
+  getServicesGroupedByDomain,
+  type ServiceCategory,
+} from '../data/servicesIndex';
 
-const SERVICE_GUIDE =
-  'Select a service below to learn about what we offer, our clinical approach, and how we support patients through every stage of care. If you are unsure which evaluation fits your needs, our team can help guide you after an initial consultation.';
+const SERVICE_STAGE_LABELS: Record<ServiceCategory, { title: string; summary: string }> = {
+  Diagnostics: {
+    title: 'Diagnose',
+    summary: 'Understand brain and neurological function.',
+  },
+  Assessment: {
+    title: 'Assess',
+    summary: 'Measure cognition and clinical impact.',
+  },
+  Rehabilitation: {
+    title: 'Recover',
+    summary: 'Restore function through targeted care.',
+  },
+};
 
 export default function Services() {
-  const services = getServiceIndexItems();
+  const featured = getFeaturedServiceIndexItem();
+  const serviceGroups = getServicesGroupedByDomain();
+  const [openServiceDomain, setOpenServiceDomain] = useState<ServiceCategory>('Diagnostics');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,6 +49,25 @@ export default function Services() {
 
         <Container style={{ position: 'relative', zIndex: 1 }}>
           <div className="tni-services-hero__grid">
+            <div className="tni-services-hero__copy">
+              <Eyebrow style={{ marginBottom: 16 }}>Our Clinical Services</Eyebrow>
+              <h1 className="tni-fluid-h1-hero tni-services-hero__title">
+                Physician-directed neurological care, from evaluation to recovery.
+              </h1>
+              <p className="tni-services-hero__lead">
+                Objective diagnostics, cognitive assessment, and rehabilitation—coordinated under physician
+                direction for brain injury, concussion, and related neurological conditions.
+              </p>
+              <div className="tni-services-hero__actions">
+                <Button to="/contact" variant="primary" size="lg" style={{ padding: '16px 36px', borderRadius: 99 }}>
+                  Request an Evaluation
+                </Button>
+                <a href="#all-services" className="tni-services-hero__scroll">
+                  Browse services ↓
+                </a>
+              </div>
+            </div>
+
             <div className="tni-services-hero__visual">
               <HeroPhoto
                 src={servicesHeroImage}
@@ -38,64 +75,128 @@ export default function Services() {
                 tone="light"
               />
             </div>
-
-            <div className="tni-services-hero__copy">
-              <Eyebrow style={{ marginBottom: 16 }}>Our Clinical Services</Eyebrow>
-              <h1 className="tni-fluid-h1-hero tni-services-hero__title">
-                Physician-directed neurological care, from evaluation to recovery.
-              </h1>
-              <p className="tni-services-hero__lead">
-                Texas NeuroTrauma Institute offers specialized outpatient services for patients recovering from
-                brain injury, concussion, and related neurological conditions. Each service is designed to provide
-                objective diagnostics, clear findings, and evidence-based treatment.
-              </p>
-              <div className="tni-services-hero__actions">
-                <Button to="/contact" variant="primary" size="lg" style={{ padding: '16px 36px', borderRadius: 99 }}>
-                  Schedule Evaluation
-                </Button>
-                <a href="#all-services" className="tni-services-hero__scroll">
-                  View all services ↓
-                </a>
-              </div>
-            </div>
           </div>
         </Container>
       </section>
 
-      <section id="all-services" className="tni-services-list-section" aria-label="All services">
+      <section id="all-services" className="tni-services-list-section" aria-label="Service directory">
         <Container>
           <Reveal>
-            <div className="tni-services-list__header">
-              <SectionHeading size={32} style={{ marginBottom: 14 }}>
-                All Services
-              </SectionHeading>
-              <p className="tni-services-list__guide">{SERVICE_GUIDE}</p>
+            {featured && (
+              <Link to={featured.path} className="tni-svc-start tni-glow-card tni-hover-card">
+                <div className="tni-svc-start__icon">
+                  <ServiceCardIcon path={featured.path} />
+                </div>
+                <div className="tni-svc-start__body">
+                  <span className="tni-svc-start__badge">Start Here · Physician-Led Evaluation</span>
+                  <h2 className="tni-svc-start__title">{featured.title}</h2>
+                  <p className="tni-svc-start__copy">
+                    Physician evaluation determines which testing, assessment, and recovery services are appropriate
+                    for your symptoms, injury history, and clinical presentation.
+                  </p>
+                </div>
+                <span className="tni-svc-start__cta">
+                  Explore evaluation <span aria-hidden>→</span>
+                </span>
+              </Link>
+            )}
+
+            <div className="tni-svc-navigator">
+              {serviceGroups.map((group) => (
+                <section key={group.domain} className="tni-svc-stage">
+                  <div className="tni-svc-stage__desktop-header">
+                    <span className="tni-svc-stage__heading">
+                      <span className="tni-svc-stage__domain">{group.domain}</span>
+                      <span className="tni-svc-stage__title">
+                        {SERVICE_STAGE_LABELS[group.domain].title}
+                      </span>
+                      <span className="tni-svc-stage__summary">
+                        {SERVICE_STAGE_LABELS[group.domain].summary}
+                      </span>
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    className="tni-svc-stage__toggle"
+                    aria-expanded={openServiceDomain === group.domain}
+                    aria-controls={`services-page-${group.domain.toLowerCase()}`}
+                    onClick={() => setOpenServiceDomain(group.domain)}
+                  >
+                    <span className="tni-svc-stage__heading">
+                      <span className="tni-svc-stage__domain">{group.domain}</span>
+                      <span className="tni-svc-stage__title">
+                        {SERVICE_STAGE_LABELS[group.domain].title}
+                      </span>
+                      <span className="tni-svc-stage__summary">
+                        {SERVICE_STAGE_LABELS[group.domain].summary}
+                      </span>
+                    </span>
+                    <span className="tni-svc-stage__chevron" aria-hidden>
+                      ⌄
+                    </span>
+                  </button>
+
+                  <div
+                    id={`services-page-${group.domain.toLowerCase()}`}
+                    className={`tni-svc-stage__list ${
+                      openServiceDomain === group.domain ? 'is-open' : ''
+                    }`}
+                  >
+                    {group.services.map((service) => (
+                      <Link key={service.path} to={service.path} className="tni-svc-row">
+                        <ServiceCardIcon path={service.path} className="tni-svc-row__icon" />
+                        <span className="tni-svc-row__body">
+                          <span className="tni-svc-row__title">{service.title}</span>
+                          <span className="tni-svc-row__copy">{service.summary}</span>
+                        </span>
+                        <span className="tni-svc-row__arrow" aria-hidden>
+                          →
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              ))}
             </div>
           </Reveal>
 
           <Reveal>
-            <div className="tni-services-grid">
-              {services.map((service) => (
-                <ServiceCard key={service.path} service={service} />
-              ))}
+            <div className="tni-services-crosslink">
+              <Link to="/conditions" className="tni-services-crosslink__link">
+                <span className="tni-services-crosslink__body">
+                  <span className="tni-services-crosslink__eyebrow">Conditions We Evaluate</span>
+                  <span className="tni-services-crosslink__label">
+                    Explore by symptoms or injury type
+                  </span>
+                  <span className="tni-services-crosslink__hint">
+                    Browse diagnoses, injury mechanisms, and symptom profiles to find the right starting point.
+                  </span>
+                </span>
+                <span className="tni-services-crosslink__cta">
+                  View conditions
+                  <span className="tni-services-crosslink__arrow" aria-hidden="true">
+                    →
+                  </span>
+                </span>
+              </Link>
             </div>
           </Reveal>
 
           <Reveal>
             <div className="tni-services-cta">
               <SectionHeading size={28} style={{ marginBottom: 12 }}>
-                Not sure where to start?
+                Ready for the next step?
               </SectionHeading>
               <p className="tni-services-cta__text">
-                Our team helps direct you to the right evaluation based on your symptoms, injury history, and recovery
-                goals.
+                Request an evaluation to discuss your symptoms and goals, or explore how we support attorney
+                referrals and objective documentation.
               </p>
               <div className="tni-services-cta__actions">
                 <Button to="/contact" variant="primary" size="lg" style={{ padding: '16px 36px', borderRadius: 99 }}>
                   Request an Evaluation
                 </Button>
-                <Button to="/conditions" variant="ghost" style={{ padding: '15px 28px', borderRadius: 99 }}>
-                  Conditions We Treat
+                <Button to="/for-attorneys" variant="ghost" style={{ padding: '15px 28px', borderRadius: 99 }}>
+                  For Attorneys
                 </Button>
               </div>
             </div>
@@ -103,24 +204,5 @@ export default function Services() {
         </Container>
       </section>
     </div>
-  );
-}
-
-function ServiceCard({
-  service,
-}: {
-  service: { path: string; title: string; summary: string };
-}) {
-  return (
-    <Link to={service.path} className="tni-service-index-card">
-      <ServiceCardIcon path={service.path} className="tni-service-index-card__icon" />
-      <SectionHeading as="h3" size={20} style={{ marginBottom: 10, lineHeight: 1.35 }}>
-        {service.title}
-      </SectionHeading>
-      <p className="tni-service-index-card__summary">{service.summary}</p>
-      <span className="tni-link-arrow tni-service-index-card__link">
-        View service details <span className="tni-arrow">→</span>
-      </span>
-    </Link>
   );
 }

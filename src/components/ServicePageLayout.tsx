@@ -6,7 +6,7 @@ import { TopographicPattern } from './brand/TopographicPattern';
 import { WaveDivider } from './brand/WaveDivider';
 import { HeroPhoto } from './HeroPhoto';
 import { ServiceImagePlaceholder } from './ServiceImagePlaceholder';
-import { ServiceOfferingMarkers, ServiceWhyChooseMarkers } from './ServiceListMarkers';
+import { ServiceOfferingMarkers } from './ServiceListMarkers';
 import clinicalDark from '../assets/images/clinical-dark.jpg';
 import type { ServicePageContent } from '../data/allServices';
 
@@ -160,67 +160,9 @@ export function ServicePageLayout({ service }: ServicePageLayoutProps) {
         </div>
       </section>
 
-      {/* Why choose */}
-      <section className="tni-section tni-section--sand tni-flow-section" aria-label="Why Choose Texas NeuroTrauma Institute">
-        <WaveDivider fill="#f5ede3" background="#fcfaf7" />
-        <div className="tni-flow-section__body">
-          <Container>
-            <Reveal>
-              {usePathwayMarkers ? (
-                <div className="tni-why-choose-uniform">
-                  <header className="tni-why-choose-uniform__header">
-                    <Eyebrow style={{ marginBottom: 14 }}>Medically Defensible Care</Eyebrow>
-                    <SectionHeading size={34} style={{ lineHeight: 1.25, color: 'var(--tni-navy)', marginBottom: 20 }}>
-                      Why Choose Texas NeuroTrauma Institute?
-                    </SectionHeading>
-                    <div className="tni-why-choose-uniform__accent" aria-hidden />
-                    <p className="tni-why-choose-uniform__lead">{service.whyChooseIntro}</p>
-                  </header>
-
-                  <div className="tni-why-choose-uniform__grid">
-                    {service.whyChoose.map((item, index) => (
-                      <article key={item.title} className="tni-why-feature">
-                        <ServiceWhyChooseMarkers index={index} />
-                        <h4 className="tni-why-feature__title">{item.title}</h4>
-                        <p className="tni-why-feature__body">{item.body}</p>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 64 }}>
-                  <div style={{ position: 'sticky', top: 120, height: 'fit-content' }}>
-                    <Eyebrow style={{ marginBottom: 14 }}>Medically Defensible Care</Eyebrow>
-                    <SectionHeading size={34} style={{ lineHeight: 1.25, color: 'var(--tni-navy)', marginBottom: 20 }}>
-                      Why Choose Texas NeuroTrauma Institute?
-                    </SectionHeading>
-                    <div style={{ width: 50, height: 3, background: 'var(--tni-accent)', marginBottom: 24, borderRadius: 2 }} />
-                    <p style={{ fontSize: 16, color: 'rgba(7,53,94,0.72)', lineHeight: 1.7, margin: 0 }}>
-                      {service.whyChooseIntro}
-                    </p>
-                  </div>
-
-                  <div className="tni-why-choose-list">
-                    {service.whyChoose.map((item, index) => (
-                      <div key={item.title} className="tni-why-choose-card">
-                        <div className="tni-why-choose-card__num">{index + 1}</div>
-                        <div>
-                          <h4 className="tni-why-choose-card__title">{item.title}</h4>
-                          <p className="tni-why-choose-card__body">{item.body}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </Reveal>
-          </Container>
-        </div>
-      </section>
-
       {/* Approach band */}
       <section className="tni-approach-band" aria-label="Clinical approach">
-        <WaveDivider fill="#07203a" background="#f5ede3" className="tni-wave-divider--into-dark" />
+        <WaveDivider fill="#07203a" background="#fcfaf7" className="tni-wave-divider--into-dark" />
         <img src={clinicalDark} alt="" className="tni-approach-band__image" />
         <div className="tni-approach-band__overlay" />
         <TopographicPattern tone="dark" style={{ opacity: 0.04, pointerEvents: 'none' }} />

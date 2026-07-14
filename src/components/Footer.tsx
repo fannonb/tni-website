@@ -15,39 +15,51 @@ export function Footer({ showCta: _showCta = true, minimal = false }: FooterProp
       <div className="tni-footer__inner">
         {!minimal && (
         <nav className="tni-footer__nav" aria-label="Footer navigation">
+          <div className="tni-footer__col tni-footer__brand">
+            <span className="tni-footer__brandname">Texas NeuroTrauma Institute</span>
+            <p className="tni-footer__blurb">
+              Advancing neurotrauma diagnosis, recovery, and neurological health through physician-led, evidence-informed care.
+            </p>
+          </div>
+
           <div className="tni-footer__col">
-            <h5 className="tni-footer-title">Diagnostics</h5>
+            <h5 className="tni-footer-title">Services</h5>
             <ul className="tni-footer__list">
+              <li><Link to="/physician-neurotrauma-evaluation" className="tni-footer-link">Neurotrauma Evaluation</Link></li>
               <li><Link to="/qeeg-service" className="tni-footer-link">qEEG Brain Mapping</Link></li>
-              <li><Link to="/eeg" className="tni-footer-link">Electroencephalography (EEG)</Link></li>
-              <li><Link to="/brain-mapping" className="tni-footer-link">Brain Mapping</Link></li>
-              <li><Link to="/ncv-emg" className="tni-footer-link">Nerve Conduction &amp; EMG</Link></li>
+              <li><Link to="/neurocognitive-testing" className="tni-footer-link">Neurocognitive Assessment</Link></li>
+              <li><Link to="/neurofeedback" className="tni-footer-link">Neurofeedback</Link></li>
+              <li><Link to="/vestibular-balance" className="tni-footer-link">Vestibular Rehabilitation</Link></li>
+              <li><Link to="/headache-treatment" className="tni-footer-link">Headache Management</Link></li>
+              <li><Link to="/memory-cognitive-rehab" className="tni-footer-link">Rehabilitation Services</Link></li>
             </ul>
           </div>
 
           <div className="tni-footer__col">
-            <h5 className="tni-footer-title">Assessment</h5>
+            <h5 className="tni-footer-title">For Attorneys</h5>
             <ul className="tni-footer__list">
-              <li><Link to="/neurocognitive-testing" className="tni-footer-link">Neurocognitive Testing</Link></li>
-              <li><Link to="/neuropsychology" className="tni-footer-link">Neuropsychology</Link></li>
+              <li><Link to="/for-attorneys#case-portal" className="tni-footer-link tni-footer-link--emphasis">Referral Portal</Link></li>
+              <li><Link to="/for-attorneys" className="tni-footer-link">Medico-Legal Services</Link></li>
+              <li><Link to="/for-attorneys" className="tni-footer-link">Medical Records Review</Link></li>
+              <li><Link to="/for-attorneys" className="tni-footer-link">Narrative Reports</Link></li>
+              <li><Link to="/for-attorneys" className="tni-footer-link">Expert Witness Services</Link></li>
             </ul>
           </div>
 
           <div className="tni-footer__col">
-            <h5 className="tni-footer-title">Rehabilitation</h5>
+            <h5 className="tni-footer-title">Locations &amp; Contact</h5>
             <ul className="tni-footer__list">
-              <li><Link to="/concussion-management" className="tni-footer-link">Concussion Management</Link></li>
-              <li><Link to="/memory-cognitive-rehab" className="tni-footer-link">Memory &amp; Cognitive Rehab</Link></li>
-              <li><Link to="/headache-treatment" className="tni-footer-link">Headache Treatment</Link></li>
-              <li><Link to="/counseling" className="tni-footer-link">Counseling</Link></li>
-            </ul>
-          </div>
-
-          <div className="tni-footer__col">
-            <h5 className="tni-footer-title">Resources &amp; Contact</h5>
-            <ul className="tni-footer__list">
-              <li><Link to="/for-attorneys" className="tni-footer-link tni-footer-link--emphasis">Attorney Referral Portal</Link></li>
-              <li><Link to="/conditions" className="tni-footer-link">Conditions We Treat</Link></li>
+              <li className="tni-footer__location">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>{site.locations.join(' · ')}</span>
+              </li>
+              <li className="tni-footer__location">
+                <span style={{ width: 14, display: 'inline-block' }} aria-hidden />
+                <span>{site.serviceArea}</span>
+              </li>
               <li className="tni-footer__contact">
                 <a href={site.emailHref} className="tni-footer-link">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -67,13 +79,6 @@ export function Footer({ showCta: _showCta = true, minimal = false }: FooterProp
                   </a>
                 </li>
               )}
-              <li className="tni-footer__location">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-                <span>{site.locations.join(' · ')}</span>
-              </li>
             </ul>
           </div>
         </nav>
@@ -82,7 +87,7 @@ export function Footer({ showCta: _showCta = true, minimal = false }: FooterProp
         <div className="tni-footer-bottom">
           <p className="tni-footer-disclosure">{site.disclosure}</p>
           <p className="tni-footer-copyright">
-            © {year} {site.brand} · {site.footerLine}
+            © {year} {site.brand}. All rights reserved.
           </p>
         </div>
       </div>

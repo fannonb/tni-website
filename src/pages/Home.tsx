@@ -5,101 +5,126 @@ import { Reveal } from '../components/Reveal';
 import { QeegWaveform } from '../components/brand/QeegWaveform';
 import { TopographicPattern } from '../components/brand/TopographicPattern';
 import { ServiceCardIcon } from '../components/ServiceCardIcon';
-import { services, conditions, journey, authorityConditions, type JourneyStep } from '../data/home';
+import {
+  homepageConditions,
+  journey,
+  attorneyJourney,
+  evaluationIntegrates,
+  trustPoints,
+  whyTniProof,
+  getHomeServicesGrouped,
+  getFeaturedPhysicianService,
+  type ServiceDomain,
+  type JourneyStep,
+} from '../data/home';
 
-// Import custom generated premium images
 import heroDiagScreen from '../assets/images/hero_diagnostic_screen.png';
 import concussionAssessment from '../assets/images/concussion_assessment.png';
 import heroConsultationTablet from '../assets/images/hero_consultation_tablet.png';
 import patientConsult from '../assets/images/patient_consultation.png';
 import legalDoc from '../assets/images/legal_documentation.png';
-import neuralDark from '../assets/images/neural_pathways_dark.png';
 import doctorScan from '../assets/images/doctor_explaining_scan.png';
 import getStartedCta from '../assets/images/get_started_cta.png';
 
-const NAVY = '#07355e';
 const SAND = '#f5ede3';
 const COPPER = '#e16d22';
 
-const getConditionIcon = (index: number) => {
+const SERVICE_STAGE_LABELS: Record<ServiceDomain, { title: string; summary: string }> = {
+  Diagnostics: {
+    title: 'Diagnose',
+    summary: 'Understand brain and neurological function.',
+  },
+  Assessment: {
+    title: 'Assess',
+    summary: 'Measure cognition and clinical impact.',
+  },
+  Rehabilitation: {
+    title: 'Recover',
+    summary: 'Restore function through targeted care.',
+  },
+};
+
+function CheckIcon({ color = COPPER, size = 15 }: { color?: string; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+function IntegratesIcon({ index }: { index: number }) {
+  const p = {
+    width: 18,
+    height: 18,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.8,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+    'aria-hidden': true as const,
+  };
   switch (index) {
-    case 0: // TBI
+    case 0:
       return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z" />
-          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z" />
-          <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+        <svg {...p}>
+          <path d="M4.5 3v4.5a4 4 0 0 0 8 0V3" />
+          <path d="M3.5 3h1.5M12 3h1.5" />
+          <path d="M8.5 15.5v.8a4.7 4.7 0 0 0 9.4 0v-2.6" />
+          <circle cx="17.9" cy="11.3" r="2" />
         </svg>
       );
-    case 1: // Concussion
+    case 1:
       return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22a7 7 0 0 0 7-7c0-4.3-3-7-7-11-4 4-7 6.7-7 11a7 7 0 0 0 7 7Z" />
-          <path d="M12 11v4" />
-          <path d="M12 18h.01" />
-          <path d="M19 12c1.5-1.5 1.5-4 0-5.5" />
-          <path d="M5 12C3.5 10.5 3.5 8 5 6.5" />
+        <svg {...p}>
+          <path d="M9.5 3.5A2.5 2.5 0 0 1 12 6v12a2.5 2.5 0 0 1-4.95.5 2.5 2.5 0 0 1-.55-4.9 2.5 2.5 0 0 1 0-4.2 2.5 2.5 0 0 1 .5-4.4A2.5 2.5 0 0 1 9.5 3.5Z" />
+          <path d="M14.5 3.5A2.5 2.5 0 0 0 12 6v12a2.5 2.5 0 0 0 4.95.5 2.5 2.5 0 0 0 .55-4.9 2.5 2.5 0 0 0 0-4.2 2.5 2.5 0 0 0-.5-4.4A2.5 2.5 0 0 0 14.5 3.5Z" />
         </svg>
       );
-    case 2: // Motor Vehicle
+    case 2:
       return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 3v18" />
-          <rect x="9" y="5" width="6" height="3" rx="1" />
-          <rect x="9" y="10" width="6" height="3" rx="1" />
-          <rect x="9" y="15" width="6" height="3" rx="1" />
-          <path d="M6 8c2 2 10 2 12 0" />
-          <path d="M6 13c2 2 10 2 12 0" />
-          <path d="M6 18c2 2 10 2 12 0" />
-        </svg>
-      );
-    case 3: // Cognitive
-      return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <svg {...p}>
           <circle cx="12" cy="12" r="3" />
-          <line x1="12" y1="2" x2="12" y2="9" />
-          <line x1="12" y1="15" x2="12" y2="22" />
-          <line x1="2" y1="12" x2="9" y2="12" />
-          <line x1="15" y1="12" x2="22" y2="12" />
-          <circle cx="12" cy="2" r="1.5" fill="currentColor" />
-          <circle cx="22" cy="12" r="1.5" fill="currentColor" />
+          <path d="M12 2v3.5M12 18.5V22M2 12h3.5M18.5 12H22M5 5l2.5 2.5M16.5 16.5 19 19M19 5l-2.5 2.5M7.5 16.5 5 19" />
         </svg>
       );
-    case 4: // Headache
+    case 3:
       return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 10h.01" />
-          <path d="M12 6a6 6 0 1 0 6 6" />
-          <path d="m12 6-4-4-4 4" />
-          <path d="M12 18h.01" />
-          <path d="M6 12C4 8 8 4 12 6" />
-          <path d="M8 12h.01" />
+        <svg {...p}>
+          <path d="M2 12h4l2.2-7 3.6 14 2.2-7H22" />
         </svg>
       );
-    case 5: // Decline
+    case 4:
       return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M3 18c2-2 4-7 9-7s7 3 9 1" />
-          <circle cx="3" cy="18" r="2" />
-          <circle cx="12" cy="11" r="2" fill="currentColor" />
-          <circle cx="21" cy="12" r="2" />
-          <path d="M19 6v6h-6" />
+        <svg {...p}>
+          <path d="M9.5 18h5M10.5 21h3" />
+          <path d="M12 3a6 6 0 0 0-3.8 10.6c.7.6 1.1 1.2 1.2 2.4h5.2c.1-1.2.5-1.8 1.2-2.4A6 6 0 0 0 12 3Z" />
+        </svg>
+      );
+    case 5:
+      return (
+        <svg {...p}>
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="12" r="4.5" />
+          <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
         </svg>
       );
     default:
       return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-          <path d="M20 6L9 17l-5-5" />
+        <svg {...p}>
+          <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
+          <path d="M14 3v5h5" />
+          <path d="M9 13h6M9 17h4" />
         </svg>
       );
   }
-};
+}
 
 const PROOF = [
-  'Physician-led care',
-  'qEEG brain mapping',
-  'Response within 1 business day',
-  'Houston & San Antonio',
+  'Physician-led evaluations',
+  'Advanced neurodiagnostics',
+  'Individualized treatment plans',
+  'Attorney & physician referrals accepted',
 ];
 
 function JourneyStepIcon({ type }: { type: JourneyStep['icon'] }) {
@@ -150,22 +175,25 @@ function JourneyStepIcon({ type }: { type: JourneyStep['icon'] }) {
   }
 }
 
-
 export default function Home() {
-  // Hero Carousel State
   const [activeSlide, setActiveSlide] = useState(0);
+  const [pathwayTab, setPathwayTab] = useState<'patients' | 'attorneys'>('patients');
+  const [openServiceDomain, setOpenServiceDomain] = useState<ServiceDomain>('Diagnostics');
+  const serviceGroups = getHomeServicesGrouped();
+  const featuredService = getFeaturedPhysicianService();
+  const activePathway = pathwayTab === 'patients' ? journey : attorneyJourney;
   const slides = [
     {
       image: heroDiagScreen,
-      alt: "Sleek medical diagnostic mapping interface showing a detailed 3D rendering of functional brain activity",
+      alt: 'Sleek medical diagnostic mapping interface showing a detailed 3D rendering of functional brain activity',
     },
     {
       image: concussionAssessment,
-      alt: "Clinician conducting a comprehensive, professional neurological and concussion assessment with a patient",
+      alt: 'Clinician conducting a comprehensive, professional neurological and concussion assessment with a patient',
     },
     {
       image: heroConsultationTablet,
-      alt: "Physician showing and explaining a colorful topographic qEEG brain map on a tablet to a patient",
+      alt: 'Physician showing and explaining a colorful topographic qEEG brain map on a tablet to a patient',
     },
   ];
 
@@ -186,7 +214,7 @@ export default function Home() {
 
   return (
     <>
-      {/* ===================== HERO — light theme ===================== */}
+      {/* ===================== HERO ===================== */}
       <section className="tni-hero-light">
         <div className="tni-hero-light__bg">
           <TopographicPattern tone="light" className="tni-hero-light__topo" />
@@ -201,7 +229,6 @@ export default function Home() {
               <Reveal className="tni-hero-grid__visual" delay={120}>
                 <div className="tni-hero-visual">
                   <div className="tni-hero-carousel">
-                    {/* Slides */}
                     {slides.map((slide, index) => (
                       <div
                         key={index}
@@ -215,7 +242,6 @@ export default function Home() {
                       </div>
                     ))}
 
-                    {/* Navigation Arrows */}
                     <button
                       onClick={handlePrevSlide}
                       className="tni-hero-carousel__arrow tni-hero-carousel__arrow--prev"
@@ -235,7 +261,6 @@ export default function Home() {
                       </svg>
                     </button>
 
-                    {/* Navigation Dots */}
                     <div className="tni-hero-carousel__nav">
                       {slides.map((_, index) => (
                         <button
@@ -257,326 +282,373 @@ export default function Home() {
                     <span className="tni-hero-title__accent">Institute</span>
                   </h1>
                   <p className="tni-hero-sub">
-                    Objective Brain Mapping. Evidence-Based Outpatient Care.
+                    Comprehensive Neurotrauma Evaluation, Advanced Neurodiagnostics, and Physician-Led Recovery
                   </p>
                 </div>
 
                 <p className="tni-hero-body">
-                  We provide structured, medically defensible clinical evaluations and recovery strategies for patients recovering from concussions, traumatic brain injuries, and neurological trauma across Texas.
+                  Objective, evidence-informed care for patients with concussion, traumatic brain injury, and complex neurological symptoms following motor vehicle collisions, workplace injuries, falls, sports injuries, and other traumatic events.
+                </p>
+                <p className="tni-hero-body tni-hero-body--muted">
+                  Physician-directed care integrating advanced neurodiagnostic testing, cognitive assessment, individualized rehabilitation, and medicolegal documentation when appropriate.
                 </p>
 
                 <div className="tni-hero-actions">
                   <Button to="/contact" variant="primary" size="lg" style={{ padding: '16px 36px', borderRadius: 99 }}>
                     Request an Evaluation
                   </Button>
+                  <Button to="/for-attorneys" variant="ghost" size="lg" style={{ padding: '15px 28px', borderRadius: 99 }}>
+                    For Attorneys
+                  </Button>
+                </div>
+
+                <div className="tni-hero-locale">
+                  <span className="tni-hero-locale__lead">Serving Patients Throughout Texas</span>
+                  <span className="tni-hero-locale__cities">Houston • San Antonio • Statewide Referrals</span>
                 </div>
               </Reveal>
             </div>
             <div className="tni-hero-proof">
-              <div className="tni-hero-proof__list">
-                {PROOF.map((item, i) => (
-                  <span key={item} className="tni-hero-proof__item">
-                    {i > 0 && <span className="tni-hero-proof__tick" aria-hidden>·</span>}
+              <ul className="tni-hero-proof__list">
+                {PROOF.map((item) => (
+                  <li key={item} className="tni-hero-proof__item">
+                    <span className="tni-hero-proof__check" aria-hidden>
+                      <CheckIcon size={12} />
+                    </span>
                     {item}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </Container>
         </div>
       </section>
 
-      {/* ===================== CLINICAL FOCUS / AUTHORITY STATEMENT ===================== */}
-      <section className="tni-section tni-section--cream tni-section--follow-hero tni-section--compact-bottom" style={{ position: 'relative', overflow: 'hidden' }}>
-        {/* Subtle decorative glow in background, reflecting brand colors */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          right: '-10%',
-          width: '500px',
-          height: '500px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(225,109,34,0.06) 0%, transparent 70%)',
-          pointerEvents: 'none',
-          transform: 'translateY(-50%)'
-        }} />
+      {/* ===================== COMPACT AUDIENCE FORK ===================== */}
+      <section className="tni-section tni-section--cream tni-section--follow-hero tni-section--compact-bottom" aria-label="Choose your pathway">
         <Container>
           <Reveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 64, alignItems: 'center' }}>
-            <div style={{ borderLeft: `4px solid ${COPPER}`, paddingLeft: 24 }}>
-              <Eyebrow style={{ marginBottom: 12 }}>Clinical Specialization</Eyebrow>
-              <SectionHeading size={38} style={{ marginBottom: 20 }}>
-                Precision in <span style={{ color: COPPER }}>Diagnosis.</span> <br />
-                Integrity in <span style={{ color: COPPER }}>Documentation.</span>
-              </SectionHeading>
-              <p style={{ fontSize: 16.5, color: 'rgba(7,53,94,0.76)', lineHeight: 1.75, margin: 0, maxWidth: '48ch' }}>
-                We combine objective diagnostic modalities, such as quantitative EEG mapping, with physician-directed recovery plans to restore neurological performance, cognitive capacity, and patient autonomy.
-              </p>
-            </div>
-            <div className="tni-stagger-grid">
-              {authorityConditions.map((condition, index) => (
-                <div
-                  key={condition}
-                  className="tni-specialty-card"
-                >
-                  <div className="tni-specialty-icon-container">
-                    {getConditionIcon(index)}
-                  </div>
-                  <span className="tni-specialty-card-text">
-                    {condition}
+            <div className="tni-audience-fork">
+              <div className="tni-audience-fork__intro">
+                <Eyebrow style={{ marginBottom: 14 }}>Two Pathways, One Standard</Eyebrow>
+                <p className="tni-audience-fork__lead">
+                  Objective care for patients, families, and legal partners.
+                </p>
+              </div>
+              <div className="tni-audience-fork__cards">
+                <Link to="/contact" className="tni-audience-fork__card tni-audience-fork__card--light tni-hover-card tni-glow-card">
+                  <span className="tni-audience-fork__media">
+                    <img
+                      src={patientConsult}
+                      alt="Physician discussing neurological findings with a patient"
+                    />
                   </span>
-                </div>
-              ))}
-            </div>
-          </div>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* ===================== TWO PATHS ===================== */}
-      <section className="tni-section tni-section--sand">
-        <Container>
-          <Reveal>
-          <SectionIntro
-            eyebrow="Custom Care Protocols"
-            heading="We serve patients, families, and referring partners."
-            lead="Select a pathway to explore how we support your specific medical or documentation goals."
-          />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 32 }}>
-            {/* Patients Block */}
-            <div
-              className="tni-hover-card tni-glow-card"
-              style={{
-                borderRadius: 24,
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-                border: '1px solid rgba(7,53,94,0.06)',
-              }}
-            >
-              <div className="tni-image-wrap" style={{ height: 240, borderRadius: '24px 24px 0 0' }}>
-                <img
-                  src={patientConsult}
-                  alt="A doctor showing brain-activity mapping results on a tablet to a patient"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 60%, rgba(7,53,94,0.2) 100%)' }} />
-              </div>
-              <div style={{ padding: '36px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <span style={{ fontSize: 11, fontWeight: 800, color: COPPER, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>
-                  For Patients &amp; Families
-                </span>
-                <SectionHeading as="h3" size={24} style={{ marginBottom: 14 }}>
-                  Comprehensive Recovery
-                </SectionHeading>
-                <p style={{ fontSize: 15, color: 'rgba(7,53,94,0.72)', lineHeight: 1.65, margin: '0 0 28px', flex: 1 }}>
-                  Struggling with persistent symptoms like head pressure, brain fog, or memory changes following a concussion or impact? Our team provides an objective diagnosis and builds a clear roadmap to restore your quality of life.
-                </p>
-                <Button to="/contact" variant="primary" style={{ alignSelf: 'flex-start', borderRadius: 99, padding: '12px 24px' }}>
-                  Request an Evaluation →
-                </Button>
-              </div>
-            </div>
-
-            {/* Attorneys Block */}
-            <div
-              className="tni-hover-card-dark tni-dark-glow-card"
-              style={{
-                borderRadius: 24,
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-                border: '1px solid rgba(255,255,255,0.05)',
-              }}
-            >
-              <div className="tni-image-wrap" style={{ height: 240, borderRadius: '24px 24px 0 0' }}>
-                <img
-                  src={legalDoc}
-                  alt="Corporate table with forensic folders and medical documents"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 60%, rgba(4,19,34,0.4) 100%)' }} />
-              </div>
-              <div style={{ padding: '36px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <span style={{ fontSize: 11, fontWeight: 800, color: COPPER, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>
-                  For Legal Teams
-                </span>
-                <SectionHeading as="h3" size={24} color={SAND} style={{ marginBottom: 14 }}>
-                  Forensic-Grade Reporting
-                </SectionHeading>
-                <p style={{ fontSize: 15, color: 'rgba(245,237,227,0.75)', lineHeight: 1.65, margin: '0 0 28px', flex: 1 }}>
-                  We deliver meticulous clinical evaluations, objective causation analysis, and clear functional impairment documentation. We maintain clinical integrity with strictly separated clinical vs. forensic billing records.
-                </p>
-                <Button to="/for-attorneys" variant="primary" style={{ alignSelf: 'flex-start', borderRadius: 99, padding: '12px 24px' }}>
-                  Referral Portal →
-                </Button>
-              </div>
-            </div>
-          </div>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* ===================== CAUSATION/OBJECTIVE BAND ===================== */}
-      <section className="tni-section tni-section--dark" style={{ position: 'relative', overflow: 'hidden' }}>
-        {/* Glowing Neural Network Background */}
-        <div style={{ position: 'absolute', inset: 0 }}>
-          <img
-            src={neuralDark}
-            alt=""
-            aria-hidden
-            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
-          />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(4,31,58,0.9) 0%, rgba(4,31,58,0.7) 50%, rgba(4,31,58,0.9) 100%)' }} />
-        </div>
-
-        <Container style={{ position: 'relative', zIndex: 10 }}>
-          <Reveal>
-          <div style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
-            <div className="tni-dark-glow-card" style={{ padding: '48px 40px', borderRadius: 28, border: '1px solid rgba(255,255,255,0.08)' }}>
-              <Eyebrow color={COPPER} style={{ marginBottom: 18 }}>Objective Verification</Eyebrow>
-              <SectionHeading size={36} color={SAND} style={{ marginBottom: 20 }}>
-                We measure what other evaluations only estimate.
-              </SectionHeading>
-              <p style={{ fontSize: 17, color: 'rgba(245,237,227,0.85)', lineHeight: 1.75, margin: 0 }}>
-                Many traumatic brain injuries result in normal structural scans like CTs or MRIs. Our advanced quantitative EEG brain mapping visually captures and records functional dysregulation within specific neural networks, translating invisible symptoms into structured, medically defensible data.
-              </p>
-            </div>
-          </div>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* ===================== INTERACTIVE SERVICES OVERVIEW ===================== */}
-      <section id="services" className="tni-section tni-section--sand">
-        <Container>
-          <Reveal>
-          <SectionIntro
-            eyebrow="Our Capabilities"
-            heading="Advanced medical diagnostics and clinical rehabilitation."
-            lead="Explore our ten specialized services for neurological evaluation, objective diagnostics, and evidence-based recovery."
-          />
-
-          <div style={{ textAlign: 'center', marginBottom: 40 }}>
-            <Link
-              to="/services"
-              className="tni-link-arrow"
-              style={{ fontSize: 15, fontWeight: 700, color: COPPER }}
-            >
-              View full service directory <span className="tni-arrow">→</span>
-            </Link>
-          </div>
-
-          {/* Services Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
-            {services.map((service) => (
-              <article
-                key={service.path ?? service.title}
-                className="tni-svc-card"
-              >
-                {service.path && (
-                  <div style={{ marginBottom: 20 }}>
-                    <ServiceCardIcon path={service.path} />
-                  </div>
-                )}
-                <SectionHeading as="h3" size={20} style={{ marginBottom: 12, lineHeight: 1.3 }}>
-                  {service.title}
-                </SectionHeading>
-                <p style={{ fontSize: 14.5, color: 'rgba(7,53,94,0.72)', lineHeight: 1.6, margin: '0 0 20px', flex: 1 }}>
-                  {service.body}
-                </p>
-                {service.hasLink && (
-                  <Link
-                    to={service.path!}
-                    className="tni-link-arrow"
-                    style={{ fontSize: 14, fontWeight: 700, color: COPPER, marginTop: 'auto' }}
-                  >
-                    Explore service details <span className="tni-arrow">→</span>
-                  </Link>
-                )}
-              </article>
-            ))}
-          </div>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* ===================== CONDITIONS WE TREAT ===================== */}
-      <section className="tni-section tni-section--sand tni-section--follow-section" style={{ position: 'relative', overflow: 'hidden' }}>
-        <Container>
-          <Reveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 64, alignItems: 'center' }}>
-            {/* Image Side */}
-            <div style={{ width: '100%', maxWidth: 440, margin: '0 auto' }}>
-              <div className="tni-image-wrap" style={{ borderRadius: 28, boxShadow: '0 30px 60px rgba(7,53,94,0.12)', aspectRatio: '5/6' }}>
-                <img
-                  src={doctorScan}
-                  alt="A clinician presenting a topographic brain map printout to a patient during an evaluation"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
-            </div>
-
-            {/* Text Side */}
-            <div>
-              <Eyebrow style={{ marginBottom: 16 }}>Clinical Indications</Eyebrow>
-              <SectionHeading size={36} style={{ marginBottom: 18 }}>
-                The symptoms we help patients understand.
-              </SectionHeading>
-              <p style={{ fontSize: 16, color: 'rgba(7,53,94,0.75)', lineHeight: 1.7, margin: '0 0 32px', maxWidth: '46ch' }}>
-                You do not have to navigate recovery alone. An objective neurodiagnostic evaluation can help pinpoint brain dysregulation and establish a roadmap.
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 20px' }}>
-                {conditions.map((condition) => (
-                  <div
-                    key={condition}
-                    className="tni-symptom-item"
-                  >
-                    <span className="tni-symptom-icon" aria-hidden />
-                    <span style={{ fontSize: 14, fontWeight: 700, color: NAVY, lineHeight: 1.3 }}>
-                      {condition}
+                  <span className="tni-audience-fork__body">
+                    <span className="tni-audience-fork__kicker">For Patients &amp; Families</span>
+                    <span className="tni-audience-fork__title">Comprehensive Recovery</span>
+                    <span className="tni-audience-fork__copy">
+                      We identify and document post-traumatic neurological symptoms, then build an individualized
+                      treatment and recovery plan to help you regain function and confidence.
                     </span>
-                  </div>
-                ))}
-              </div>
-              <div style={{ marginTop: 36 }}>
-                <Link
-                  to="/conditions"
-                  className="tni-link-arrow"
-                  style={{ color: NAVY, fontWeight: 700, fontSize: 15 }}
-                >
-                  View full list of conditions &amp; symptoms <span className="tni-arrow">→</span>
+                    <span className="tni-audience-fork__cta">
+                      Start Your Evaluation <span className="tni-arrow" aria-hidden>→</span>
+                    </span>
+                  </span>
+                </Link>
+                <Link to="/for-attorneys" className="tni-audience-fork__card tni-audience-fork__card--dark tni-hover-card-dark tni-dark-glow-card">
+                  <span className="tni-audience-fork__media">
+                    <img
+                      src={legalDoc}
+                      alt="Medical records and documentation prepared for legal review"
+                    />
+                  </span>
+                  <span className="tni-audience-fork__body">
+                    <span className="tni-audience-fork__kicker">For Attorneys &amp; Law Firms</span>
+                    <span className="tni-audience-fork__title">Objective Medical Documentation</span>
+                    <span className="tni-audience-fork__copy">
+                      We provide independent physician evaluations, objective neurodiagnostic findings, and structured
+                      reports that clarify injury, impairment, and future care needs for your case.
+                    </span>
+                    <span className="tni-audience-fork__cta">
+                      For Attorney <span className="tni-arrow" aria-hidden>→</span>
+                    </span>
+                  </span>
                 </Link>
               </div>
             </div>
-          </div>
           </Reveal>
         </Container>
       </section>
 
-      {/* ===================== WHAT TO EXPECT / TIMELINE ===================== */}
-      <section id="journey" className="tni-section tni-section--cream">
+      {/* ===================== SERVICES ===================== */}
+      <section id="services" className="tni-section tni-section--sand">
         <Container>
           <Reveal>
-          <SectionIntro
-            eyebrow="Evaluation Journey"
-            heading="A supportive, structured clinical path."
-            lead="We guide you step-by-step from initial inquiry through objective diagnostics and specialized recovery."
-          />
-          <div className="tni-journey-track">
-            {journey.map((step, index) => (
-              <Fragment key={step.label}>
-                {index > 0 && <div className="tni-journey-bridge" aria-hidden="true" />}
-                <div className="tni-journey-card tni-glow-card tni-hover-card">
-                  <div className="tni-journey-card__marker">
-                    <JourneyStepIcon type={step.icon} />
-                  </div>
-                  <h3 className="tni-journey-card__title">{step.label}</h3>
-                  <p className="tni-journey-card__copy">{step.copy}</p>
+            <SectionIntro
+              eyebrow="Comprehensive Neurotrauma Services"
+              heading="Our neurotrauma services."
+              lead="Advanced neurodiagnostics and physician-led rehabilitation — we diagnose objectively, assess function, and rehabilitate as one coherent care journey."
+            />
+
+            {featuredService && (
+              <Link
+                to={featuredService.path ?? '/services'}
+                className="tni-svc-start tni-glow-card tni-hover-card"
+              >
+                <div className="tni-svc-start__icon">
+                  <ServiceCardIcon icon={featuredService.icon} />
                 </div>
-              </Fragment>
-            ))}
-          </div>
+                <div className="tni-svc-start__body">
+                  <span className="tni-svc-start__badge">Start Here · Physician-Led Evaluation</span>
+                  <h3 className="tni-svc-start__title">{featuredService.title}</h3>
+                  <p className="tni-svc-start__copy">
+                    A comprehensive clinical assessment that determines which testing, treatment, and recovery pathway
+                    is appropriate for you.
+                  </p>
+                </div>
+                <span className="tni-svc-start__cta">
+                  Explore evaluation <span aria-hidden>→</span>
+                </span>
+              </Link>
+            )}
+
+            <div className="tni-svc-navigator">
+              {serviceGroups.map((group) => (
+                <section key={group.domain} className="tni-svc-stage">
+                  <div className="tni-svc-stage__desktop-header">
+                    <span className="tni-svc-stage__heading">
+                      <span className="tni-svc-stage__domain">{group.domain}</span>
+                      <span className="tni-svc-stage__title">
+                        {SERVICE_STAGE_LABELS[group.domain].title}
+                      </span>
+                      <span className="tni-svc-stage__summary">
+                        {SERVICE_STAGE_LABELS[group.domain].summary}
+                      </span>
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    className="tni-svc-stage__toggle"
+                    aria-expanded={openServiceDomain === group.domain}
+                    aria-controls={`services-${group.domain.toLowerCase()}`}
+                    onClick={() => setOpenServiceDomain(group.domain)}
+                  >
+                    <span className="tni-svc-stage__heading">
+                      <span className="tni-svc-stage__domain">{group.domain}</span>
+                      <span className="tni-svc-stage__title">
+                        {SERVICE_STAGE_LABELS[group.domain].title}
+                      </span>
+                      <span className="tni-svc-stage__summary">
+                        {SERVICE_STAGE_LABELS[group.domain].summary}
+                      </span>
+                    </span>
+                    <span className="tni-svc-stage__chevron" aria-hidden>⌄</span>
+                  </button>
+
+                  <div
+                    id={`services-${group.domain.toLowerCase()}`}
+                    className={`tni-svc-stage__list ${
+                      openServiceDomain === group.domain ? 'is-open' : ''
+                    }`}
+                  >
+                    {group.services.map((service) => (
+                      <Link
+                        key={service.path ?? service.title}
+                        to={service.path ?? '/services'}
+                        className="tni-svc-row"
+                      >
+                        <ServiceCardIcon icon={service.icon} className="tni-svc-row__icon" />
+                        <span className="tni-svc-row__body">
+                          <span className="tni-svc-row__title">{service.title}</span>
+                          <span className="tni-svc-row__copy">{service.body}</span>
+                        </span>
+                        <span className="tni-svc-row__arrow" aria-hidden>→</span>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ===================== CONDITIONS TEASER ===================== */}
+      <section className="tni-section tni-section--sand tni-section--follow-section" aria-label="Conditions we evaluate">
+        <Container>
+          <Reveal>
+            <div className="tni-conditions-home">
+              <div className="tni-conditions-home__visual">
+                <div className="tni-image-wrap tni-conditions-home__image">
+                  <img
+                    src={doctorScan}
+                    alt="A clinician presenting a topographic brain map printout to a patient during an evaluation"
+                  />
+                </div>
+              </div>
+
+              <div className="tni-conditions-home__body">
+                <Eyebrow style={{ marginBottom: 16 }}>Conditions We Evaluate</Eyebrow>
+                <SectionHeading size={36} style={{ marginBottom: 18 }}>
+                  Persistent symptoms after a traumatic event.
+                </SectionHeading>
+                <p className="tni-conditions-home__intro">
+                  You do not have to navigate recovery alone. From traumatic brain injury to the cognitive, headache, vestibular, visual, and mood symptoms that follow, an objective neurodiagnostic evaluation can help identify brain dysregulation and establish a clear path forward.
+                </p>
+                <ul className="tni-cond-chips">
+                  {homepageConditions.map((condition) => (
+                    <li key={condition} className="tni-cond-chip">
+                      <span className="tni-cond-chip__mark" aria-hidden />
+                      {condition}
+                    </li>
+                  ))}
+                </ul>
+                <div className="tni-conditions-home__link-wrap">
+                  <Link to="/conditions" className="tni-link-arrow tni-conditions-home__link">
+                    Explore conditions &amp; symptoms in detail <span className="tni-arrow">→</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ===================== COMBINED PROOF SECTION ===================== */}
+      <section className="tni-section tni-section--cream tni-proof-section" aria-labelledby="proof-heading">
+        <Container>
+          <Reveal>
+            <div className="tni-proof-section__layout">
+              <div className="tni-proof-section__narrative">
+                <Eyebrow style={{ marginBottom: 14 }}>{whyTniProof.eyebrow}</Eyebrow>
+                <SectionHeading size={38} style={{ marginBottom: 20 }}>
+                  <span id="proof-heading">Objective answers when imaging looks </span>
+                  <span className="tni-proof-section__accent">{whyTniProof.headingAccent}</span>
+                </SectionHeading>
+                {whyTniProof.narrative.map((paragraph) => (
+                  <p key={paragraph.slice(0, 32)} className="tni-proof-section__paragraph">
+                    {paragraph}
+                  </p>
+                ))}
+
+                <div className="tni-proof-section__objective">
+                  <Eyebrow style={{ marginBottom: 12 }}>{whyTniProof.objectiveEyebrow}</Eyebrow>
+                  <SectionHeading as="h3" size={26} style={{ marginBottom: 16, lineHeight: 1.25 }}>
+                    {whyTniProof.objectiveHeading}
+                  </SectionHeading>
+                  {whyTniProof.objectiveCopy.map((paragraph) => (
+                    <p key={paragraph.slice(0, 32)} className="tni-proof-section__paragraph">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              <div className="tni-integrates tni-integrates--compact">
+                <div className="tni-integrates__head">
+                  <span className="tni-integrates__kicker">Every Evaluation Integrates</span>
+                  <span className="tni-integrates__count">7 components</span>
+                </div>
+                <ul className="tni-integrates__list">
+                  {evaluationIntegrates.map((item, i) => (
+                    <li key={item} className="tni-integrates__list-item">
+                      <span className="tni-integrates__icon" aria-hidden>
+                        <IntegratesIcon index={i} />
+                      </span>
+                      <span className="tni-integrates__label">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ===================== PATHWAY — PATIENTS / ATTORNEYS ===================== */}
+      <section id="journey" className="tni-section tni-section--sand">
+        <Container>
+          <Reveal>
+            <SectionIntro
+              eyebrow="Your Recovery Pathway"
+              heading={pathwayTab === 'patients' ? 'A supportive, structured clinical path.' : 'A clear referral process for counsel.'}
+              lead={
+                pathwayTab === 'patients'
+                  ? 'We guide patients step-by-step from initial consultation through objective assessment, integrated interpretation, and personalized recovery.'
+                  : 'From first referral through structured documentation, each step is defined so counsel knows what to expect.'
+              }
+            />
+
+            <div className="tni-pathway-tabs" role="tablist" aria-label="Pathway audience">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={pathwayTab === 'patients'}
+                className={`tni-pathway-tab ${pathwayTab === 'patients' ? 'is-active' : ''}`}
+                onClick={() => setPathwayTab('patients')}
+              >
+                Patient journey
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={pathwayTab === 'attorneys'}
+                className={`tni-pathway-tab ${pathwayTab === 'attorneys' ? 'is-active' : ''}`}
+                onClick={() => setPathwayTab('attorneys')}
+              >
+                Attorney process
+              </button>
+            </div>
+
+            <div className="tni-journey-track" role="tabpanel">
+              {activePathway.map((step, index) => (
+                <Fragment key={`${pathwayTab}-${step.label}`}>
+                  {index > 0 && <div className="tni-journey-bridge" aria-hidden="true" />}
+                  <div className="tni-journey-card tni-glow-card tni-hover-card">
+                    <div className="tni-journey-card__marker">
+                      <JourneyStepIcon type={step.icon} />
+                      <span className="tni-journey-card__step" aria-hidden>{step.step}</span>
+                    </div>
+                    <h3 className="tni-journey-card__title">{step.label}</h3>
+                    <p className="tni-journey-card__copy">{step.copy}</p>
+                  </div>
+                </Fragment>
+              ))}
+            </div>
+
+            {pathwayTab === 'attorneys' && (
+              <div className="tni-pathway-followup">
+                <Link to="/for-attorneys" className="tni-link-arrow">
+                  Explore attorney services &amp; referral details <span className="tni-arrow">→</span>
+                </Link>
+              </div>
+            )}
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ===================== TRUST STRIP ===================== */}
+      <section className="tni-section tni-section--cream tni-trust-section" aria-label="Why choose Texas NeuroTrauma Institute">
+        <Container>
+          <Reveal>
+            <div className="tni-trust-strip">
+              <div className="tni-trust-strip__header">
+                <Eyebrow style={{ marginBottom: 10 }}>Why Choose Us</Eyebrow>
+                <p className="tni-trust-strip__lead">
+                  A physician-led institute built on objectivity, advanced diagnostics, and coordinated recovery.
+                </p>
+              </div>
+              <ul className="tni-trust-strip__list">
+                {trustPoints.map((item) => (
+                  <li key={item} className="tni-trust-strip__item">
+                    <span className="tni-trust-strip__check" aria-hidden>
+                      <CheckIcon size={12} />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Reveal>
         </Container>
       </section>
@@ -588,43 +660,24 @@ export default function Home() {
         <Container>
           <Reveal>
             <div className="tni-final-cta__grid">
-              {/* Left Column: Content */}
               <div className="tni-final-cta__content">
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-                  <span
-                    style={{
-                      width: 8,
-                      height: 8,
-                      borderRadius: '50%',
-                      background: COPPER,
-                      boxShadow: '0 0 0 4px rgba(225, 109, 34, 0.25)',
-                    }}
-                  />
-                  <Eyebrow color={COPPER}>Get Started Today</Eyebrow>
+                  <span className="tni-final-cta__pulse" aria-hidden />
+                  <Eyebrow color={COPPER}>Request an Evaluation</Eyebrow>
                 </div>
-                
-                <h2
-                  style={{
-                    fontFamily: "'Fraunces', serif",
-                    fontWeight: 500,
-                    fontSize: 'clamp(2.2rem, 5vw, 3rem)',
-                    color: '#f5ede3',
-                    lineHeight: 1.12,
-                    margin: '0 0 20px',
-                    letterSpacing: '-0.01em',
-                  }}
-                >
+
+                <h2 className="tni-final-cta__title">
                   Your path to clear, <br />
-                  <span style={{ fontStyle: 'italic', color: COPPER }}>objective</span> answers.
+                  <span className="tni-final-cta__title-accent">objective</span> answers.
                 </h2>
-                
-                <p style={{ fontSize: 16.5, color: 'rgba(245,237,227,0.8)', lineHeight: 1.7, margin: '0 0 36px', maxWidth: '50ch' }}>
-                  We remove the guesswork from brain injury recovery. Whether you are a patient struggling with persistent symptoms or an attorney seeking forensic-grade documentation, our team is ready to help.
+
+                <p className="tni-final-cta__lead">
+                  Whether you are a patient with persistent symptoms after a traumatic event or an attorney seeking objective medical documentation, our physician-led team is ready to help.
                 </p>
-                
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, marginBottom: 32 }}>
+
+                <div className="tni-final-cta__actions">
                   <Button to="/contact" variant="primary" size="lg" style={{ borderRadius: 99, padding: '16px 36px', boxShadow: '0 12px 30px rgba(225,109,34,0.3)' }}>
-                    Request Evaluation
+                    Request an Evaluation
                   </Button>
                   <Button
                     to="/for-attorneys"
@@ -635,15 +688,14 @@ export default function Home() {
                       padding: '16px 36px',
                       background: 'rgba(255,255,255,0.08)',
                       border: '1.5px solid rgba(245,237,227,0.25)',
-                      color: '#f5ede3',
+                      color: SAND,
                     }}
                   >
-                    Attorney Portal
+                    For Attorneys
                   </Button>
                 </div>
               </div>
 
-              {/* Right Column: Visual */}
               <div className="tni-final-cta__visual">
                 <div className="tni-final-cta__image-wrap">
                   <img src={getStartedCta} alt="Neurologists analyzing brain mapping data on a clinical screen" />
