@@ -304,7 +304,7 @@ export default function Home() {
 
                 <div className="tni-hero-locale">
                   <span className="tni-hero-locale__lead">Serving Patients Throughout Texas</span>
-                  <span className="tni-hero-locale__cities">Houston • San Antonio • Statewide Referrals</span>
+                  <span className="tni-hero-locale__cities">Statewide Referrals</span>
                 </div>
               </Reveal>
             </div>
