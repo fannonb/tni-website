@@ -18,7 +18,7 @@ export const conditionsPageCopy = {
     'After concussion or traumatic brain injury, CT and MRI often look normal while symptoms persist. Our physician-led evaluations use advanced functional neurodiagnostics to clarify what is wrong and guide recovery.',
   heroNote: 'Physician-led evaluation · Advanced neurodiagnostics · Evidence-informed care',
   groupsIntro:
-    'Browse by diagnosis, how the injury occurred, or the symptoms you are experiencing. This helps you find the right starting point for evaluation.',
+    'Find the category that best matches your situation to identify a clear starting point for evaluation.',
   evaluateIntro:
     'We match your injury history and symptoms to the clinical pathway that fits — then connect you with the appropriate service.',
   ctaLead:

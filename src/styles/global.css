@@ -1623,6 +1623,120 @@ img {
   margin: 0;
 }
 
+.tni-service-back-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 2px;
+  color: rgba(7, 53, 94, 0.72);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tni-service-back-link:hover {
+  color: var(--tni-accent);
+}
+
+.tni-evaluation-audience {
+  position: relative;
+  padding: clamp(56px, 7vw, 82px) 0;
+  background: #f5ede3;
+  overflow: hidden;
+}
+
+.tni-evaluation-audience__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(36px, 6vw, 72px);
+  align-items: start;
+}
+
+.tni-evaluation-audience__title {
+  margin: 0 0 16px;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.9rem, 3.4vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.18;
+  color: var(--tni-navy);
+}
+
+.tni-evaluation-audience__intro {
+  max-width: 46ch;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.72;
+  color: rgba(7, 53, 94, 0.74);
+}
+
+.tni-evaluation-audience__detail {
+  min-width: 0;
+}
+
+.tni-evaluation-audience__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 8px 0;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(7, 53, 94, 0.07);
+  border-radius: 18px;
+}
+
+.tni-evaluation-audience__list li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 58px;
+  padding: 14px 20px;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--tni-navy);
+  border-bottom: 1px solid rgba(7, 53, 94, 0.07);
+}
+
+.tni-evaluation-audience__list li:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.tni-evaluation-audience__list li:nth-child(odd) {
+  border-right: 1px solid rgba(7, 53, 94, 0.07);
+}
+
+.tni-evaluation-audience__list li > span {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--tni-accent);
+}
+
+@media (max-width: 760px) {
+  .tni-evaluation-audience__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 520px) {
+  .tni-evaluation-audience__list {
+    grid-template-columns: 1fr;
+  }
+
+  .tni-evaluation-audience__list li,
+  .tni-evaluation-audience__list li:nth-last-child(-n + 2),
+  .tni-evaluation-audience__list li:nth-child(odd) {
+    border-right: 0;
+    border-bottom: 1px solid rgba(7, 53, 94, 0.07);
+  }
+
+  .tni-evaluation-audience__list li:last-child {
+    border-bottom: 0;
+  }
+}
+
 /* ===================== Symptom Areas — Bento Grid ===================== */
 
 .tni-symptom-areas {
@@ -2227,6 +2341,95 @@ img {
   padding-right: 0;
 }
 
+.tni-service-offerings__grid--evaluation .tni-service-offering-card--wide {
+  grid-column: 1 / -1;
+}
+
+.tni-service-offerings__grid--evaluation .tni-service-offering-card--wide .tni-service-offering-card__content {
+  max-width: 720px;
+}
+
+@media (max-width: 768px) {
+  .tni-service-offerings__grid--evaluation .tni-service-offering-card--wide {
+    grid-column: auto;
+  }
+}
+
+.tni-evaluation-outcomes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 28px;
+  max-width: 780px;
+  list-style: none;
+  margin: 32px auto 0;
+  padding: 0;
+  text-align: left;
+}
+
+.tni-evaluation-outcomes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 12px 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: rgba(245, 237, 227, 0.9);
+  border-bottom: 1px solid rgba(245, 237, 227, 0.12);
+}
+
+.tni-evaluation-outcomes li > span {
+  color: var(--tni-accent);
+  font-weight: 800;
+}
+
+@media (max-width: 640px) {
+  .tni-evaluation-outcomes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tni-evaluation-cta {
+  padding: clamp(52px, 6vw, 72px) 0;
+  background: #f5ede3;
+}
+
+.tni-evaluation-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: clamp(28px, 4vw, 38px);
+  background: #fff;
+  border: 1px solid rgba(7, 53, 94, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 12px 34px rgba(7, 53, 94, 0.04);
+}
+
+.tni-evaluation-cta__inner h2 {
+  margin: 0 0 8px;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.55rem, 2.8vw, 2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--tni-navy);
+}
+
+.tni-evaluation-cta__inner p {
+  max-width: 58ch;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(7, 53, 94, 0.7);
+}
+
+@media (max-width: 700px) {
+  .tni-evaluation-cta__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* Why Choose — uniform grid (pathway / concussion) */
 .tni-why-choose-uniform__header {
   max-width: 720px;
@@ -2646,23 +2849,25 @@ img {
   align-items: center;
 }
 
-.tni-conditions-noir__eyebrow {
-  margin: 0 0 14px;
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--tni-accent);
-}
-
 .tni-conditions-noir__title {
   font-family: 'Fraunces', serif;
   font-weight: 500;
   font-size: clamp(1.9rem, 3.4vw, 2.6rem);
   line-height: 1.18;
   color: var(--tni-cream);
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   text-wrap: balance;
+}
+
+.tni-conditions-noir__tagline {
+  margin: 0 0 18px;
+  max-width: 34ch;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.35;
+  color: rgba(245, 237, 227, 0.9);
 }
 
 .tni-conditions-noir__accent {
@@ -2830,9 +3035,19 @@ img {
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   line-height: 1.14;
   color: var(--tni-cream);
-  margin: 0 0 22px;
+  margin: 0 0 14px;
   text-wrap: balance;
-  max-width: 22ch;
+}
+
+.tni-attorneys-hero__tagline {
+  margin: 0 0 18px;
+  max-width: 28ch;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.35;
+  color: rgba(245, 237, 227, 0.9);
 }
 
 .tni-attorneys-hero__accent {
@@ -2843,12 +3058,8 @@ img {
   font-size: clamp(14.5px, 1.8vw, 16px);
   line-height: 1.68;
   color: rgba(245, 237, 227, 0.84);
-  margin: 0 0 14px;
+  margin: 0 0 32px;
   max-width: 58ch;
-}
-
-.tni-attorneys-hero__body:last-of-type {
-  margin-bottom: 32px;
 }
 
 .tni-attorneys-hero__actions {
@@ -2905,15 +3116,14 @@ img {
 
 .tni-attorneys-fit__header {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(30px, 5vw, 64px);
-  align-items: end;
+  grid-template-columns: 1fr;
+  gap: 12px;
   margin-bottom: clamp(30px, 4vw, 42px);
 }
 
 .tni-attorneys-fit__lead {
   margin: 0;
-  max-width: 58ch;
+  max-width: 62ch;
   font-size: 16px;
   line-height: 1.68;
   color: rgba(7, 53, 94, 0.72);
@@ -3132,14 +3342,18 @@ img {
 .tni-attorneys-working__step-num {
   display: inline-flex;
   align-items: center;
-  padding: 5px 12px;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
   border-radius: 999px;
   background: rgba(225, 109, 34, 0.12);
   color: var(--tni-accent);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-style: normal;
+  letter-spacing: 0;
+  text-transform: none;
   flex-shrink: 0;
 }
 
@@ -4553,11 +4767,11 @@ img {
 }
 
 .tni-audience-fork__lead {
-  margin: 0;
-  font-size: clamp(1.05rem, 2vw, 1.2rem);
-  font-weight: 600;
-  color: var(--tni-navy);
-  line-height: 1.45;
+  margin: 12px 0 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(7, 53, 94, 0.72);
+  line-height: 1.55;
 }
 
 .tni-audience-fork__cards {
@@ -4961,10 +5175,6 @@ img {
   padding-left: clamp(20px, 2.4vw, 28px);
 }
 
-.tni-proof-section__accent {
-  color: var(--tni-accent);
-}
-
 .tni-proof-section__paragraph {
   font-size: 16.5px;
   color: rgba(7, 53, 94, 0.78);
@@ -5147,4 +5357,513 @@ img {
   flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 32px;
+}
+
+/* ===================== About Page ===================== */
+
+.tni-about-page {
+  background: #f5ede3;
+  color: var(--tni-navy);
+  overflow: hidden;
+}
+
+.tni-about-hero {
+  position: relative;
+  padding: clamp(44px, 5.5vw, 64px) 0;
+  background: linear-gradient(135deg, var(--tni-navy-dark) 0%, var(--tni-navy-deep) 100%);
+  overflow: hidden;
+  color: var(--tni-cream);
+}
+
+.tni-about-hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tni-about-hero__topo {
+  position: absolute;
+  inset: 0;
+}
+
+.tni-about-hero__glow {
+  position: absolute;
+  top: -28%;
+  right: -12%;
+  width: 58%;
+  height: 90%;
+  background: radial-gradient(circle, rgba(225, 109, 34, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.tni-about-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  gap: clamp(36px, 5.5vw, 64px);
+  align-items: center;
+}
+
+.tni-about-hero__title {
+  margin: 0 0 12px;
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(2.15rem, 4vw, 3.1rem);
+  line-height: 1.12;
+  color: var(--tni-cream);
+  text-wrap: balance;
+}
+
+.tni-about-hero__role {
+  margin: 0 0 16px;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-style: italic;
+  line-height: 1.45;
+  color: rgba(245, 237, 227, 0.9);
+  max-width: 36ch;
+}
+
+.tni-about-hero__summary {
+  max-width: 46ch;
+  margin: 0;
+  font-size: clamp(15px, 1.6vw, 16.5px);
+  line-height: 1.65;
+  color: rgba(245, 237, 227, 0.76);
+}
+
+.tni-about-hero__visual {
+  max-width: 320px;
+  margin-left: auto;
+}
+
+@media (max-width: 760px) {
+  .tni-about-hero {
+    padding: 40px 0 48px;
+  }
+
+  .tni-about-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .tni-about-hero__visual {
+    order: -1;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .tni-about-hero__content {
+    text-align: center;
+  }
+
+  .tni-about-hero__role,
+  .tni-about-hero__summary {
+    max-width: 38ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .tni-about-hero__visual {
+    max-width: 200px;
+  }
+}
+
+.tni-about-facts {
+  background: #fcfaf7;
+  border-bottom: 1px solid rgba(7, 53, 94, 0.08);
+}
+
+.tni-about-facts__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tni-about-facts__item {
+  min-width: 0;
+  padding: 24px clamp(14px, 2.2vw, 28px);
+  border-right: 1px solid rgba(7, 53, 94, 0.08);
+}
+
+.tni-about-facts__item:first-child {
+  padding-left: 0;
+}
+
+.tni-about-facts__item:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.tni-about-facts__label,
+.tni-about-facts__value {
+  display: block;
+}
+
+.tni-about-facts__label {
+  margin-bottom: 7px;
+  font-size: 10.5px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tni-accent);
+}
+
+.tni-about-facts__value {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--tni-navy);
+}
+
+@media (max-width: 860px) {
+  .tni-about-facts__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tni-about-facts__item,
+  .tni-about-facts__item:first-child,
+  .tni-about-facts__item:last-child {
+    padding: 20px;
+  }
+
+  .tni-about-facts__item:nth-child(2) {
+    border-right: 0;
+  }
+
+  .tni-about-facts__item:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(7, 53, 94, 0.08);
+  }
+}
+
+@media (max-width: 520px) {
+  .tni-about-facts__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tni-about-facts__item,
+  .tni-about-facts__item:first-child,
+  .tni-about-facts__item:last-child {
+    padding: 17px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(7, 53, 94, 0.08);
+  }
+
+  .tni-about-facts__item:last-child {
+    border-bottom: 0;
+  }
+}
+
+.tni-about-background {
+  padding: clamp(64px, 8vw, 96px) 0;
+  background: #f5ede3;
+}
+
+.tni-about-background__layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(44px, 7vw, 88px);
+  align-items: start;
+}
+
+.tni-about-section-intro {
+  position: sticky;
+  top: 112px;
+  max-width: 380px;
+  padding-left: 22px;
+  border-left: 3px solid var(--tni-accent);
+}
+
+.tni-about-prose {
+  max-width: 660px;
+}
+
+.tni-about-prose p {
+  margin: 0 0 1.35em;
+  font-size: clamp(16px, 1.6vw, 17px);
+  line-height: 1.78;
+  color: rgba(7, 53, 94, 0.8);
+}
+
+.tni-about-prose p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 820px) {
+  .tni-about-background__layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .tni-about-section-intro {
+    position: static;
+    max-width: 620px;
+  }
+}
+
+.tni-about-practices {
+  padding: clamp(64px, 8vw, 96px) 0;
+  background: #fcfaf7;
+}
+
+.tni-about-practices__header {
+  max-width: 680px;
+  margin-bottom: clamp(34px, 5vw, 48px);
+}
+
+.tni-about-practices__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.tni-about-practice {
+  position: relative;
+  height: 100%;
+  padding: clamp(26px, 3.5vw, 38px);
+  background: #fff;
+  border: 1px solid rgba(7, 53, 94, 0.09);
+  border-top: 3px solid var(--tni-accent);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 12px 34px rgba(7, 53, 94, 0.04);
+}
+
+.tni-about-practice__number {
+  display: block;
+  margin-bottom: 20px;
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-style: normal;
+  color: var(--tni-accent);
+}
+
+.tni-about-practice__name {
+  margin: 0 0 8px;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.35rem, 2.3vw, 1.65rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--tni-navy);
+}
+
+.tni-about-practice__focus {
+  margin: 0 0 20px;
+  padding-bottom: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: rgba(7, 53, 94, 0.66);
+  border-bottom: 1px solid rgba(7, 53, 94, 0.08);
+}
+
+.tni-about-practice__body {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.68;
+  color: rgba(7, 53, 94, 0.74);
+}
+
+.tni-about-practice__link {
+  margin-top: 8px;
+}
+
+@media (max-width: 760px) {
+  .tni-about-practices__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tni-about-credentials {
+  padding: clamp(64px, 8vw, 92px) 0;
+  background: #f5ede3;
+}
+
+.tni-about-credentials__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 42px);
+}
+
+.tni-about-credential-block {
+  height: 100%;
+  padding: clamp(26px, 3.5vw, 36px);
+  background: rgba(252, 250, 247, 0.72);
+  border: 1px solid rgba(7, 53, 94, 0.09);
+  border-radius: 18px;
+}
+
+.tni-about-credential-block__lead {
+  margin: 0 0 20px;
+  font-size: 15px;
+  line-height: 1.68;
+  color: rgba(7, 53, 94, 0.74);
+}
+
+.tni-about-checklist,
+.tni-about-education {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+}
+
+.tni-about-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 9px 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--tni-navy);
+  border-bottom: 1px solid rgba(7, 53, 94, 0.07);
+}
+
+.tni-about-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(225, 109, 34, 0.12);
+  color: var(--tni-accent);
+}
+
+.tni-about-education li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(7, 53, 94, 0.08);
+}
+
+.tni-about-education li:first-child {
+  padding-top: 0;
+}
+
+.tni-about-education__number {
+  padding-top: 2px;
+  font-family: 'Fraunces', serif;
+  font-size: 0.92rem;
+  color: var(--tni-accent);
+}
+
+.tni-about-education strong,
+.tni-about-education small {
+  display: block;
+}
+
+.tni-about-education strong {
+  font-family: 'Fraunces', serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--tni-navy);
+}
+
+.tni-about-education small {
+  margin-top: 4px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(7, 53, 94, 0.62);
+}
+
+@media (max-width: 780px) {
+  .tni-about-credentials__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tni-about-interests {
+  padding: clamp(64px, 8vw, 92px) 0;
+  background: #fcfaf7;
+}
+
+.tni-about-interests__header {
+  max-width: 600px;
+  margin-bottom: clamp(30px, 4vw, 40px);
+}
+
+.tni-about-interests__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.tni-about-interest-group {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid rgba(7, 53, 94, 0.08);
+  border-radius: 16px;
+}
+
+.tni-about-interest-group h3 {
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  font-family: 'Fraunces', serif;
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--tni-navy);
+  border-bottom: 2px solid rgba(225, 109, 34, 0.35);
+}
+
+.tni-about-interest-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tni-about-interest-group li {
+  position: relative;
+  padding: 9px 0 9px 15px;
+  font-size: 13.5px;
+  font-weight: 550;
+  line-height: 1.45;
+  color: rgba(7, 53, 94, 0.8);
+  border-bottom: 1px solid rgba(7, 53, 94, 0.06);
+}
+
+.tni-about-interest-group li:last-child {
+  border-bottom: 0;
+}
+
+.tni-about-interest-group li::before {
+  content: '';
+  position: absolute;
+  top: 1.05em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--tni-accent);
+}
+
+@media (max-width: 860px) {
+  .tni-about-interests__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tni-about-vision {
+  padding: clamp(64px, 8vw, 96px) 0;
+  background: #f5ede3;
+}
+
+.tni-about-vision__layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(44px, 7vw, 88px);
+  align-items: start;
+}
+
+@media (max-width: 820px) {
+  .tni-about-vision__layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
 }

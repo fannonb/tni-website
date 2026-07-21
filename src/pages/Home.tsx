@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Eyebrow, SectionHeading, SectionIntro, Button } from '../components/ui';
+import { Container, SectionHeading, SectionIntro, Button } from '../components/ui';
 import { Reveal } from '../components/Reveal';
 import { QeegWaveform } from '../components/brand/QeegWaveform';
 import { TopographicPattern } from '../components/brand/TopographicPattern';
@@ -330,7 +330,9 @@ export default function Home() {
           <Reveal>
             <div className="tni-audience-fork">
               <div className="tni-audience-fork__intro">
-                <Eyebrow style={{ marginBottom: 14 }}>Two Pathways, One Standard</Eyebrow>
+                <SectionHeading as="h2" size={32} style={{ marginBottom: 0 }}>
+                  Choose Your Pathway
+                </SectionHeading>
                 <p className="tni-audience-fork__lead">
                   Objective care for patients, families, and legal partners.
                 </p>
@@ -385,8 +387,7 @@ export default function Home() {
         <Container>
           <Reveal>
             <SectionIntro
-              eyebrow="Comprehensive Neurotrauma Services"
-              heading="Our neurotrauma services."
+              heading="Our Neurotrauma Services"
               lead="Advanced neurodiagnostics and physician-led rehabilitation — we diagnose objectively, assess function, and rehabilitate as one coherent care journey."
             />
 
@@ -488,12 +489,11 @@ export default function Home() {
               </div>
 
               <div className="tni-conditions-home__body">
-                <Eyebrow style={{ marginBottom: 16 }}>Conditions We Evaluate</Eyebrow>
                 <SectionHeading size={36} style={{ marginBottom: 18 }}>
-                  Persistent symptoms after a traumatic event.
+                  Conditions We Evaluate
                 </SectionHeading>
                 <p className="tni-conditions-home__intro">
-                  You do not have to navigate recovery alone. From traumatic brain injury to the cognitive, headache, vestibular, visual, and mood symptoms that follow, an objective neurodiagnostic evaluation can help identify brain dysregulation and establish a clear path forward.
+                  From traumatic brain injury to the cognitive, headache, vestibular, visual, and mood symptoms that follow, an objective evaluation can help clarify what is wrong and establish a clear path forward.
                 </p>
                 <ul className="tni-cond-chips">
                   {homepageConditions.map((condition) => (
@@ -518,13 +518,10 @@ export default function Home() {
       <section className="tni-section tni-section--cream tni-proof-section" aria-labelledby="proof-heading">
         <Container>
           <Reveal>
+            <SectionIntro heading={<span id="proof-heading">Why Texas NeuroTrauma Institute</span>} />
+
             <div className="tni-proof-section__layout">
               <div className="tni-proof-section__narrative">
-                <Eyebrow style={{ marginBottom: 14 }}>{whyTniProof.eyebrow}</Eyebrow>
-                <SectionHeading size={38} style={{ marginBottom: 20 }}>
-                  <span id="proof-heading">Objective answers when imaging looks </span>
-                  <span className="tni-proof-section__accent">{whyTniProof.headingAccent}</span>
-                </SectionHeading>
                 {whyTniProof.narrative.map((paragraph) => (
                   <p key={paragraph.slice(0, 32)} className="tni-proof-section__paragraph">
                     {paragraph}
@@ -532,7 +529,6 @@ export default function Home() {
                 ))}
 
                 <div className="tni-proof-section__objective">
-                  <Eyebrow style={{ marginBottom: 12 }}>{whyTniProof.objectiveEyebrow}</Eyebrow>
                   <SectionHeading as="h3" size={26} style={{ marginBottom: 16, lineHeight: 1.25 }}>
                     {whyTniProof.objectiveHeading}
                   </SectionHeading>
@@ -570,8 +566,7 @@ export default function Home() {
         <Container>
           <Reveal>
             <SectionIntro
-              eyebrow="Your Recovery Pathway"
-              heading={pathwayTab === 'patients' ? 'A supportive, structured clinical path.' : 'A clear referral process for counsel.'}
+              heading={pathwayTab === 'patients' ? 'How Care Progresses' : 'How Referrals Work'}
               lead={
                 pathwayTab === 'patients'
                   ? 'We guide patients step-by-step from initial consultation through objective assessment, integrated interpretation, and personalized recovery.'
@@ -633,7 +628,9 @@ export default function Home() {
           <Reveal>
             <div className="tni-trust-strip">
               <div className="tni-trust-strip__header">
-                <Eyebrow style={{ marginBottom: 10 }}>Why Choose Us</Eyebrow>
+                <SectionHeading as="h2" size={28} style={{ marginBottom: 10 }}>
+                  Why Choose Us
+                </SectionHeading>
                 <p className="tni-trust-strip__lead">
                   A physician-led institute built on objectivity, advanced diagnostics, and coordinated recovery.
                 </p>
@@ -661,11 +658,6 @@ export default function Home() {
           <Reveal>
             <div className="tni-final-cta__grid">
               <div className="tni-final-cta__content">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-                  <span className="tni-final-cta__pulse" aria-hidden />
-                  <Eyebrow color={COPPER}>Request an Evaluation</Eyebrow>
-                </div>
-
                 <h2 className="tni-final-cta__title">
                   Your path to clear, <br />
                   <span className="tni-final-cta__title-accent">objective</span> answers.

@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { SiteLayout } from './components/Layout';
 import Home from './pages/Home';
+import About from './pages/About';
 import Conditions from './pages/Conditions';
 import ServicePageRoute from './pages/ServicePageRoute';
 import ForAttorneys from './pages/ForAttorneys';
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     element: <SiteLayout />,
     children: [
       { path: '/', element: <Home /> },
+      { path: '/about', element: <About /> },
       { path: '/conditions', element: <Conditions /> },
       { path: '/services', element: <Services /> },
       ...serviceRoutes,

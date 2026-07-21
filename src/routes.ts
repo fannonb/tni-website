@@ -9,6 +9,7 @@ export interface RouteMeta {
 
 const STATIC_ROUTES: RouteMeta[] = [
   { path: '/', title: 'Texas NeuroTrauma Institute — Home' },
+  { path: '/about', title: 'About Dr. Derrick Randdolf — Texas NeuroTrauma Institute' },
   { path: '/conditions', title: 'Conditions We Treat — Texas NeuroTrauma Institute' },
   { path: '/services', title: 'Our Services — Texas NeuroTrauma Institute' },
   { path: '/for-attorneys', title: 'For Attorneys — Texas NeuroTrauma Institute' },
@@ -16,9 +17,9 @@ const STATIC_ROUTES: RouteMeta[] = [
 ];
 
 export const ROUTES: RouteMeta[] = [
-  ...STATIC_ROUTES.slice(0, 3),
+  ...STATIC_ROUTES.slice(0, 4),
   ...ALL_SERVICES.map((s) => ({ path: s.path, title: s.pageTitle })),
-  ...STATIC_ROUTES.slice(3),
+  ...STATIC_ROUTES.slice(4),
 ];
 
 export function getRouteMeta(pathname: string): RouteMeta {

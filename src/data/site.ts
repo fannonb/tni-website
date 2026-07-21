@@ -36,7 +36,7 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Home', to: '/' },
-  // About stays out of the nav until the page and physician bio are ready.
+  { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
   { label: 'Conditions', to: '/conditions' },
   { label: 'For Attorneys', to: '/for-attorneys' },

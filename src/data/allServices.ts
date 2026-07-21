@@ -31,6 +31,7 @@ export interface ServicePageContent {
   expertEyebrow?: string;
   expertTitle: string;
   expertBody: string;
+  expertItems?: string[];
   offeringsEyebrow: string;
   offeringsTitle: string;
   offeringsIntro?: string;
@@ -41,6 +42,7 @@ export interface ServicePageContent {
   approachTitle: string;
   approachTitleAccent?: string;
   approachBody: string;
+  approachItems?: string[];
   heroImageLabel: string;
   heroImageSrc?: string;
   heroImageAlt?: string;
@@ -59,11 +61,17 @@ export const ALL_SERVICES: ServicePageContent[] = [
     tagline: 'Advanced testing for nerve and muscle disorders.',
     heroIntro:
       'Healthy nerves and muscles work together to control movement, sensation, and coordination. When nerve damage or muscle dysfunction occurs, it can lead to numbness, tingling, weakness, pain, muscle cramps, or difficulty with movement. NCV and EMG are advanced diagnostic tests that evaluate peripheral nerve and muscle function to identify the underlying cause of these symptoms.',
-    expertTitle: 'Accurate diagnosis is the foundation of effective treatment.',
+    expertTitle: 'Who NCV & EMG Testing Is For',
     expertBody:
-      'At Texas NeuroTrauma Institute, our specialists perform comprehensive NCV and EMG testing to accurately diagnose a wide range of neuromuscular conditions. These studies provide valuable information that guides treatment decisions, supports rehabilitation planning, and helps patients receive timely, targeted care.',
+      'NCV and EMG testing may be appropriate when symptoms suggest a problem affecting peripheral nerves, muscles, or the connection between them.',
+    expertItems: [
+      'Numbness, tingling, or altered sensation',
+      'Muscle weakness, cramps, or loss of function',
+      'Radiating pain or suspected nerve-root injury',
+      'Possible nerve compression or peripheral neuropathy',
+    ],
     offeringsEyebrow: 'Diagnostic Services',
-    offeringsTitle: 'Our NCV & EMG Services',
+    offeringsTitle: 'What NCV & EMG Testing Includes',
     offeringsIntro:
       'Comprehensive diagnostic evaluations help identify disorders affecting the nerves, muscles, and neuromuscular system.',
     offerings: [
@@ -82,10 +90,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Comprehensive Neurological Care', body: 'NCV and EMG findings are integrated with neurological examinations, imaging studies, and other diagnostic evaluations to develop a complete understanding of each patient\'s condition.' },
       { title: 'Collaborative, Multidisciplinary Approach', body: 'Coordination with neurologists, rehabilitation specialists, physical therapists, and other healthcare professionals to ensure comprehensive care throughout recovery.' },
     ],
-    approachTitle: 'Identifying the source of dysfunction',
-    approachTitleAccent: 'is essential to the best outcomes.',
+    approachTitle: 'How Results Guide Treatment',
     approachBody:
-      'At Texas NeuroTrauma Institute, our NCV and EMG evaluations are performed with precision, interpreted by experienced specialists, and integrated into a comprehensive treatment strategy tailored to each patient\'s unique needs. Whether you are experiencing numbness, tingling, weakness, chronic pain, or loss of muscle function, our team is committed to providing accurate diagnoses, compassionate care, and evidence-based treatment recommendations that help restore mobility, improve function, and enhance your quality of life.',
+      'NCV and EMG findings are interpreted alongside the clinical examination and available records to identify the likely source of dysfunction and guide targeted treatment.',
+    approachItems: [
+      'Clinical interpretation of nerve and muscle findings',
+      'Treatment recommendations based on identified dysfunction',
+      'Rehabilitation planning when indicated',
+      'Coordination with relevant specialists',
+    ],
     heroImageLabel: 'NCV & EMG Testing',
     heroImageSrc: ncvEmgHero,
     heroImageAlt: 'Nerve Conduction Studies and Electromyography testing equipment and clinical setup',
@@ -100,11 +113,17 @@ export const ALL_SERVICES: ServicePageContent[] = [
     tagline: 'Advanced brainwave testing for accurate neurological diagnosis.',
     heroIntro:
       'An Electroencephalogram (EEG) is a safe, painless, and non-invasive diagnostic test that records the brain\'s electrical activity. By measuring brainwave patterns, EEG helps physicians evaluate neurological function and identify abnormalities associated with seizures, epilepsy, altered consciousness, sleep disorders, and other neurological conditions.',
-    expertTitle: 'Accurate diagnosis begins with understanding the brain\'s electrical activity.',
+    expertTitle: 'Who EEG Testing Is For',
     expertBody:
-      'At Texas NeuroTrauma Institute, we utilize advanced EEG technology as part of a comprehensive neurological evaluation. Our experienced specialists perform detailed brainwave assessments to support accurate diagnosis, guide treatment decisions, and monitor neurological health over time.',
+      'EEG testing may be appropriate when symptoms or episodes could be related to abnormal electrical activity in the brain.',
+    expertItems: [
+      'Suspected seizures or epilepsy',
+      'Unexplained fainting or altered consciousness',
+      'Episodes of confusion or unusual behavior',
+      'Neurological treatment monitoring',
+    ],
     offeringsEyebrow: 'Neurodiagnostic Services',
-    offeringsTitle: 'Our Electroencephalography (EEG) Services',
+    offeringsTitle: 'What EEG Testing Includes',
     offeringsIntro:
       'EEG services are designed to evaluate brain function and assist in diagnosing a wide range of neurological conditions.',
     offerings: [
@@ -122,10 +141,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Comprehensive Diagnostic Approach', body: 'EEG findings are integrated with neurological examinations, imaging studies, neurocognitive testing, and other diagnostic evaluations when appropriate.' },
       { title: 'Personalized Patient Care', body: 'Every evaluation is tailored to the patient\'s symptoms, medical history, and individual healthcare needs.' },
     ],
-    approachTitle: 'EEG is an essential component of',
-    approachTitleAccent: 'comprehensive neurological care.',
+    approachTitle: 'How EEG Results Guide Care',
     approachBody:
-      'We combine advanced brainwave testing with expert clinical interpretation to provide accurate diagnoses and develop individualized treatment strategies that support each patient\'s neurological health. Whether evaluating seizures, unexplained neurological symptoms, or monitoring ongoing treatment, our goal is to provide timely, evidence-based care that helps patients receive the answers they need and the treatment they deserve.',
+      'EEG findings are reviewed in clinical context to help explain neurological episodes, support diagnostic decisions, and determine whether treatment or additional evaluation is needed.',
+    approachItems: [
+      'Interpretation of recorded brainwave activity',
+      'Correlation with reported episodes and symptoms',
+      'Recommendations for treatment or further testing',
+      'Follow-up monitoring when clinically appropriate',
+    ],
     heroImageLabel: 'EEG Brainwave Testing',
     heroImageSrc: eegHero,
     heroImageAlt: 'Professional Electroencephalography cap and monitoring screen displaying brainwave activity',
@@ -138,12 +162,18 @@ export const ALL_SERVICES: ServicePageContent[] = [
     heroTitle: 'Brain Mapping',
     tagline: 'Visualizing brain function to guide personalized neurological care.',
     heroIntro:
-      'Brain mapping is an advanced diagnostic process that evaluates patterns of brain activity to provide a detailed understanding of how different regions of the brain are functioning. At Texas NeuroTrauma Institute, brain mapping is used to identify functional changes associated with traumatic brain injuries, concussions, neurological disorders, and cognitive challenges.',
-    expertTitle: 'A deeper understanding of brain function supports better outcomes.',
+      'Brain mapping is the clinical picture produced from recorded brain activity, often using qEEG analysis. Unlike CT or MRI, which show brain structure, it helps clinicians examine functional patterns that may relate to post-injury cognitive or neurological symptoms.',
+    expertTitle: 'Who Brain Mapping Is For',
     expertBody:
-      'Using advanced neurodiagnostic technology, including Quantitative Electroencephalography (qEEG), our clinicians analyze brainwave activity to gain objective insights that complement neurological examinations, neurocognitive testing, and neuropsychological evaluations.',
+      'Brain mapping may support patients whose neurological or cognitive symptoms require a functional view of brain activity alongside clinical evaluation.',
+    expertItems: [
+      'Persistent symptoms after concussion or TBI',
+      'Changes in attention, memory, mood, or performance',
+      'Need for objective functional baseline data',
+      'Monitoring during treatment or recovery',
+    ],
     offeringsEyebrow: 'Functional Neurodiagnostics',
-    offeringsTitle: 'Our Brain Mapping Services',
+    offeringsTitle: 'What Brain Mapping Includes',
     offeringsIntro:
       'Brain mapping evaluations provide detailed information about brain function to support diagnosis, treatment planning, and ongoing recovery.',
     offerings: [
@@ -161,10 +191,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Individualized Care Plans', body: 'Every patient\'s evaluation is used to develop personalized recommendations based on their symptoms, diagnosis, and recovery goals.' },
       { title: 'Collaborative, Comprehensive Care', body: 'Brain mapping is integrated into a multidisciplinary approach involving neurologists, neuropsychologists, rehabilitation specialists, and therapists when appropriate.' },
     ],
-    approachTitle: 'Understanding how the brain is functioning',
-    approachTitleAccent: 'improves patient care.',
+    approachTitle: 'How Brain Mapping Guides Care',
     approachBody:
-      'At Texas NeuroTrauma Institute, brain mapping is more than creating an image of brain activity—it is about understanding how the brain is functioning and using that knowledge to improve patient care. By combining advanced brain mapping technology with comprehensive clinical evaluations, we gain meaningful insights that help guide diagnosis, treatment, rehabilitation, and long-term recovery.',
+      'Brain mapping findings are considered with clinical and cognitive assessments to clarify functional patterns and inform individualized care.',
+    approachItems: [
+      'Functional brain-activity findings',
+      'Clinical correlation with symptoms and testing',
+      'Individualized treatment recommendations',
+      'Progress comparison when repeat testing is indicated',
+    ],
     heroImageLabel: 'Brain Mapping',
     heroImageSrc: brainMappingHero,
     heroImageAlt: 'Monitor showing a detailed 3D topographic neural brain map of functional network connectivity',
@@ -178,12 +213,18 @@ export const ALL_SERVICES: ServicePageContent[] = [
     heroTitleAccent: '(qEEG)',
     tagline: 'Advanced brain mapping for personalized neurological care.',
     heroIntro:
-      'Quantitative Electroencephalography (qEEG), commonly known as brain mapping, is an advanced, non-invasive diagnostic tool that measures and analyzes the brain\'s electrical activity. By identifying patterns in brainwave function, qEEG provides valuable information that can assist in evaluating neurological conditions, cognitive changes, and brain function following injury.',
-    expertTitle: 'Every brain is unique.',
+      'Quantitative Electroencephalography (qEEG) is the non-invasive recording and statistical analysis method used to measure brainwave activity. When clinically indicated, those measurements can produce a functional brain map that adds context to neurological and cognitive evaluation.',
+    expertTitle: 'Who qEEG Is For',
     expertBody:
-      'At Texas NeuroTrauma Institute, qEEG is used as part of a comprehensive neurological evaluation to support clinical decision-making and develop individualized treatment strategies. When combined with a thorough medical assessment, qEEG offers deeper insight into brain function and helps guide patient-centered care.',
+      'qEEG may be appropriate when objective brainwave data could add useful context to a neurological, cognitive, or post-injury evaluation.',
+    expertItems: [
+      'Concussion or traumatic brain injury symptoms',
+      'Cognitive or neurological changes',
+      'Planning for selected neurofeedback protocols',
+      'Monitoring functional change over time',
+    ],
     offeringsEyebrow: 'Brain Mapping Services',
-    offeringsTitle: 'Our qEEG Services',
+    offeringsTitle: 'What qEEG Includes',
     offeringsIntro:
       'qEEG evaluations provide objective data that complements traditional neurological assessments and helps inform treatment planning.',
     offerings: [
@@ -201,10 +242,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Comprehensive Neurological Care', body: 'qEEG findings are integrated with other diagnostic evaluations to create a complete picture of each patient\'s neurological health.' },
       { title: 'Personalized, Evidence-Informed Care', body: 'Every assessment contributes to an individualized treatment plan tailored to each patient\'s symptoms, diagnosis, and recovery goals.' },
     ],
-    approachTitle: 'Effective neurological care begins with',
-    approachTitleAccent: 'understanding brain function.',
+    approachTitle: 'How qEEG Findings Guide Care',
     approachBody:
-      'At Texas NeuroTrauma Institute, qEEG is one of several advanced diagnostic tools we use to better evaluate cognitive and neurological health, particularly in patients recovering from traumatic brain injuries, concussions, and other neurological conditions. By combining brain mapping with expert clinical evaluation and multidisciplinary care, we provide patients with accurate diagnoses, informed treatment recommendations, and ongoing support throughout their recovery journey.',
+      'qEEG is interpreted as one part of a broader clinical assessment, helping the care team understand brainwave patterns and determine whether they should influence treatment planning.',
+    approachItems: [
+      'Quantified brainwave findings',
+      'Correlation with clinical and cognitive results',
+      'Treatment-planning support',
+      'Follow-up comparison when clinically indicated',
+    ],
     heroImageLabel: 'qEEG Brain Mapping',
     heroImageSrc: qeegHero,
     heroImageAlt: 'Patient undergoing qEEG brain mapping wearing a clinical sensor cap during analysis',
@@ -217,12 +263,18 @@ export const ALL_SERVICES: ServicePageContent[] = [
     heroTitle: 'Neurocognitive Testing',
     tagline: 'Advanced cognitive assessments for accurate diagnosis and recovery.',
     heroIntro:
-      'Neurocognitive testing provides an objective evaluation of how the brain is functioning by measuring key cognitive abilities such as memory, attention, processing speed, language, and executive functioning. At Texas NeuroTrauma Institute, we use comprehensive neurocognitive assessments to identify cognitive changes resulting from traumatic brain injuries, concussions, neurological disorders, stroke, and other conditions affecting brain health.',
-    expertTitle: 'Your cognitive health is essential.',
+      'Neurocognitive testing uses standardized measures of memory, attention, processing speed, language, and executive function. It provides objective cognitive scores that can document change after injury or illness and track recovery over time.',
+    expertTitle: 'Who Neurocognitive Testing Is For',
     expertBody:
-      'Our testing helps patients and healthcare providers better understand cognitive performance, establish accurate diagnoses, monitor recovery, and develop personalized treatment plans that support optimal neurological outcomes. Early assessment can lead to earlier intervention and better long-term recovery.',
+      'Neurocognitive testing may be appropriate when changes in thinking or performance need to be measured objectively and connected to daily function.',
+    expertItems: [
+      'Memory, attention, or concentration concerns',
+      'Slower processing or reaction time',
+      'Changes after concussion, TBI, stroke, or illness',
+      'Return-to-work, school, or activity planning',
+    ],
     offeringsEyebrow: 'Cognitive Assessment',
-    offeringsTitle: 'Our Neurocognitive Testing Services',
+    offeringsTitle: 'What Neurocognitive Testing Includes',
     offeringsIntro:
       'Advanced testing services provide valuable insights into cognitive function and help guide individualized care and rehabilitation.',
     offerings: [
@@ -240,10 +292,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Detailed, Actionable Reports', body: 'Clear findings and practical recommendations that help patients, families, and referring providers make informed treatment decisions.' },
       { title: 'Collaborative, Multidisciplinary Care', body: 'Close coordination with neurologists, neuropsychologists, rehabilitation specialists, therapists, and primary care providers to ensure comprehensive patient care.' },
     ],
-    approachTitle: 'Every patient\'s cognitive profile',
-    approachTitleAccent: 'is unique.',
+    approachTitle: 'How Results Guide Recovery',
     approachBody:
-      'We take a personalized approach to neurocognitive testing, combining advanced assessment tools with clinical expertise to identify strengths, uncover challenges, and create a roadmap for recovery. At Texas NeuroTrauma Institute, our goal is not only to evaluate brain function but to provide the information needed to support effective treatment, monitor progress, and help patients regain confidence, independence, and the highest possible quality of life.',
+      'Results identify cognitive strengths and challenges, provide a baseline for comparison, and help shape treatment, rehabilitation, and activity recommendations.',
+    approachItems: [
+      'A clear profile of measured cognitive abilities',
+      'Clinical interpretation of strengths and challenges',
+      'Recommendations for treatment or rehabilitation',
+      'Progress monitoring and activity guidance',
+    ],
     heroImageLabel: 'Neurocognitive Testing',
     heroImageSrc: neurocognitiveTestingHero,
     heroImageAlt: 'Patient performing a neurocognitive tablet assessment in a modern clinical room',
@@ -256,12 +313,18 @@ export const ALL_SERVICES: ServicePageContent[] = [
     heroTitle: 'Neuropsychology',
     tagline: 'Understanding the connection between brain function and everyday life.',
     heroIntro:
-      'Neuropsychology explores how the brain influences thinking, memory, emotions, and behavior. At Texas NeuroTrauma Institute, our neuropsychology specialists provide comprehensive evaluations and personalized treatment plans to help individuals understand and overcome the cognitive, emotional, and behavioral challenges that can arise from neurological conditions and traumatic brain injuries.',
-    expertTitle: 'Compassionate, evidence-based care for cognitive and emotional recovery.',
+      'A neuropsychological evaluation goes beyond cognitive scores to examine how thinking, emotion, behavior, and medical history affect everyday function. This broader clinical interpretation helps clarify complex changes after neurological injury or illness and informs practical care planning.',
+    expertTitle: 'Who Neuropsychological Evaluation Is For',
     expertBody:
-      'Whether symptoms are the result of a concussion, traumatic brain injury, stroke, neurological disorder, or other medical condition, our team is committed to delivering care that supports recovery and improves quality of life.',
+      'Neuropsychological evaluation may be appropriate when cognitive, emotional, or behavioral changes are affecting everyday life after injury or neurological illness.',
+    expertItems: [
+      'Cognitive changes after concussion, TBI, or stroke',
+      'Mood or behavioral changes linked to neurological health',
+      'Complex questions about diagnosis and function',
+      'Return-to-work or return-to-school planning',
+    ],
     offeringsEyebrow: 'Neuropsychological Care',
-    offeringsTitle: 'Our Neuropsychology Services',
+    offeringsTitle: 'What Neuropsychological Care Includes',
     offeringsIntro:
       'Comprehensive neuropsychology services identify cognitive strengths and challenges while developing individualized treatment strategies for lasting improvement.',
     offerings: [
@@ -279,10 +342,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Integrated Neurological Care', body: 'Collaborative treatment alongside neurologists, rehabilitation specialists, therapists, and other healthcare professionals.' },
       { title: 'Patient-Centered Treatment Plans', body: 'Personalized care designed around each individual\'s goals, lifestyle, and recovery journey.' },
     ],
-    approachTitle: 'Recovery involves more than treating symptoms—',
-    approachTitleAccent: 'it requires understanding the whole person.',
+    approachTitle: 'How Findings Guide Treatment',
     approachBody:
-      'Our neuropsychology team combines advanced diagnostic evaluations, individualized cognitive rehabilitation, patient education, and collaborative care to help patients regain confidence, maximize independence, and achieve the best possible outcomes. At Texas NeuroTrauma Institute, we are committed to helping patients navigate the challenges of neurological injury and cognitive change with expertise, compassion, and a clear path toward recovery.',
+      'Findings connect cognitive performance, emotional health, and daily function so treatment recommendations and accommodations address the whole clinical picture.',
+    approachItems: [
+      'Integrated cognitive and emotional findings',
+      'Practical treatment recommendations',
+      'Work, school, or daily-living accommodations',
+      'A baseline for monitoring progress',
+    ],
     heroImageLabel: 'Neuropsychology',
     heroImageSrc: neuropsychologyHero,
     heroImageAlt: 'A neuropsychology consultation where the clinician is explaining findings and rehab exercises',
@@ -296,11 +364,17 @@ export const ALL_SERVICES: ServicePageContent[] = [
     tagline: 'Targeted therapies for chronic headaches and migraines.',
     heroIntro:
       'Chronic headaches and migraines can significantly impact daily life, causing pain, discomfort, and disruptions to normal activities. At Texas NeuroTrauma Institute, our headache treatment services offer targeted therapies—including Occipital Nerve Blocks (ONB), Botox injections, and Sphenopalatine Ganglion (SPG) Blocks—to provide relief from persistent headaches and migraines.',
-    expertTitle: 'Effective headache treatment restores comfort and daily quality of life.',
+    expertTitle: 'Who Headache Treatment Is For',
     expertBody:
-      'Our headache treatment options are designed to reduce pain and improve function through minimally invasive, research-backed techniques tailored to each patient\'s condition and recovery goals.',
+      'Treatment may be appropriate when recurring or persistent headaches are disrupting function and require a targeted medical approach.',
+    expertItems: [
+      'Chronic or frequent migraines',
+      'Occipital or tension-type headache pain',
+      'Persistent headaches after neurological injury',
+      'Symptoms not adequately controlled by current care',
+    ],
     offeringsEyebrow: 'Pain Management',
-    offeringsTitle: 'Our Headache Treatment Services',
+    offeringsTitle: 'What Headache Treatment Includes',
     offeringsIntro:
       'Minimally invasive, research-backed techniques designed to reduce pain and improve function.',
     offerings: [
@@ -316,10 +390,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Experienced Neurology Specialists', body: 'Experts in headache and migraine treatment, ensuring high-quality, evidence-based care.' },
       { title: 'Integrated Neurological Care', body: 'Headache treatment coordinated with broader neurological evaluation and recovery planning when appropriate.' },
     ],
-    approachTitle: 'A holistic approach to',
-    approachTitleAccent: 'headache relief.',
+    approachTitle: 'How Treatment Is Personalized',
     approachBody:
-      'At Texas NeuroTrauma Institute, we believe in combining nerve blocks, Botox therapy, and other advanced treatments to provide effective relief tailored to each patient\'s condition. Our goal is to minimize pain, reduce headache frequency, and improve overall well-being so patients can return to work, family life, and the activities they value most.',
+      'Treatment selection is based on the headache pattern, clinical history, prior response to care, and the patient\'s functional goals.',
+    approachItems: [
+      'Selection of an appropriate treatment option',
+      'A plan based on symptom pattern and history',
+      'Monitoring of headache frequency and response',
+      'Adjustment or referral when additional care is needed',
+    ],
     heroImageLabel: 'Headache Treatment',
     heroImageSrc: headacheTreatmentHero,
     heroImageAlt: 'A sterile procedure room equipped for advanced migraine and nerve block treatments',
@@ -333,11 +412,17 @@ export const ALL_SERVICES: ServicePageContent[] = [
     tagline: 'Compassionate support for emotional health, recovery, and resilience.',
     heroIntro:
       'Living with a traumatic brain injury, concussion, neurological condition, chronic pain, or other life-changing health challenge can have a profound impact on emotional well-being. Feelings of anxiety, depression, stress, grief, frustration, and adjustment difficulties are common and can affect recovery, relationships, work, and everyday life.',
-    expertTitle: 'Emotional healing is an essential part of neurological recovery.',
+    expertTitle: 'Who Counseling Services Are For',
     expertBody:
-      'At Texas NeuroTrauma Institute, our Counseling Services provide compassionate, evidence-based support to help patients and their families navigate these challenges. Through individualized therapy and practical coping strategies, we help patients build resilience, improve emotional well-being, and regain confidence throughout their recovery journey.',
+      'Counseling may help patients and families manage the emotional and practical effects of neurological injury, chronic symptoms, or major health changes.',
+    expertItems: [
+      'Anxiety, depression, stress, or mood changes',
+      'Trauma, grief, or adjustment difficulties',
+      'Changes affecting relationships, work, or daily life',
+      'Family members and caregivers needing support',
+    ],
     offeringsEyebrow: 'Mental Wellness',
-    offeringsTitle: 'Our Counseling Services',
+    offeringsTitle: 'What Counseling Services Include',
     offeringsIntro:
       'Counseling programs tailored to meet the unique emotional and psychological needs of each patient while supporting long-term recovery and well-being.',
     offerings: [
@@ -356,10 +441,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Integrated Neurological Care', body: 'Close collaboration with neurologists, neuropsychologists, rehabilitation specialists, and other members of the care team to support whole-person healing.' },
       { title: 'Evidence-Based Therapeutic Approaches', body: 'Proven interventions designed to strengthen emotional resilience, improve coping skills, and enhance overall well-being.' },
     ],
-    approachTitle: 'Neurological recovery involves',
-    approachTitleAccent: 'both the brain and the mind.',
+    approachTitle: 'How Counseling Supports Recovery',
     approachBody:
-      'Our counseling services are designed to help patients process the emotional impact of illness or injury while developing the skills needed to move forward with confidence. By combining evidence-based therapy, compassionate support, and collaborative neurological care, we empower patients and their families to build resilience, improve emotional health, and achieve a higher quality of life throughout every stage of recovery.',
+      'Counseling supports recovery by helping patients process change, strengthen coping skills, and address emotional barriers that affect function and quality of life.',
+    approachItems: [
+      'Individualized therapeutic goals',
+      'Practical coping and emotional-regulation strategies',
+      'Support for adjustment and resilience',
+      'Coordination with the broader care team when appropriate',
+    ],
     heroImageLabel: 'Counseling Services',
     heroImageSrc: counselingHero,
     heroImageAlt: 'A serene and comfortable counseling office space with facing armchairs',
@@ -374,11 +464,17 @@ export const ALL_SERVICES: ServicePageContent[] = [
     tagline: 'Strengthening memory, restoring cognitive function, and enhancing everyday life.',
     heroIntro:
       'Memory is essential to learning, decision-making, communication, and independent living. When memory and cognitive function are affected by a traumatic brain injury, concussion, stroke, neurological condition, or age-related cognitive changes, everyday tasks can become more challenging. Through structured memory training and cognitive rehabilitation, patients can strengthen cognitive abilities, develop effective compensatory strategies, and regain confidence in their daily lives.',
-    expertTitle: 'Strengthening cognitive function today builds greater independence tomorrow.',
+    expertTitle: 'Who Cognitive Rehabilitation Is For',
     expertBody:
-      'At Texas NeuroTrauma Institute, our Memory Training & Cognitive Rehabilitation program combines evidence-based therapeutic techniques with personalized care to improve memory, attention, executive functioning, and overall cognitive performance. Our goal is to help patients maximize their cognitive potential and achieve greater independence at home, at work, and in their communities.',
+      'Cognitive rehabilitation may help when changes in memory, attention, processing, or executive function are limiting independence and daily performance.',
+    expertItems: [
+      'Memory or attention difficulties',
+      'Slower processing and reduced mental flexibility',
+      'Planning, organization, or problem-solving challenges',
+      'Difficulty returning to work, school, or daily routines',
+    ],
     offeringsEyebrow: 'Cognitive Rehabilitation',
-    offeringsTitle: 'Our Memory & Cognitive Rehab Services',
+    offeringsTitle: 'What Cognitive Rehabilitation Includes',
     offeringsIntro:
       'Individualized programs designed to improve cognitive performance while equipping patients with practical strategies for everyday success.',
     offerings: [
@@ -398,10 +494,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Evidence-Based Rehabilitation', body: 'Therapeutic interventions grounded in neuroscience research and current clinical best practices.' },
       { title: 'Focus on Real-World Function', body: 'Therapy designed to improve performance in daily activities, work, school, and social environments.' },
     ],
-    approachTitle: 'Cognitive rehabilitation is about',
-    approachTitleAccent: 'living more independently and confidently.',
+    approachTitle: 'How Rehabilitation Builds Daily Function',
     approachBody:
-      'Our comprehensive approach combines therapeutic exercises, individualized coaching, practical compensatory strategies, and ongoing progress monitoring to support meaningful cognitive recovery. Whether recovering from a brain injury, managing a neurological condition, or addressing age-related cognitive changes, our Memory Training & Cognitive Rehabilitation program is designed to help patients strengthen their cognitive abilities, improve everyday function, and achieve the highest possible quality of life.',
+      'Therapeutic exercises, coaching, and compensatory strategies are organized around practical goals at home, work, school, and in the community.',
+    approachItems: [
+      'Individualized cognitive goals',
+      'Practical strategies for everyday tasks',
+      'Structured exercises and coaching',
+      'Progress review and plan adjustment',
+    ],
     heroImageLabel: 'Memory & Cognitive Rehab',
     heroImageSrc: memoryRehabHero,
     heroImageAlt: 'Patient practicing interactive memory and cognitive rehabilitation tasks with a therapist',
@@ -416,11 +517,17 @@ export const ALL_SERVICES: ServicePageContent[] = [
     tagline: 'Expert diagnosis, treatment, and recovery for concussions.',
     heroIntro:
       'A concussion is a mild traumatic brain injury (mTBI) that can affect memory, concentration, balance, vision, mood, and overall brain function. While many people recover fully with appropriate care, an undiagnosed or poorly managed concussion can lead to prolonged symptoms and long-term complications. At Texas NeuroTrauma Institute, we provide comprehensive concussion evaluation and management for children, adolescents, and adults — whether your injury resulted from a sports-related impact, motor vehicle accident, workplace injury, fall, or recreational activity.',
-    expertTitle: 'Early evaluation is one of the most important steps toward protecting your brain.',
+    expertTitle: 'Who Concussion Evaluation Is For',
     expertBody:
-      'Our multidisciplinary team delivers evidence-based care focused on accurate diagnosis, symptom management, and safe recovery. We help patients achieve the best possible recovery through structured clinical assessments and individualized treatment plans designed to support every stage of healing.',
+      'Evaluation may be appropriate after a head impact when symptoms are new, persistent, worsening, or interfering with school, work, sports, or daily activity.',
+    expertItems: [
+      'Recent head impact with concussion symptoms',
+      'Persistent headaches, dizziness, or cognitive changes',
+      'Difficulty returning to work, school, or sports',
+      'Need for structured recovery monitoring',
+    ],
     offeringsEyebrow: 'Concussion Care',
-    offeringsTitle: 'Our Concussion Evaluation & Management Services',
+    offeringsTitle: 'What Concussion Care Includes',
     offeringsIntro:
       'Personalized concussion care using advanced clinical assessments and individualized treatment plans designed to support every stage of recovery.',
     offerings: [
@@ -440,10 +547,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Personalized Recovery Plans', body: 'Every treatment plan is tailored to the patient\'s symptoms, lifestyle, occupation, and recovery goals.' },
       { title: 'Continuity of Care', body: 'Comprehensive follow-up and ongoing support throughout every stage of recovery.' },
     ],
-    approachTitle: 'No two concussions are alike.',
-    approachTitleAccent: 'Every recovery path is unique.',
+    approachTitle: 'How Concussion Care Progresses',
     approachBody:
-      'At Texas NeuroTrauma Institute, we recognize that each patient\'s symptoms, recovery timeline, and goals are unique. Our approach combines early diagnosis, advanced neurocognitive evaluation, individualized treatment, and continuous monitoring to help patients recover with confidence. From the initial assessment through a safe return to work, school, sports, and everyday life, we are committed to delivering compassionate, evidence-based care that promotes complete recovery and long-term brain health.',
+      'Care progresses from initial assessment to symptom management, monitored activity increases, and a safe return to work, school, sports, and everyday life.',
+    approachItems: [
+      'A baseline clinical and symptom assessment',
+      'An individualized recovery plan',
+      'Monitoring and adjustment as symptoms change',
+      'Stepwise return-to-activity guidance',
+    ],
     heroImageLabel: 'Concussion Evaluation',
     heroImageSrc: concussionManagementHero,
     heroImageAlt: 'Clinician conducting a post-concussion balance and coordination examination',
@@ -457,10 +569,16 @@ export const ALL_SERVICES: ServicePageContent[] = [
     heroTitleAccent: 'Evaluation',
     tagline: 'Comprehensive physician-led evaluation for traumatic brain injury and complex neurological symptoms.',
     heroIntro:
-      'A physician neurotrauma evaluation is the foundation of effective care after concussion, traumatic brain injury, or other neurological trauma. At Texas NeuroTrauma Institute, every evaluation integrates clinical history, neurological examination, symptom analysis, mechanism of injury review, imaging interpretation, and individualized treatment recommendations — so patients and referring partners receive a clear, medically grounded assessment.',
-    expertTitle: 'Accurate clinical framing guides every decision that follows.',
+      'Every evaluation brings the injury history, neurological examination, symptom pattern, mechanism of injury, and available imaging into one clinical picture. The goal is a clear, medically grounded plan for what should happen next.',
+    expertTitle: 'Who This Evaluation Is For',
     expertBody:
-      'Our physician-led evaluations are designed for patients with persistent symptoms after motor vehicle collisions, workplace injuries, falls, sports impacts, and other traumatic events. Findings are correlated with diagnostic testing when indicated and translated into practical recommendations for recovery, rehabilitation, and documentation.',
+      'A physician neurotrauma evaluation may be appropriate when neurological or cognitive symptoms persist after an injury and require a coordinated clinical assessment.',
+    expertItems: [
+      'Motor vehicle collisions',
+      'Workplace injuries',
+      'Falls and other traumatic events',
+      'Sports-related impacts',
+    ],
     offeringsEyebrow: 'Clinical Evaluation',
     offeringsTitle: 'What This Evaluation Includes',
     offeringsIntro:
@@ -480,10 +598,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Actionable Next Steps', body: 'Patients leave with a clear plan for testing, treatment, rehabilitation, and follow-up.' },
       { title: 'Documentation Ready for Care Partners', body: 'Findings support coordinated care with referring providers and, when appropriate, structured medical documentation.' },
     ],
-    approachTitle: 'Every neurotrauma case begins with',
-    approachTitleAccent: 'a complete clinical foundation.',
+    approachTitle: 'What Happens After the Evaluation',
     approachBody:
-      'At Texas NeuroTrauma Institute, the physician evaluation is not a formality — it is the organizing step that determines which diagnostics are indicated, which rehabilitation pathways are appropriate, and how findings should be communicated. Our goal is to replace uncertainty with a structured, evidence-informed plan focused on recovery, function, and quality of life.',
+      'Findings are translated into practical next steps, so patients and care partners understand the clinical picture, whether further testing is indicated, and how treatment or rehabilitation should proceed.',
+    approachItems: [
+      'Clear clinical findings and diagnostic context',
+      'Recommendations for indicated testing',
+      'An individualized treatment or rehabilitation plan',
+      'Structured documentation and follow-up guidance',
+    ],
     heroImageLabel: 'Physician Neurotrauma Evaluation',
     heroImageSrc: concussionManagementHero,
     heroImageAlt: 'Physician conducting a comprehensive neurotrauma clinical evaluation with a patient',
@@ -498,11 +621,17 @@ export const ALL_SERVICES: ServicePageContent[] = [
     tagline: 'Assessment of dizziness, imbalance, and vestibular dysfunction following head injury.',
     heroIntro:
       'Dizziness, imbalance, visual motion sensitivity, and vestibular dysfunction are common after concussion and traumatic brain injury. These symptoms can disrupt work, driving, school, and everyday confidence. Texas NeuroTrauma Institute provides structured vestibular and balance evaluation to identify contributing factors and guide targeted rehabilitation.',
-    expertTitle: 'Balance problems after trauma deserve a precise clinical explanation.',
+    expertTitle: 'Who Vestibular & Balance Evaluation Is For',
     expertBody:
-      'Our evaluations help distinguish vestibular, visual, and neurological contributors to post-traumatic dizziness and imbalance. Findings inform individualized therapy recommendations and help patients understand why symptoms persist — and what can be done next.',
+      'Evaluation may be appropriate when dizziness, imbalance, or visual-motion symptoms persist after concussion or neurological trauma.',
+    expertItems: [
+      'Dizziness or lightheadedness',
+      'Imbalance, gait changes, or fall risk',
+      'Visual-motion sensitivity',
+      'Activity intolerance or spatial disorientation',
+    ],
     offeringsEyebrow: 'Balance Assessment',
-    offeringsTitle: 'Our Vestibular & Balance Services',
+    offeringsTitle: 'What Vestibular & Balance Evaluation Includes',
     offeringsIntro:
       'Focused evaluation for patients experiencing dizziness, imbalance, and motion sensitivity after neurological trauma.',
     offerings: [
@@ -520,10 +649,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Clear Functional Impact', body: 'Assessments address how dizziness and imbalance affect work, driving, school, and daily activity.' },
       { title: 'Pathway to Recovery', body: 'Results guide vestibular therapy and coordinated rehabilitation rather than leaving patients without a plan.' },
     ],
-    approachTitle: 'When the world feels unstable after injury,',
-    approachTitleAccent: 'evaluation should bring clarity.',
+    approachTitle: 'How Findings Guide Rehabilitation',
     approachBody:
-      'We approach vestibular and balance symptoms as clinically meaningful — not as secondary complaints. By identifying contributing factors early and connecting findings to rehabilitation, we help patients move from persistent dizziness toward safer, more confident function.',
+      'Findings help distinguish vestibular, visual, and neurological contributors so rehabilitation can target the problems affecting balance and activity.',
+    approachItems: [
+      'Clinical explanation of contributing factors',
+      'Targeted vestibular-therapy recommendations',
+      'Safety and fall-risk guidance',
+      'Coordination with related neurological care',
+    ],
     heroImageLabel: 'Vestibular & Balance Evaluation',
     heroImageSrc: concussionManagementHero,
     heroImageAlt: 'Clinician assessing patient balance and vestibular function after head injury',
@@ -538,11 +672,17 @@ export const ALL_SERVICES: ServicePageContent[] = [
     tagline: 'Evidence-informed neurofeedback individualized with clinical findings and qEEG when appropriate.',
     heroIntro:
       'Neurofeedback is a non-invasive training approach that uses real-time brain activity feedback to support regulation of attention, arousal, and related neurological patterns. At Texas NeuroTrauma Institute, neurofeedback protocols are individualized using clinical findings and quantitative EEG (qEEG) when appropriate — never as a one-size-fits-all program.',
-    expertTitle: 'Neurofeedback should be guided by clinical context.',
+    expertTitle: 'Who Neurofeedback Is For',
     expertBody:
-      'We integrate neurofeedback into a broader physician-led care plan when it may support recovery goals after concussion, TBI, or related neurological symptoms. Training decisions are informed by evaluation findings, symptom profile, and diagnostic data.',
+      'Neurofeedback may be considered for selected patients when clinical findings support its use as part of a broader physician-directed recovery plan.',
+    expertItems: [
+      'Attention or self-regulation goals',
+      'Persistent symptoms after concussion or TBI',
+      'qEEG findings that may help guide training',
+      'A coordinated rehabilitation plan already in place',
+    ],
     offeringsEyebrow: 'Neurofeedback Care',
-    offeringsTitle: 'Our Neurofeedback Services',
+    offeringsTitle: 'What Neurofeedback Includes',
     offeringsIntro:
       'Individualized protocols designed to complement objective diagnostics and physician-directed recovery planning.',
     offerings: [
@@ -560,10 +700,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Individualized Care', body: 'No generic templates — protocols are tailored to the patient\'s presentation and recovery priorities.' },
       { title: 'Part of a Larger Plan', body: 'Neurofeedback is one component of coordinated rehabilitation when clinically appropriate.' },
     ],
-    approachTitle: 'Neurofeedback works best when',
-    approachTitleAccent: 'it is clinically grounded.',
+    approachTitle: 'How Neurofeedback Is Personalized',
     approachBody:
-      'At Texas NeuroTrauma Institute, neurofeedback is offered as an individualized rehabilitation option within a physician-directed model of care. We prioritize careful patient selection, transparent expectations, and integration with diagnostics and therapy so training supports meaningful recovery goals.',
+      'Training protocols are selected from the patient\'s presentation, recovery goals, and available diagnostic findings, then adjusted according to clinical response.',
+    approachItems: [
+      'Careful patient selection',
+      'Individualized training targets',
+      'Ongoing response monitoring',
+      'Coordination with diagnostics and rehabilitation',
+    ],
     heroImageLabel: 'Neurofeedback Therapy',
     heroImageSrc: qeegHero,
     heroImageAlt: 'Patient participating in clinician-guided neurofeedback training session',
@@ -578,11 +723,17 @@ export const ALL_SERVICES: ServicePageContent[] = [
     tagline: 'Coordinated rehabilitation across therapy disciplines for neurotrauma recovery.',
     heroIntro:
       'Recovery after traumatic brain injury and concussion often requires more than one form of care. Multidisciplinary rehabilitation coordinates physical therapy, vestibular therapy, speech therapy, occupational therapy, behavioral health, pain management, and specialty providers around a shared clinical plan — so patients are not left navigating fragmented care alone.',
-    expertTitle: 'Complex recovery needs coordinated expertise.',
+    expertTitle: 'Who Multidisciplinary Rehabilitation Is For',
     expertBody:
-      'Texas NeuroTrauma Institute helps organize rehabilitation around physician findings and functional goals. Whether symptoms involve cognition, balance, headache, communication, mood, or daily living skills, we work to align the right specialists at the right stage of recovery.',
+      'Coordinated rehabilitation may be appropriate when recovery involves several symptom areas or requires more than one therapy discipline.',
+    expertItems: [
+      'Combined physical, cognitive, or vestibular symptoms',
+      'Communication, mood, pain, or daily-living challenges',
+      'Multiple therapy recommendations that need coordination',
+      'Changing needs across different stages of recovery',
+    ],
     offeringsEyebrow: 'Coordinated Rehab',
-    offeringsTitle: 'Our Multidisciplinary Rehabilitation Support',
+    offeringsTitle: 'What Multidisciplinary Rehabilitation Includes',
     offeringsIntro:
       'Care coordination across disciplines to support function, independence, and quality of life after neurological trauma.',
     offerings: [
@@ -601,10 +752,15 @@ export const ALL_SERVICES: ServicePageContent[] = [
       { title: 'Clear Care Pathways', body: 'Patients understand which therapies are recommended and why.' },
       { title: 'Continuity Across Recovery Stages', body: 'Plans evolve as symptoms improve and goals shift toward work, school, and daily life.' },
     ],
-    approachTitle: 'Neurotrauma recovery is rarely',
-    approachTitleAccent: 'a single-discipline problem.',
+    approachTitle: 'How the Care Team Coordinates Recovery',
     approachBody:
-      'We treat multidisciplinary rehabilitation as an organized pathway, not a list of disconnected appointments. By coordinating therapy disciplines around objective findings and physician guidance, Texas NeuroTrauma Institute helps patients pursue recovery with clarity, continuity, and clinical accountability.',
+      'Therapy disciplines are organized around physician findings, shared functional goals, and regular progress review so patients are not left navigating disconnected care.',
+    approachItems: [
+      'A shared physician-directed rehabilitation plan',
+      'Clear roles across therapy disciplines',
+      'Unified functional goals and progress review',
+      'Adjustments as recovery needs change',
+    ],
     heroImageLabel: 'Multidisciplinary Rehabilitation',
     heroImageSrc: memoryRehabHero,
     heroImageAlt: 'Rehabilitation specialists coordinating multidisciplinary care for a neurotrauma patient',

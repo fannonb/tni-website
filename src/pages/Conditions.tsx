@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Eyebrow, SectionHeading, Button } from '../components/ui';
+import { Container, SectionHeading, Button } from '../components/ui';
 import { Reveal } from '../components/Reveal';
 import { TopographicPattern } from '../components/brand/TopographicPattern';
 import conditionsHeroImage from '../assets/images/conditions_hero.png';
@@ -42,10 +42,12 @@ export default function Conditions() {
         <Container style={{ position: 'relative', zIndex: 2 }}>
           <div className="tni-conditions-noir__grid">
             <div className="tni-conditions-noir__content">
-              <p className="tni-conditions-noir__eyebrow">Conditions We Evaluate</p>
               <h1 id="conditions-hero-heading" className="tni-conditions-noir__title">
-                When trauma affects your brain, <span className="tni-conditions-noir__accent">you deserve to know why.</span>
+                Conditions We Evaluate
               </h1>
+              <p className="tni-conditions-noir__tagline">
+                When trauma affects your brain, <span className="tni-conditions-noir__accent">you deserve to know why.</span>
+              </p>
               <p className="tni-conditions-noir__lead">{conditionsPageCopy.heroLead}</p>
               <p className="tni-conditions-noir__trust">{conditionsPageCopy.heroNote}</p>
 
@@ -76,14 +78,13 @@ export default function Conditions() {
       <section
         id="condition-list"
         className="tni-conditions-groups"
-        aria-label="Conditions, injuries, and symptoms we evaluate"
+        aria-labelledby="conditions-browse-heading"
       >
         <Container>
           <Reveal>
             <div className="tni-conditions-groups__header">
-              <Eyebrow style={{ marginBottom: 12 }}>What We Evaluate</Eyebrow>
-              <SectionHeading size={32} style={{ marginBottom: 12 }}>
-                Conditions, injuries, and symptoms we evaluate
+              <SectionHeading as="h2" size={32} style={{ marginBottom: 12 }}>
+                <span id="conditions-browse-heading">Browse by Diagnosis, Injury, or Symptoms</span>
               </SectionHeading>
               <p className="tni-conditions-groups__intro">{conditionsPageCopy.groupsIntro}</p>
             </div>
@@ -133,14 +134,13 @@ export default function Conditions() {
         </Container>
       </section>
 
-      <section className="tni-conditions-pathways" aria-label="How we evaluate these concerns">
+      <section className="tni-conditions-pathways" aria-labelledby="conditions-pathways-heading">
         <TopographicPattern tone="light" className="tni-conditions-pathways__topo" style={{ opacity: 0.04 }} />
         <Container style={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <div className="tni-conditions-pathways__header">
-              <Eyebrow style={{ marginBottom: 12 }}>Next Step</Eyebrow>
-              <SectionHeading size={32} style={{ marginBottom: 12 }}>
-                How we evaluate these concerns
+              <SectionHeading as="h2" size={32} style={{ marginBottom: 12 }}>
+                <span id="conditions-pathways-heading">How We Evaluate These Concerns</span>
               </SectionHeading>
               <p className="tni-conditions-pathways__intro">{conditionsPageCopy.evaluateIntro}</p>
             </div>

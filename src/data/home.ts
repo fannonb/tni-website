@@ -171,13 +171,10 @@ export const homepageConditions: string[] = [
 ];
 
 export const whyTniProof = {
-  eyebrow: 'Why Texas NeuroTrauma Institute',
-  headingAccent: 'normal.',
   narrative: [
     'Traumatic brain injury is frequently misunderstood because conventional CT and MRI imaging often appears normal despite persistent neurological dysfunction. Our institute combines physician expertise with advanced functional neurodiagnostic testing to identify objective abnormalities.',
     'We correlate those findings with the clinical picture and develop individualized treatment strategies focused on recovery, function, and quality of life.',
   ],
-  objectiveEyebrow: 'Objective Neurodiagnostic Evaluation',
   objectiveHeading: 'Structural imaging shows anatomy. We evaluate function.',
   objectiveCopy: [
     'Many patients experience persistent neurological symptoms despite normal CT or MRI findings. Structural imaging evaluates anatomy, whereas functional neurodiagnostic testing may provide additional information regarding brain function when interpreted alongside the patient\'s history, neurological examination, imaging studies, and other clinical findings.',
