@@ -5425,10 +5425,33 @@ img {
 
 .tni-about-hero__summary {
   max-width: 46ch;
-  margin: 0;
+  margin: 0 0 22px;
   font-size: clamp(15px, 1.6vw, 16.5px);
   line-height: 1.65;
   color: rgba(245, 237, 227, 0.76);
+}
+
+.tni-about-hero__credentials {
+  max-width: 52ch;
+  padding-top: 18px;
+  border-top: 1px solid rgba(245, 237, 227, 0.16);
+}
+
+.tni-about-hero__credentials-label {
+  margin: 0 0 8px;
+  font-size: 10.5px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tni-accent);
+}
+
+.tni-about-hero__credentials-value {
+  margin: 0;
+  font-size: clamp(13.5px, 1.4vw, 14.5px);
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgba(245, 237, 227, 0.88);
 }
 
 .tni-about-hero__visual {
@@ -5457,8 +5480,9 @@ img {
   }
 
   .tni-about-hero__role,
-  .tni-about-hero__summary {
-    max-width: 38ch;
+  .tni-about-hero__summary,
+  .tni-about-hero__credentials {
+    max-width: 42ch;
     margin-left: auto;
     margin-right: auto;
   }
@@ -5477,7 +5501,7 @@ img {
 
 .tni-about-facts__grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   list-style: none;
   margin: 0;
   padding: 0;
@@ -5520,26 +5544,6 @@ img {
 }
 
 @media (max-width: 860px) {
-  .tni-about-facts__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .tni-about-facts__item,
-  .tni-about-facts__item:first-child,
-  .tni-about-facts__item:last-child {
-    padding: 20px;
-  }
-
-  .tni-about-facts__item:nth-child(2) {
-    border-right: 0;
-  }
-
-  .tni-about-facts__item:nth-child(-n + 2) {
-    border-bottom: 1px solid rgba(7, 53, 94, 0.08);
-  }
-}
-
-@media (max-width: 520px) {
   .tni-about-facts__grid {
     grid-template-columns: 1fr;
   }

@@ -8,7 +8,7 @@ export const site = {
   brand: 'Texas NeuroTrauma Institute',
   tagline: 'Comprehensive Neurotrauma Evaluation, Advanced Neurodiagnostics & Physician-Led Recovery',
   subTagline: 'Objective, evidence-informed neurotrauma care for patients and legal partners across Texas.',
-  disclosure: 'Texas NeuroTrauma Institute — A Division of StarMED Clinic — Randdolf Physicians PLLC',
+  disclosure: 'Texas NeuroTrauma Institute',
   footerLine:
     'Advancing neurotrauma diagnosis, recovery, and neurological health through physician-led, evidence-informed care.',
 

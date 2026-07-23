@@ -62,11 +62,19 @@ export const services: Service[] = [
     domain: 'Diagnostics',
   },
   {
-    title: 'Physician Neurotrauma Evaluation',
-    body: 'Comprehensive physician-led evaluation integrating history, neurological examination, symptom analysis, mechanism of injury, imaging review, and individualized treatment recommendations.',
+    title: 'TBI (Traumatic Brain Injury) Evaluation',
+    body: 'Physician-led evaluation for traumatic brain injury (TBI), integrating history, neurological examination, mechanism of injury, imaging review, and individualized next-step recommendations.',
     hasLink: true,
     path: '/physician-neurotrauma-evaluation',
     icon: 'evaluation',
+    domain: 'Assessment',
+  },
+  {
+    title: 'mTBI (Mild Traumatic Brain Injury) & Concussion Evaluation',
+    body: 'Evaluation and recovery planning for mild traumatic brain injury (mTBI) and concussion after sports impacts, collisions, falls, or workplace injury.',
+    hasLink: true,
+    path: '/concussion-management',
+    icon: 'concussion',
     domain: 'Assessment',
   },
   {
@@ -119,7 +127,7 @@ export const services: Service[] = [
   },
 ];
 
-export const FEATURED_SERVICE_TITLE = 'Physician Neurotrauma Evaluation';
+export const FEATURED_SERVICE_TITLE = 'TBI (Traumatic Brain Injury) Evaluation';
 
 export function getFeaturedPhysicianService(): Service | undefined {
   return services.find((service) => service.title === FEATURED_SERVICE_TITLE);
@@ -158,6 +166,7 @@ export const trustPoints: string[] = [
 // Representative homepage subset; full list lives in conditions.ts for /conditions.
 export const homepageConditions: string[] = [
   'Traumatic Brain Injury (TBI)',
+  'Mild Traumatic Brain Injury (mTBI)',
   'Concussion',
   'Persistent Post-Concussion Symptoms',
   'Motor Vehicle Collision Injuries',

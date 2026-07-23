@@ -9,7 +9,7 @@ export interface RouteMeta {
 
 const STATIC_ROUTES: RouteMeta[] = [
   { path: '/', title: 'Texas NeuroTrauma Institute — Home' },
-  { path: '/about', title: 'About Dr. Derrick Randdolf — Texas NeuroTrauma Institute' },
+  { path: '/about', title: 'About Dr. Derrick Enoch Randdolf — Texas NeuroTrauma Institute' },
   { path: '/conditions', title: 'Conditions We Treat — Texas NeuroTrauma Institute' },
   { path: '/services', title: 'Our Services — Texas NeuroTrauma Institute' },
   { path: '/for-attorneys', title: 'For Attorneys — Texas NeuroTrauma Institute' },

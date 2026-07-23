@@ -25,7 +25,8 @@ export function Footer({ showCta: _showCta = true, minimal = false }: FooterProp
           <div className="tni-footer__col">
             <h5 className="tni-footer-title">Services</h5>
             <ul className="tni-footer__list">
-              <li><Link to="/physician-neurotrauma-evaluation" className="tni-footer-link">Neurotrauma Evaluation</Link></li>
+              <li><Link to="/physician-neurotrauma-evaluation" className="tni-footer-link">TBI (Traumatic Brain Injury) Evaluation</Link></li>
+              <li><Link to="/concussion-management" className="tni-footer-link">mTBI (Mild Traumatic Brain Injury) &amp; Concussion</Link></li>
               <li><Link to="/qeeg-service" className="tni-footer-link">qEEG Brain Mapping</Link></li>
               <li><Link to="/neurocognitive-testing" className="tni-footer-link">Neurocognitive Assessment</Link></li>
               <li><Link to="/neurofeedback" className="tni-footer-link">Neurofeedback</Link></li>

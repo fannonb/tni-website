@@ -1,19 +1,20 @@
 export const aboutHero = {
-  name: 'Dr. Derrick Randdolf, MD',
+  name: 'Dr. Derrick Enoch Randdolf',
   role: 'Founder of Texas NeuroTrauma Institute and StarMED Clinic',
   summary:
     'A physician integrating neurotrauma evaluation, cognitive recovery, preventive medicine, and whole-person care.',
+  clinicalBackground:
+    'MD - Board Certified AAFP · Emergency Medicine · Certified Brain Injury Specialist (CBIS) — Brain Injury Association of America · Certified Cognitive Rehabilitation Therapist — ACRM · Diplomate in Quantitative Electroencephalography (QEEG-D)',
 } as const;
 
 export const aboutCredentials = [
   { label: 'Medical Licensure', value: 'Texas · New Mexico · Maryland' },
-  { label: 'Clinical Background', value: 'Family Medicine · Emergency Medicine' },
   { label: 'Clinical Focus', value: 'Neurotrauma · Neurocognitive Health' },
-  { label: 'Practice Leadership', value: 'Founder of TNI · Founder of StarMED' },
+  { label: 'Practice Leadership', value: 'Founder of TNTI · Founder of StarMED' },
 ] as const;
 
 export const clinicalBackground = [
-  'Dr. Derrick Randdolf is a physician licensed in Texas, New Mexico, and Maryland with a clinical background in Family Medicine and Emergency Medicine. He specializes in wellness-focused healthcare, integrative medicine, neurocognitive health, and traumatic brain injury evaluation and treatment.',
+  'Dr. Derrick Enoch Randdolf is a physician licensed in Texas, New Mexico, and Maryland with a clinical background in Family Medicine and Emergency Medicine. He specializes in wellness-focused healthcare, integrative medicine, neurocognitive health, and traumatic brain injury evaluation and treatment.',
   'He is recognized for combining evidence-based medical care with advanced wellness and neurofunctional approaches designed to optimize patient recovery, performance, and long-term health outcomes.',
   'As the founder of Texas NeuroTrauma Institute and StarMED Clinic, Dr. Randdolf has developed a modern medical practice model that integrates primary care, wellness medicine, preventive health, neurocognitive assessment, and restorative therapies within a patient-centered environment. His approach emphasizes whole-person care—focusing not only on disease management, but also on health optimization, functional recovery, vitality, and quality of life.',
   'Dr. Randdolf’s background in Emergency Medicine and Family Medicine provides a comprehensive systems-based perspective that bridges acute medical care, chronic disease management, neurological recovery, and preventive wellness medicine. His experience managing both acute and long-term conditions has shaped a practical, patient-focused approach centered on functional improvement, evidence-based care, and measurable outcomes.',
@@ -44,6 +45,7 @@ export const medicoLegal = {
   body:
     'Dr. Randdolf is actively involved in medico-legal and forensic neurotrauma evaluations, providing objective medical assessments for injury-related cases.',
   services: [
+    'TBI evaluation',
     'Medical record review',
     'Injury mechanism analysis',
     'Neurocognitive symptom correlation',

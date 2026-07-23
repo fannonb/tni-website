@@ -90,10 +90,16 @@ export const conditions: string[] = conditionGroups.flatMap((group) =>
 
 export const evaluationPathways: EvaluationPathway[] = [
   {
-    title: 'Physician neurotrauma evaluation',
-    body: 'Start here. A physician reviews your history, exam findings, and determines which diagnostics and recovery services are appropriate.',
+    title: 'TBI (Traumatic Brain Injury) evaluation',
+    body: 'Start here for traumatic brain injury. A physician reviews your history, exam findings, and determines which diagnostics and recovery services are appropriate.',
     path: '/physician-neurotrauma-evaluation',
-    linkLabel: 'Physician evaluation',
+    linkLabel: 'TBI evaluation',
+  },
+  {
+    title: 'mTBI (Mild Traumatic Brain Injury) & concussion evaluation',
+    body: 'Evaluation and recovery planning for mild traumatic brain injury and concussion when symptoms affect school, work, sports, or daily life.',
+    path: '/concussion-management',
+    linkLabel: 'mTBI & concussion care',
   },
   {
     title: 'Cognitive & neuropsychological assessment',

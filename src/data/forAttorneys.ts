@@ -74,7 +74,7 @@ export const workingSections: WorkingSection[] = [
   },
   {
     title: 'Evaluation & Testing',
-    body: 'The patient receives a physician-directed neurotrauma evaluation with records review and objective testing when clinically indicated.',
+    body: 'The patient receives a physician-directed TBI evaluation with records review and objective testing when clinically indicated.',
   },
   {
     title: 'Reporting & Consultation',

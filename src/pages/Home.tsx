@@ -400,11 +400,11 @@ export default function Home() {
                   <ServiceCardIcon icon={featuredService.icon} />
                 </div>
                 <div className="tni-svc-start__body">
-                  <span className="tni-svc-start__badge">Start Here · Physician-Led Evaluation</span>
+                  <span className="tni-svc-start__badge">Start Here · TBI (Traumatic Brain Injury) Evaluation</span>
                   <h3 className="tni-svc-start__title">{featuredService.title}</h3>
                   <p className="tni-svc-start__copy">
-                    A comprehensive clinical assessment that determines which testing, treatment, and recovery pathway
-                    is appropriate for you.
+                    A physician-led TBI evaluation that determines which testing, treatment, and recovery pathway
+                    is appropriate for your injury and symptoms.
                   </p>
                 </div>
                 <span className="tni-svc-start__cta">

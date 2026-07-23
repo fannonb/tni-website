@@ -41,7 +41,8 @@ const DISPLAY_TITLES: Record<string, string> = {
   '/neuropsychology': 'Neuropsychology',
   '/memory-cognitive-rehab': 'Memory & Cognitive Rehab',
   '/headache-treatment': 'Headache Treatment',
-  '/physician-neurotrauma-evaluation': 'Physician Neurotrauma Evaluation',
+  '/physician-neurotrauma-evaluation': 'TBI (Traumatic Brain Injury) Evaluation',
+  '/concussion-management': 'mTBI (Mild Traumatic Brain Injury) & Concussion Evaluation',
   '/vestibular-balance': 'Vestibular & Balance Evaluation',
   '/neurofeedback': 'Neurofeedback Therapy',
   '/multidisciplinary-rehab': 'Multidisciplinary Rehabilitation',
@@ -56,7 +57,9 @@ const DIRECTORY_SUMMARIES: Record<string, string> = {
   '/vestibular-balance':
     'Evaluates dizziness, imbalance, and vestibular dysfunction that can follow head injury or concussion.',
   '/physician-neurotrauma-evaluation':
-    'Physician-led evaluation that determines which diagnostic testing, cognitive assessment, and recovery services are appropriate.',
+    'Physician-led evaluation for traumatic brain injury (TBI) that determines which testing, treatment, and recovery services are appropriate.',
+  '/concussion-management':
+    'Evaluation and recovery planning for mild traumatic brain injury (mTBI) and concussion after sports, collisions, falls, or workplace injury.',
   '/neurocognitive-testing':
     'Measures memory, attention, processing speed, and executive function with standardized cognitive testing.',
   '/neuropsychology':
@@ -73,6 +76,7 @@ const DIRECTORY_SUMMARIES: Record<string, string> = {
 
 const GLOBAL_ORDER = [
   '/physician-neurotrauma-evaluation',
+  '/concussion-management',
   '/qeeg-service',
   '/eeg',
   '/neurocognitive-testing',
@@ -86,7 +90,12 @@ const GLOBAL_ORDER = [
 
 const DOMAIN_ORDER: Record<ServiceCategory, string[]> = {
   Diagnostics: ['/qeeg-service', '/eeg', '/vestibular-balance'],
-  Assessment: ['/physician-neurotrauma-evaluation', '/neurocognitive-testing', '/neuropsychology'],
+  Assessment: [
+    '/physician-neurotrauma-evaluation',
+    '/concussion-management',
+    '/neurocognitive-testing',
+    '/neuropsychology',
+  ],
   Rehabilitation: [
     '/memory-cognitive-rehab',
     '/neurofeedback',

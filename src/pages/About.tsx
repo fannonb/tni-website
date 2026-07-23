@@ -55,12 +55,16 @@ export default function About() {
               </h1>
               <p className="tni-about-hero__role">{aboutHero.role}</p>
               <p className="tni-about-hero__summary">{aboutHero.summary}</p>
+              <div className="tni-about-hero__credentials">
+                <p className="tni-about-hero__credentials-label">Clinical Background</p>
+                <p className="tni-about-hero__credentials-value">{aboutHero.clinicalBackground}</p>
+              </div>
             </div>
 
             <div className="tni-about-hero__visual">
               <HeroPhoto
                 src={physicianPortrait}
-                alt="Dr. Derrick Randdolf, MD, founder of Texas NeuroTrauma Institute"
+                    alt="Dr. Derrick Enoch Randdolf, founder of Texas NeuroTrauma Institute"
                 tone="dark"
                 aspectRatio="4 / 5"
                 overlay
@@ -83,13 +87,13 @@ export default function About() {
         </Container>
       </section>
 
-      <section className="tni-about-background" aria-labelledby="clinical-background-heading">
+      <section className="tni-about-background" aria-labelledby="overview-heading">
         <Container>
           <div className="tni-about-background__layout">
             <Reveal>
               <header className="tni-about-section-intro">
                 <SectionHeading as="h2" size={34}>
-                  <span id="clinical-background-heading">Clinical Background</span>
+                  <span id="overview-heading">Overview</span>
                 </SectionHeading>
               </header>
             </Reveal>

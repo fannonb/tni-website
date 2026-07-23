@@ -56,7 +56,8 @@ export default function Services() {
               </h1>
               <p className="tni-services-hero__lead">
                 Objective diagnostics, cognitive assessment, and rehabilitation—coordinated under physician
-                direction for brain injury, concussion, and related neurological conditions.
+                direction for traumatic brain injury (TBI), mild traumatic brain injury (mTBI), concussion, and
+                related neurological conditions.
               </p>
               <div className="tni-services-hero__actions">
                 <Button to="/contact" variant="primary" size="lg" style={{ padding: '16px 36px', borderRadius: 99 }}>
@@ -88,11 +89,11 @@ export default function Services() {
                   <ServiceCardIcon path={featured.path} />
                 </div>
                 <div className="tni-svc-start__body">
-                  <span className="tni-svc-start__badge">Start Here · Physician-Led Evaluation</span>
+                  <span className="tni-svc-start__badge">Start Here · TBI (Traumatic Brain Injury) Evaluation</span>
                   <h2 className="tni-svc-start__title">{featured.title}</h2>
                   <p className="tni-svc-start__copy">
-                    Physician evaluation determines which testing, assessment, and recovery services are appropriate
-                    for your symptoms, injury history, and clinical presentation.
+                    Physician-led traumatic brain injury evaluation that determines which testing, assessment, and
+                    recovery services are appropriate for your symptoms, injury history, and clinical presentation.
                   </p>
                 </div>
                 <span className="tni-svc-start__cta">
