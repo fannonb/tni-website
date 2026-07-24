@@ -55,10 +55,6 @@ export function Footer({ showCta: _showCta = true, minimal = false }: FooterProp
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <span>{site.locations.join(' · ')}</span>
-              </li>
-              <li className="tni-footer__location">
-                <span style={{ width: 14, display: 'inline-block' }} aria-hidden />
                 <span>{site.serviceArea}</span>
               </li>
               <li className="tni-footer__contact">
